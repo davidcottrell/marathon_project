@@ -175,12 +175,12 @@ One can see that there is a clear linear relationship between a runner's perform
  \end{subfigure}
 \end{figure}
 
-
-\subsection*{Simulate the run}
+\newpage
+\subsection*{Steps of the simulation}
 
 \begin{enumerate}
 \item Removing the twins from the sample, estimate a linear model that
-predicts a runner?s final time (y) based on her personal best time (x).
+predicts a runner?s final time ($Y_i$) based on her personal best time ($X_i$).
 \item Extract the coefficients and the variance-covariance matrix from this
 model.
 \item For each runner, draw $\beta_0$ and $\beta_1$ from a multivariate normal
@@ -188,23 +188,21 @@ distribution with mean equal to the coefficients and variance equal to the
 variance-covariance matrix.
 \item For each runner, draw an error term ($e$) from a normal distribution with
 mean equal to zero and a standard deviation equal to the standard
-deviation of the model?s residuals.
+deviation of the model?s residuals ($\sigma$).
 \item For each runner, predict the final result by combining the randomly
 generated beta coefficients and error terms, $\hat{y} = \beta_0 + \beta_1 + e$.
 \item Eliminate each runner from the race with a probability equal to the
 percent of the total runners who did not finish in the actual race.  This
 account for the likelihood of a DNF.
-\item Calculate the runner?s rank relative to the other runners.
-\item From the rankings, determine if each set of twins finished
-consecutively.
-\item Repeat steps 2 through 8 ten thousand times.
-\item Calculate the percent of the simulation in which the twins finished
-consecutively
+\item Calculate the difference in time between Anna Hahner and Lisa Hahner.
+\item Calculate the difference in ranking between Anna Hahner and Lisa Hahner.
+\item Repeat steps 3 through 8 ten thousand times.
+\item Plot a histogram of the results in Figure \ref{fig:simdiff}
 \end{enumerate}
 
 \begin{figure}[!ht]
  \caption{The distribution of simulated results}
- \label{fig:diffdiff}
+ \label{fig:simdiff}
  \begin{subfigure}{.5\textwidth}
  \includegraphics[width=\textwidth, keepaspectratio]{simulated_time.pdf}
  \end{subfigure}
