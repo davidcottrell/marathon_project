@@ -103,7 +103,10 @@
 
 
 \begin{quote}
- \emph{``I invested all I had and 300 meters before the finish line, I was next to Lisa. It was a magical moment that we could finish this marathon together. We did not think about what we were doing.''Äù - Anna Hahner} 
+  \emph{``I invested all I had and 300 meters before the finish line,
+    I was next to Lisa. It was a magical moment that we could finish
+    this marathon together. We did not think about what we were
+    doing.'' -- Anna Hahner}
 \end{quote}
 
 
@@ -195,12 +198,41 @@ there is variance across runners in these deviations, and we want to
 know if patterns in the deviations support an honest effort by the
 Hanher twins or perhaps something else.
 
+As a brief overview of the race, Figure \ref{fig:secondsbehind}
+describes each runner's status at the various split times on the
+marathon course.  Each dot in the figure depicts a recorded split and
+the number of seconds each runner was behind the race leader at the
+time.  There are more dots at earlier splits due to the accumulation
+of DNFs.  Regarding twins and triplets, the Estonian Luik triplets are
+denoted with blue dots; there are three blue dots through the 20
+kilometer split, but the third triplet did not record a half-marathon
+split.  The orange dots in the figure represent the Hahner twins; Lisa
+Hahner was ahead of her sister through 15 kilometers at which point
+Anna surged ahead.  There are two red dots representing the North
+Korean Kim twins although this is not visually apparent; the Kim twins
+had identical split times during the marathon.
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Runner status by split}
+  \label{fig:secondsbehind}
+  \includegraphics[scale = 1]{seconds-behind.pdf}
+  \begin{flushleft}
+    \emph{Note: each dot represents one runner at a split.  DNFs are
+      not pictured, and splits are not to scale.}
+  \end{flushleft}
+\end{figure}
+
+Figure \ref{fig:secondsbehind} does not directly shed any light on our
+motivating research question, but it does show that the Hahner twins
+finished amidst many other runners.  We will come back to this point
+later.
+
 \section*{The probability of an unintentional simultaneous finish}
 
 Thomas Kurschilgen's accusations of an intentional finish stems from
 two observations. First, the Hahner twins finished slower than he
-expected, as we already noted recording times more than 18 minutes
-slower than respective personal bests. Second, the twins finished
+expected given respective personal bests. Second, the twins finished
 together at the exactly same time. Kurschilgen clearly believed that
 neither of these events would have occurred had both Hahner run the
 marathon independently, absent coordination. By his logic, the German
@@ -214,11 +246,11 @@ suspect that an unintended simultaneous finish was more likely for the
 Hahner twin than it would be for any other set of runners. After all,
 these two women are twins with presumably similar abilities. Not only
 do they train together, but their pre-Rio best times are less than two
-minutes apart. While Anna may be slightly faster than Lisa, measured
-by personal bests, we might expect the difference in their Rio result
-to be just as close as the differences in their recorded bests. And
-given random variation in finishing times, a simultaneous finish might
-not be out of the ordinary.
+minutes apart. While Anna may be slightly faster than Lisa measured by
+personal bests, we might expect the difference in their Rio result to
+be just as close as the differences in their recorded bests. And given
+random variation in finishing times, a simultaneous finish might not
+be out of the ordinary.
 
 Even though they seem similar, finishing at very similar times and
 finishing together are different phenomena. If, for example, both
@@ -230,28 +262,28 @@ levels.  This point is an important one and will be evident in the
 results that follow.
 
 To test the assertion that the Hahner twins paced themselves to finish
-at the same time and with back-to-back placements, we simply need to
-compute the probability that such a result would have occurred
+at the same time and with back-to-back placements, we need to compute
+the probability that such a result would have occurred
 unintentionally. Hence we need to know the probability distribution of
 Anna and Lisa's finishing times if their runs had been independent of
 each other. The challenge, of course, is that this distribution is
-unknown.  ^^ Therefore it needs to be estimated.
+unknown.  % Therefore it needs to be estimated.
 
 \section*{Modeling}
 
 %% THIS SECTION IS A MESS.  I JUST WANTED TO PUT SOMETHING IN WRITING.
 
-%% Ok.  Not sure what all the notation means.
+%% Ok!  Not sure what all the notation means.
 
 % We know that Anna and Lisa Hahner finished the marathon in Rio
 % simultaneously. We don't know, however, if the finish was intentional;
 
-Suppose that Hahner the twins acted independently $I$ or they acted in
-coordination $C$; these are the two possible states of the race
+The Hahner twins either acted independently $I$ or coordinated their
+times $C$; these are the two possible states of the race
 $\psi = \{I, C\}$. Given that we observed Anna and Lisa's finishing
 times, $Y_A = y_A$ and $Y_L = y_L$, we want to know the probability
 that they ran independently, as they say they did. Hence, we are
-looking to determine,  %% y_a versus Y_a.  Former realized?
+looking to determine, %% y_a versus Y_a.  Former realized?
 
 $$P(\psi = I \mid y_A  \cap y_L )$$
 
@@ -296,25 +328,48 @@ According to Kurschilgen, Anna and Lisa underperformed in the Rio marathon. He c
 If this were the case, the function generating Anna and Lisa's final times would deviate from the function that generated everyone else's final times.  Given everyone else would draw their times from the independent distribution  $Y_i \sim N(\beta_0 + X_{i}\beta_1 + e, \sigma)$,  Anna and Lisa would draw from a distribution of times that are slower in expectation. Hence, they would lie well-above the line that links a runner's performance in Rio to their previous best performance.    
 
 \begin{figure}[!ht]
-  \caption{Relationship between Personal Best and Result  -- better label?}
+  \caption{Relationship between Personal Best and Result  -- caption?}
   \label{fig:scatter}
   \begin{subfigure}{.5\textwidth}
+    \centering
     \includegraphics[width=\textwidth,
     keepaspectratio]{scatter_plot.pdf}
     \caption{Rio finishing times and personal best times}
-    \label{fig:A}
+    \label{fig:45degreeplot}
   \end{subfigure}
   \begin{subfigure}{.5\textwidth}
+    \centering
     % \label{fig:Studentized Residuals}
     \includegraphics[width=.975\textwidth, keepaspectratio]{studentized_residuals.pdf}
-    \caption{A}
-    \label{fig:B}
+    \caption{Studentized residuals}
+    \label{fig:studentizedresiduals}
   \end{subfigure}
 \end{figure}
 
-The scatter plot in Figure \ref{fig:scatter} displays the relationship between a runner's personal best and their final result.   Of the 156 runners that competed in the marathon event, 133 finished the race.  These individuals are plotted as grey points.  The 23 that did not finish are plotted below along the x-axis as grey tick-marks.   The dashed black line with grey confidence intervals represent OLS estimates of the linear relationship between the two variables.   The Hahner twins are marked by orange points. 
+Figure \ref{fig:45degreeplot} displays the relationship between a
+runner's personal best (horizontal axis) and her final result
+(vertical axis).  The 133 finishers are plotted as grey points, and
+the 23 DNFs are depicted below along the horizontal axis with
+tick-marks.  The dashed black line with grey confidence intervals
+represent ordinarily least squares estimates of the linear
+relationship between racer's finishing and personal best times.
 
-One can see that there is a clear linear relationship between a runner's performance in the olympics and her final result.  Moreover, there is a significant amount of noise in the relationship.  This suggests that despite one's innate abilities, luck plays a major role in olympic finishes.    Still, the twins' results are well above the fitted line, even accounting for typical error.  They are much slower than the underlying linear relationship suggests.  In fact, if we order each point by the size of the studentized residual (see the second plot), we can see that the Hahner twins are in the tail-end of the distribution.  Anna Hahner's residual deviation is greater than 91.7\% of the runners who completed the race while Lisa Hahner's deviation is greater than 86.5\%.  Hence, the twins appear to have finished at a much slower pace than expectation, which is what we might expect if they were coordinating their runs.\footnote{It is important to note that the North Korean twins finished much faster than expected.  XXXX explain PRK}   
+One can see in Figure \ref{fig:scatter} that there is a clear
+relationship between a runner's personal best time and her performance
+in the Olympics.  While there is a significant amount of noise in the
+relationship, the Hahner twins' dots are well above the regression's
+fitted line notwithstanding this point.  They finished the Rio
+marathon much slower than they should have, per their pre-Olympic
+personal best times.  In fact, if we sort studentized residual, we can
+see in Figure \ref{fig:studentizedresiduals} that the Hahner twins are
+in the tail-end of the residual distribution.  Anna Hahner's residual
+deviation is greater than 91.7\% of the runners who completed the
+marathon while Lisa Hahner's deviation is greater than 86.5\%.  Hence,
+the twins appear to have finished at a much slower pace than expected,
+which is what we might expect if they were coordinating their runs.
+The North Korean Kim twins are also in the tail of the residual
+distribution---but the left tail.  These twins finished much faster
+than expected. 
 
 \section*{Did Anna and Lisa intentionally finish together?}
 
@@ -335,16 +390,17 @@ One can see that there is a clear linear relationship between a runner's perform
 \subsection*{Steps of the simulation}
 
 \begin{enumerate}
-\item Removing the twins from the sample, estimate a linear model that
-predicts a runner?s final time ($Y_i$) based on her personal best time ($X_i$).
-\item Extract the coefficients and the variance-covariance matrix from this
-model.
+\item Removing the two sets of twins and triplets from the sample,
+  estimate a linear model that predicts a runner's final time ($Y_i$)
+  based on her pre-Olympic personal best time ($X_i$).
+\item Extract the coefficients and the variance-covariance matrix from
+  this model.
 \item For each runner, draw $\beta_0$ and $\beta_1$ from a multivariate normal
 distribution with mean equal to the coefficients and variance equal to the
 variance-covariance matrix.
 \item For each runner, draw an error term ($e$) from a normal distribution with
 mean equal to zero and a standard deviation equal to the standard
-deviation of the model?s residuals ($\sigma$).
+deviation of the model's residuals ($\sigma$).
 \item For each runner, predict the final result by combining the randomly
 generated beta coefficients and error terms, $\hat{y} = \beta_0 + \beta_1 + e$.
 \item Eliminate each runner from the race with a probability equal to the
@@ -357,14 +413,20 @@ account for the likelihood of a DNF.
 \end{enumerate}
 
 \begin{figure}[!ht]
- \caption{The distribution of simulated results}
- \label{fig:simdiff}
- \begin{subfigure}{.5\textwidth}
- \includegraphics[width=\textwidth, keepaspectratio]{simulated_time.pdf}
- \end{subfigure}
- \begin{subfigure}{.5\textwidth}
- \includegraphics[width=\textwidth, keepaspectratio]{simulated_rank.pdf}
- \end{subfigure}
+  \centering
+  \caption{Distribution of simulated results for the Hahner twins}
+  \label{fig:simdiff}
+  \begin{subfigure}{.45\textwidth}
+    \includegraphics[width=\textwidth,
+    keepaspectratio]{simulated_time.pdf}
+    \caption{Simulated differences in finishing times}
+    \label{fig:simulatedfinishtimes}
+  \end{subfigure}
+  \begin{subfigure}{.45\textwidth}
+    \includegraphics[width=\textwidth, keepaspectratio]{simulated_rank.pdf}
+    \caption{Simulated differences in places}
+    \label{fig:simulatedranks}
+  \end{subfigure}
 \end{figure}
 
 
