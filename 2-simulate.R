@@ -16,9 +16,9 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
   geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
   coord_fixed(xlim = c(8000,12500), ylim = c(8000,12500)) +
-  ylab("Result (Sec)\n") + 
-  xlab("\nPersonal Best (Sec)") + 
-  ggtitle("Distribution of Y | X") +
+  ylab("Olympic result in seconds\n") + 
+  xlab("\nPersonal Best in seconds") + 
+    ##  ggtitle("Distribution of Y | X") +
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
@@ -64,7 +64,7 @@ ggplot(df2b, aes(PERCENTILE,diff_in_diff)) +
   geom_point(data = na.omit(df2b), aes( col = twins)) + 
   geom_text(data = df2b[df2b$twins == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
   geom_text(data = df2b[df2b$twins == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
-  ggtitle("Distribution of Difference in Differences (All Diads)") +
+  ggtitle("Distribution of Difference in Differences (All Dyads)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPrecentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
@@ -99,8 +99,8 @@ ggplot(dta, aes(PERCENTILE,STUD_RESID)) +
   geom_point(data = na.omit(dta), aes( col = TWINS)) + 
   geom_text(data = dta[dta$TWINS == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_x = -10, colour = "orange") +
   geom_text(data = dta[dta$TWINS == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_x = 10, colour = "red") +
-  ggtitle("Distribution of Studentized Residuals") +
-  ylab("Studentized Residuals\n") +
+##  ggtitle("Distribution of Studentized Residuals") +
+  ylab("Studentized residual\n") +
   xlab("\nPrecentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
@@ -176,18 +176,18 @@ hahner_df <- data_frame(time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), rank_dif
 pdf("plots/simulated_time.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(time_diff)) + 
   geom_histogram(binwidth = 30, colour = "black", fill = NA) +
-  xlab("\nDifference (Sec) ") +
+  xlab("\nDifference in seconds") +
   ylab("Count\n") +
-  ggtitle("\nSimulated final time") +
+#  ggtitle("\nSimulated final time") +
   theme_bw()
 dev.off()
 
 pdf("plots/simulated_rank.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(rank_diff)) + 
   geom_histogram(binwidth = 1, colour = "black", fill = NA) +
-  xlab("\nDifference (Rank) ") +
+  xlab("\nDifference in rank") +
   ylab("Count\n") +
-  ggtitle("\nSimulated final rank") +
+#  ggtitle("\nSimulated final rank") +
   theme_bw()
 dev.off()
 
