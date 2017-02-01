@@ -11,7 +11,7 @@ pdf("plots/scatter_plot.pdf", height = 5,  width = 5)
 ggplot(aes(y=FINAL, x=PB), data = df) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = df[!is.na(df$TWINS),], aes( col = TWINS)) +
-  geom_smooth(method = "lm", colour = "black", alpha = .5, size = .5, linetype = "dashed") + 
+  geom_smooth(method = "lm", colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
   geom_abline(intercept = 0, slope =1) +
   geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
@@ -48,7 +48,7 @@ for(i in 1:length(pb)){
 }
 
 
-df2 <- data_frame(name_i, name_j, pb_diff, result_diff, diff_in_diff = abs(result_diff - pb_diff), consecutive)
+df2 <- data_frame(name_i, name_j, pb_diff, result_diff, diff_in_diff = abs(result_diff) - abs(pb_diff), consecutive)
 
 df2$twins <- ifelse(df2$name_i == "Anna Hahner" & df2$name_j == "Lisa Hahner", "Hahner Twins",
                     ifelse(df2$name_i == "Hye-Gyong Kim" & df2$name_j == "Hye-Song Kim", "Kim Twins",
@@ -57,14 +57,32 @@ df2$twins <- ifelse(df2$name_i == "Anna Hahner" & df2$name_j == "Lisa Hahner", "
 
 df2b <- df2 %>% filter(name_i != name_j, !is.na(diff_in_diff)) %>% arrange(diff_in_diff)
 
+pdf("plots/diff_in_diff_scatter_plot.pdf", height = 5,  width = 5)
+ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) + 
+  geom_point(size = .5, colour = "gray", alpha = .5) + 
+  geom_point(data = df2b[!is.na(df2b$twins),], aes( col = twins)) +
+  geom_smooth( colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
+  geom_abline(intercept = 0, slope =1) +
+  #geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
+  #geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+  coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
+  ylab("Absolute Difference Olympic result in seconds\n") + 
+  xlab("\nAbsolute Difference in Personal Best in seconds") + 
+  #ggtitle("Among all dyadic combinations") +
+  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  theme_bw() +
+  theme(legend.position = c(.8,.2))
+dev.off()
+
+
 pdf("plots/diff_in_diff_1.pdf", height = 5, width = 5)
 df2b <- df2b %>% mutate(PERCENTILE = cume_dist(diff_in_diff)*100 )
 ggplot(df2b, aes(PERCENTILE,diff_in_diff)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(df2b), aes( col = twins)) + 
-  geom_text(data = df2b[df2b$twins == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
-  geom_text(data = df2b[df2b$twins == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
-  ggtitle("Distribution of Difference in Differences (All Dyads)") +
+  geom_text(data = df2b[df2b$twins == "Hahner Twins",], aes(label =  paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 100, colour = "orange") +
+  geom_text(data = df2b[df2b$twins == "Kim Twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "red") +
+  ggtitle("Distribution of Difference in Differences\n(All Dyads)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPrecentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
@@ -80,7 +98,7 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
   geom_point(data = na.omit(df2c), aes( col = twins)) + 
   geom_text(data = df2c[df2c$twins == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
   geom_text(data = df2c[df2c$twins == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
-  ggtitle("Distribution of Difference in Differences") +
+  ggtitle("Distribution of Difference in Differences\n(Diads where difference in PB < Hahner's)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPrecentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +

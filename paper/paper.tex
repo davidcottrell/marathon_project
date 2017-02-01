@@ -373,10 +373,36 @@ than expected.
 
 \section*{Did Anna and Lisa intentionally finish together?}
 
+Anna and Lisa finished the marathon at an unusually slow rate, which is what we might expect if the twins intentionally slowed their pace to finish simultaneously.  However, the observation of a slow finish does not necessarily imply that it was an intentional result .  It only suggests that Kurschilgen's claim regarding this issue holds up in the data.
+
+Perhaps it would be easier to refute the claim if we could show that the Twins's back-to-back finish was not such an unusual event.  Given that Anna and Lisa were so close in their personal best times, it may seem reasonable to expect that they would also be close in their finishing times.   Hence, one way to determine if the twins's finish was intentional is to quantify the likelihood that such a close finish would occur by chance given the differences in their ability. 
+
+We can attempt to quantify this likelihood by looking at how differences in the personal best time of two runners translate into differences in Olympic times .  If Anna and Lisa's finish was unintentional we'd expect that such a close finish would be unlikely given their difference in personal best times.   Yet, how does the difference in personal best times relate to the difference in finishing times?
+
+One way we can estimate this relationship is to look at all of the differences that we observe in the marathon.  We can take the difference in personal best time for every combination of runners in the data and look at the difference in their final times.  We should expect that compared to the difference in their personal best times, the difference in Anna and Lisa's final times should be commensurate with the conditional difference of all other runners. %This needs a better explanation.
+
+Therefore, we find all combinations of runners in the marathon and calculate two quantities: 1) the difference in their personal best time and 2) the difference in their final time. We plot the relationship between the two quantities in Figure \ref{fig:diffdiffscatter}.   All 8,778 dyadic combinations of runners are displayed by grey points in the scatter plot.   The solid black line indicates a one-to-one relationship, where every point would fall if the difference in final times were systematically equivalent to the difference in personal bests.  
 
 
 \begin{figure}[!ht]
  \caption{Relationship between Difference in Personal Best and Difference in Result}
+ \label{fig:diffdiffscatter}
+ \centering
+ \begin{subfigure}{.5\textwidth}
+ \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
+ \end{subfigure}
+\end{figure}
+
+We can see from the yellow dot that the Hahner Twins are just below this one-to-one line.  Hence, the twins' final times were closer to each other than their personal best times; but not by much.  In fact, this might be an expected difference if we expected there to be a one-to-one relationship.     However, although there is a clear relationship between the difference in final time and the difference in personal best, it is not a strong one-to-one relationship.  We've added a dotted smoother to display a cubic splines estimate of the conditional averages.  While the Hahner twins may be close to the one-to-one line, they are much further away from the average set of runners.  Hence, we would expect for any pair of runners, the difference in their final results should be much greater than their difference in their personal best.  However, the Hahner twins do not fit this expectation.   Yet, how different from this expectation are they?
+
+One way we can quantify the degree to which the twins are outliers is by comparing their difference in difference to every other pair of runner's difference-in-differences.  We calculate the difference-in-differences for each pair of runners by simply subtracting their difference in result (y-axis) from their difference in personal best (x-axis).  Therefore positive difference-in-differences mean that the runners ended up further apart than their difference in personal bests.  Negative difference-in-differences mean that the runners end up closer together.  Hence, the Hahner twins have a difference-in-difference of -114 seconds.  They finished 114 seconds closer together than the distance between their personal bests.  
+
+We arrange all 8,778 difference-in-differences from small to large in the first plot in Figure \ref{fig:diffdiff}. The Hahner twins are denoted by the yellow point.  Using this plot we can visualize where the twins fall within the distribution of difference-in-differences.  It is clear that they are closer to the lower tail of the distribution.  However, compared to all other difference-in-differences, their result is not that extreme.  Nearly 21\% of the difference-in-dfferences were less than the that of the twins'. Hence, we'd expect at least one in five pairs of runners to have a reduction in difference at least as great as the twins.
+
+However, if we limit the observations to only those runners who had personal best times that were at least as close to each other as the Hahner twins, we get a different persepective.  Among those runners,  the Hahner twins reduced the distance between them to the greatest extent.  There was no other pair of runners whose reduced the difference in the final time relative to their difference in personal bests more than them.         
+
+\begin{figure}[!ht]
+ \caption{How Hahner Twins Rank in Difference-in-Differences}
  \label{fig:diffdiff}
  \begin{subfigure}{.5\textwidth}
  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_1.pdf}
