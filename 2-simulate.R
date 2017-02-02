@@ -11,28 +11,35 @@ df <- df[df$BIB != 1172,]
 # Remove slowest PBs with the assumption that these are different
 # df <- df[df$PB < 10000,]
 
+## add indicator for finishing at least 19 minutes slower than PB
+df <- df %>% mutate(slower19 = (FINAL - PB) / 60 >= 19)
+
 pdf("plots/scatter_plot.pdf", height = 5,  width = 5)
 ggplot(aes(y=FINAL, x=PB), data = df) + 
-  geom_point(size = 1, colour = "gray") + 
-  geom_point(data = df[!is.na(df$TWINS),], aes( col = TWINS)) +
-  geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
-  geom_abline(intercept = 0, slope =1) +
-  geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
-  geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
-  coord_fixed(xlim = c(8000,12500), ylim = c(8000,12500)) +
-  ylab("Olympic result, in seconds\n") + 
-  xlab("\nPersonal nest, in seconds") + 
+    geom_point(size = 1.25, colour = "gray", aes(shape = slower19)) +
+    geom_point(data = df[!is.na(df$TWINS),], aes(col = TWINS)) +
+    geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
+    geom_abline(intercept = 0, slope =1) +
+    geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
+    geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+    coord_fixed(xlim = c(8000,12500), ylim = c(8000, 12500)) +
+    ylab("Olympic result, in seconds\n") + 
+    xlab("\nPersonal best, in seconds") + 
     ##  ggtitle("Distribution of Y | X") +
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
-  theme_bw() +
-  theme(legend.position = c(.8,.2))
+    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    scale_shape_manual(values = c(19, 15), guide = FALSE) +
+    theme_bw() +
+    theme(legend.position = c(.8,.2))
 dev.off()
+
+
+
 
 ## make scatter plot for half marathon split
 pdf("plots/scatter_plot_half.pdf", height = 5,  width = 5)
 df2use <- filter(df, !is.na(SPLIT_HALF))
 ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
-    geom_point(size = 1, colour = "gray") + 
+    geom_point(size = 1.25, colour = "gray") + 
     geom_point(data = df2use[!is.na(df2use$TWINS),], aes( col = TWINS)) +
     geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
     ## geom_abline(intercept = 0, slope = 1) +
