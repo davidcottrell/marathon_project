@@ -118,7 +118,7 @@ marathon kicked off in Rio de Janeiro, Brazil, when 156 runners from
 destination 42.195 kilometers away. Two hours, twenty-four minutes,
 and four seconds later, Jemima Sumgong of Kenya would be the first to
 cross the finishline and take home gold; Sumgong was just 3.5 minutes
-behind her personal best time in the marathon. Approximately 21
+behind her prior personal best time in the marathon. Approximately 21
 minutes later, twin marathoners from Germany, Anna and Lisa Hahner,
 would cross the finishline together, holding hands and celebrating a
 personal victory. Although the Hahners would finish 81st and 82nd,
@@ -142,39 +142,40 @@ attention.'' Kurschilgen justified his charge with the fact that the
 twins ran in the Rio marathon at least 18 minutes slower their
 personal best times prior to the
 Olympics.\footnote{\url{https://www.nytimes.com/2016/08/17/sports/olympics/twins-finish-marathon-hand-in-hand-but-their-country-says-they-crossed-a-line.html}}
-Not surprisingly, these accusations were denied by the Hahner twins,
-who claimed that their simultaneous finish was simply an unintended
-coincidence.
+Not surprisingly, Kurschilgen's accusations were denied by the Hahner
+twins, who claimed that their simultaneous finish was simply an
+unintended coincidence.
 
 %% Honigkuchenpferd quote from here:
 %%
 %% https://www.welt.de/sport/olympia/article157669264/Das-falsche-Laecheln-der-deutschen-Lauf-Zwillinge.html
 
 
+
 What happened in the women's Olympic marathon, and how might we
-develop a statistical approach that assesses whether the Hahner finish
-was coincidental or intentional?  These two interpretations are
-clearly at odds. If the former, then the Hahner twins are to be
-celebrated and their finish treated as an expression of the spirit
-behind the Olympic games. If the latter, though, then the twins may
-have violated this spirt by not trying hard enough. It is perhaps too
-easy for us to write such a glib sentence---neither of us cannot
-fathom being able to complete a marathon anywhere in the vicinity of
-two and a half hours---but we nonetheless want to know what the data
-from the Olympic marathon data tell us.  Was the Hahner finish in the
-2016 women's Olympic marathon a lovely coincidence or something else?
+develop a statistical approach that assesses whether the Hahner twin's
+finish was coincidental or intentional?  These two interpretations are
+clearly at odds. If the former, then the Hahners are to be celebrated
+and their finish treated as an expression of the spirit behind the
+Olympic games. If the latter, though, then the twins may have violated
+this spirt by not trying hard enough. It is perhaps too easy for us to
+write such a glib sentence---neither of us can fathom being able to
+complete a marathon anywhere in the vicinity of two and a half
+hours---but we nonetheless want to know what the data from the Olympic
+marathon data tell us.  Was the Hahner finish in the 2016 women's
+Olympic marathon a lovely coincidence or something else?
 
 Among female Olympic marathoners, the Hahner twins were not alone in
-their familial ties, and we draw on this in the analysis that follows.
-The marathon also featured twins from North Korea, Kim Hye-song and
-Kim Hye-gyong, who posted identical times and finished 10th and 11th
-in the race, respectively. The Kim finish, unlike the Hahner finish,
-appears devoid of post-race controversy. Moreover, three triplets from
-Estonia competed in the Rio marathon, although only two, Lily Luik and
-Leila Luik, finished it, in 97th and 114th place, respectively. The
-third Estonia triplet, Liina Luik, recorded what is known as a
-DNF---an abbreviation that means did not finish, a term that we will
-use throughout this article.
+their familial ties, and we touch on this in the analysis that
+follows.  The marathon also featured twins from North Korea, Kim
+Hye-song and Kim Hye-gyong, who posted identical times and finished
+10th and 11th in the race, respectively. The Kim finish, unlike the
+Hahner finish, appears devoid of post-race controversy. Moreover,
+three triplets from Estonia competed in the Rio marathon, although
+only two, Lily Luik and Leila Luik, finished it, in 97th and 114th
+place, respectively. The third Estonia triplet, Liina Luik, recorded
+what is known as a DNF---an abbreviation that means did not finish, a
+term that we will use throughout this article.
 
 \section*{Marathon data and our research design}
 
@@ -190,27 +191,199 @@ result. Of the 156 marathon starters, 133 completed the race and 23
 DNFed at various locations throughout the course. The overall DNF rate
 was thus $\frac{23}{156} \approx 0.15$, and the relatively small
 sample size at our disposal means that a 95\% confidence for this rate
-is fairly wide, namely, $\left(0.098, 0.22\right)$.  Key in the
-analysis that follows is the deviation between a runner's Rio time and
-her prior personal best time in the marathon.  While there is variance
-across runners in these deviations, they nonetheless may be able to
-provide us with insight as to the Hahner twins' performance in the
-marathon.
+is fairly wide, namely, $\left(0.098, 0.22\right)$. 
 
-Our research design has two components.  In the first, we present some
-visualizations that present the Hahner twin's results in context; our
-interest here is primarily the two Hanhers although we comment on the
-Kim twins and Luik triplets when appropriate.  Our visualizations
-suggest blah blah bhah.  We then turn to a modeling approach and in
-particular a simulation.  In simulated Olympic marathons, which we
-develop based on relationships (excluding twins and triplets) between
-known personal best times and observed Rio finishing times, we find
-that the Hahner twins finished suspiciously close to each other given
-the disparty between their personal best times.  OR THEY DID NOT.
+The Kurschilgen accusation against the Hahner twins has two
+components, that the twins finished simultaneously, holding hands and
+smiling, \emph{and} that they ran slowly.  We suspect that Kurschilgen
+would not have expressed ire at the Hahners had they finished in 1st
+and 2nd place in Rio, hand-in-hand with wide grins, but of course we
+do not know this.  As such, our investigation of the charges that
+Kurschilgen offered will distinguish between the idea of slow finish
+versus a simultaneous finish.
+
+Our research design has two components.  In the first, we present
+visualizations that describe various features of the Hahner twin's
+results, and an important element of our visualizations is the
+difference between a runner's Rio time and her prior personal best
+time in the marathon.  Overall, our visualizations suggest blah blah
+bhah.  We then turn to modeling and in particular a regression-based
+simulation.  In simulated Olympic marathons, which we develop based on
+relationships (excluding the Hahner and Kim twins and Luik triplets)
+between known personal best times and observed Rio finishing times, we
+find that the Hahner twins finished suspiciously close to each other
+given the disparty between their personal best times.  OR THEY DID
+NOT.  Finally, we return to Kurschilgen claims  about the Hahners and
+offer our thoughts about their validity.
 
 \section*{Visualizing the Olympic marathon}
 
-SOME PLOTS HERE.  Maybe PB versus FINAL and HALF vs Final.  
+Figure \ref{fig:scatter} contains two plots, both of which describe
+how the Rio Olympic women's marathon results varied as a function of
+athletes' personal best times and their half marathon split times.
+The points in each plot are colored by twin/triplet status, and both
+plots contain second-order polynomial regression lines.  We treat an
+athlete's prior personal best marathon time as a measure of the
+athlete's underlying marathon talent, and we interpret an athlete's
+half marathon split as a measure of the athlete's skill at marathon
+running on August 14, 2016, the date of the women's marathon in Rio.
+
+\begin{figure}[!ht]
+  \caption{Olympic results and measures of marathon ability}
+  \label{fig:scatter}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot.pdf}
+    \caption{Finishing and personal best times}
+    \label{fig:45degreeplot}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot_half.pdf}
+    \caption{Finishing and half marathon split times}
+    \label{fig:45degreeplot_half}
+  \end{subfigure}
+\end{figure}
+
+Considering first Figure \ref{fig:45degreeplot_half}, note that this
+figure includes a solid 45-degree line as the horizontal and vertical
+axes in the figure correspond to full marathons.  The rug marks on the
+bottom of the figure denote the personal best times of runners who
+DNFed.  Given the paucity of points (five of them) below the 45-degree
+line, the vast majority of Olympic marathoners ran slower in Rio
+compared to their personal bests.  Relative to personal best times,
+the Hahner twins were definitely on the slow side, but a number of
+runners had greater differences between their Olympic times and their
+personal bests than the Hahners.  These runners are denoted with
+squares in Figure \ref{fig:45degreeplot}, and there are 13 such
+symbols, highlighting approximately 10\% of the racers who completed
+the marathon.  The figure shows moreover that there were two women who
+had personal best times slightly faster than the Hahner's and yet
+finished after both of the German women.  Although Figure
+\ref{fig:45degreeplot} suggests that the Hahner twins were slower than
+one would have expected given their previous best marathon times, it
+is not consistent with the accusation that they dramatically slowed
+down in the Rio marathon.
+
+% > df <- read.csv("data/times.csv", stringsAsFactors = FALSE) %>% tbl_df()
+% > df <- df[df$BIB != 1172,]
+% > sort(dta$FINAL - dta$PB) / 60
+%   [1] -2.3333333 -2.2166667 -2.0666667 -1.1166667 -0.4000000  0.2166667
+%   [7]  0.6333333  0.9000000  1.0166667  1.3666667  1.5166667  1.7166667
+%  [13]  1.7666667  1.8500000  2.1166667  2.4666667  2.5333333  3.0166667
+%  [19]  3.0500000  3.1666667  3.2666667  3.2833333  3.3666667  3.4500000
+%  [25]  3.6833333  3.9000000  3.9833333  4.2000000  4.2666667  4.3833333
+%  [31]  4.4666667  4.5833333  4.6166667  4.6333333  4.6833333  4.7333333
+%  [37]  4.7333333  4.8333333  5.0666667  5.0833333  5.0833333  5.1000000
+%  [43]  5.1333333  5.3500000  5.3500000  5.4000000  5.7166667  5.7333333
+%  [49]  5.9333333  6.0000000  6.0333333  6.1166667  6.3333333  6.3500000
+%  [55]  6.5000000  6.5333333  6.6000000  6.6666667  6.7166667  6.7833333
+%  [61]  6.8166667  6.9500000  7.1000000  7.1500000  7.2000000  7.3500000
+%  [67]  7.4500000  7.5666667  7.6000000  7.6000000  7.6333333  7.7500000
+%  [73]  7.8833333  7.9666667  7.9833333  8.3000000  8.6000000  9.3000000
+%  [79]  9.5500000  9.5833333  9.6000000  9.7166667  9.9500000  9.9833333
+%  [85] 10.3166667 10.5333333 10.6666667 10.7000000 10.8333333 10.9666667
+%  [91] 11.1500000 11.1833333 11.4666667 11.7166667 12.1666667 12.6000000
+%  [97] 12.9166667 13.2166667 13.2833333 13.3833333 13.7666667 13.8666667
+% [103] 13.9166667 14.0500000 14.0833333 14.5666667 14.6833333 14.7500000
+% [109] 15.0000000 15.0500000 15.5000000 15.9000000 16.2000000 16.9000000
+% [115] 17.4500000 18.1000000 18.6666667 18.7166667 18.8000000 18.9333333
+% [121] 20.1500000 20.6333333 20.7000000 20.8500000 21.3500000 23.4166667
+% [127] 24.9333333 25.6500000 26.5666667 26.7666667 29.2166667 30.7000000
+% [133] 30.9666667
+% > 
+
+One limitation of using personal best times as indicators of
+underlying athletic talent is that these times are potentially
+confounded by the marathon courses at which they were set (some*sh
+courses, like the Berlin marathon, are known for fast times) and race
+conditions like weather.  In addition, personal best times may not
+capture raceday idiosyncrasies that might affect individual runners.
+With that in mind, Figure \ref{fig:45degreeplot_half} plots marathon
+finishing times against half marathon splots.  This figure has a
+regression line as before but no 45-degree line.
+
+Figure \ref{fig:45degreeplot_half} shows that there was nothing
+abnormal about the Hahner twins' overall finishing times, conditional
+on their half marathon split times.  This is consistent with the
+previous Figure \ref{fig:45degreeplot} and inconsistent with the
+accusations against the Hahner twins, at least the part of the
+accusation that focuses on their excessively slowing down.
+
+If the Hahner twins did not slow down excessively, might they have
+run somewhat strategically at the end of the race in order to generate
+a simultaneous finish?  We now offer a visualization that speaks to
+this question.
+
+The personal best times of the Hahner twins were 115 seconds apart and
+their official finishing times were separated by one second.  Is such
+a 115 to one compression typical among pairs of runners or was it
+unusual?  We might ask, are there other pairs of runners who had a
+difference between personal best times of 115 seconds apart and, if
+so, how close where their finishing times?
+
+Of the 133 marathon finishers, there are $\binom{133}{2} = 8,778$
+pairs of runners.  Of these and ignoring the Hahner twins, ten had
+exactly a 115 second gap in personal best times.  Of these ten pairs,
+differences in finishing times in seconds are as follows: 36, 93, 172,
+319, 379, 459, 552, 671, 675, 739.  In other words, of all pairs of
+runners in the Rio marathon who had a personal best difference that
+was equivalent to the Hahner twins' difference, the twins had the
+greatest compression based on finishing time.  
+
+% df2b[abs(df2b$pb_diff)==115,]
+% # A tibble: 11 × 8
+%                       name_i              name_j pb_diff result_diff
+%                        <chr>               <chr>   <int>       <int>
+% 1                Anna Hahner         Lisa Hahner    -115          -1
+% 2                  Lily Luik Mariya Korobitskaya     115          36
+% 3        Lisa Jane Weightman      Lanni Marchant    -115          93
+% 4           Irina Smolnikova      Viviana Chávez     115        -172
+% 5              Sonia Samuels    Helalia Johannes     115        -319
+% 6  Jessica Draskau-Petersson       Gladys Tejeda     115         379
+% 7        Maryna Damantsevich       Gladys Tejeda     115         459
+% 8          Panayióta Vlaháki     Matea Matosevic    -115         552
+% 9         Nataliya Lehonkova       Olha Kotovska     115         671
+% 10               Anja Scherl      Desireé Linden     115         675
+% 11              Rose Chelimo    Helalia Johannes    -115        -739
+% # ... with 4 more variables: diff_in_diff <int>, consecutive <lgl>,
+% #   twins <chr>, PERCENTILE <dbl>
+% > 
+
+\begin{figure}[!ht]
+ \caption{Differences in personal best times and finishing times}
+ \label{fig:diffdiffscatter}
+ \centering
+ \begin{subfigure}{.5\textwidth}
+ \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
+ \end{subfigure}
+\end{figure}
+
+We can generalize this result by looking at all pairs of runners in
+the marathon.  For the 8,778 pairs of 133 finishers, Figure
+\ref{fig:diffdiff} plots differences in finishing times against
+differences in personal best times, and pairs of twins/triplets are
+identified by the same color scheme we have used earlier.  
+
+Consider first the Hahner twins.  They are effectively located on the
+horizontal axis (because their difference in finishing times is one
+second).  However, there are many points about the Hahner's orange
+dot, and this shows that, conditional on a 115 second difference in
+personal best times, 
+
+In the
+context of the marathon, that is, did Anna and Lisa Hahner run with an
+eye on each other?
+
+
+We can see from the yellow dot that the Hahner Twins are just below this one-to-one line.  Hence, the twins' final times were closer to each other than their personal best times; but not by much.  In fact, this might be an expected difference if we expected there to be a one-to-one relationship.     However, although there is a clear relationship between the difference in final time and the difference in personal best, it is not a strong one-to-one relationship.  We've added a dotted smoother to display a cubic splines estimate of the conditional averages.  While the Hahner twins may be close to the one-to-one line, they are much further away from the average set of runners.  Hence, we would expect for any pair of runners, the difference in their final results should be much greater than their difference in their personal best.  However, the Hahner twins do not fit this expectation.   Yet, how different from this expectation are they?
+
+One way we can quantify the degree to which the twins are outliers is by comparing their difference in difference to every other pair of runner's difference-in-differences.  We calculate the difference-in-differences for each pair of runners by simply subtracting their difference in result (y-axis) from their difference in personal best (x-axis).  Therefore positive difference-in-differences mean that the runners ended up further apart than their difference in personal bests.  Negative difference-in-differences mean that the runners end up closer together.  Hence, the Hahner twins have a difference-in-difference of -114 seconds.  They finished 114 seconds closer together than the distance between their personal bests.  
+
+
+qq
+
+
 
 As a brief overview of the race, Figure \ref{fig:secondsbehind}
 describes each runner's status at the various split times on the
@@ -347,14 +520,12 @@ If this were the case, the function generating Anna and Lisa's final times would
   \label{fig:scatter}
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth,
-    keepaspectratio]{scatter_plot.pdf}
+    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot.pdf}
     \caption{Rio finishing times and personal best times}
     \label{fig:45degreeplot}
   \end{subfigure}
   \begin{subfigure}{.5\textwidth}
     \centering
-    % \label{fig:Studentized Residuals}
     \includegraphics[width=.975\textwidth, keepaspectratio]{studentized_residuals.pdf}
     \caption{Studentized residuals}
     \label{fig:studentizedresiduals}
@@ -399,14 +570,14 @@ One way we can estimate this relationship is to look at all of the differences t
 Therefore, we find all combinations of runners in the marathon and calculate two quantities: 1) the difference in their personal best time and 2) the difference in their final time. We plot the relationship between the two quantities in Figure \ref{fig:diffdiffscatter}.   All 8,778 dyadic combinations of runners are displayed by grey points in the scatter plot.   The solid black line indicates a one-to-one relationship, where every point would fall if the difference in final times were systematically equivalent to the difference in personal bests.  
 
 
-\begin{figure}[!ht]
- \caption{Relationship between Difference in Personal Best and Difference in Result}
- \label{fig:diffdiffscatter}
- \centering
- \begin{subfigure}{.5\textwidth}
- \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
- \end{subfigure}
-\end{figure}
+% \begin{figure}[!ht]
+%  \caption{Relationship between Difference in Personal Best and Difference in Result}
+%  \label{fig:diffdiffscatter}
+%  \centering
+%  \begin{subfigure}{.5\textwidth}
+%  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
+%  \end{subfigure}
+% \end{figure}
 
 We can see from the yellow dot that the Hahner Twins are just below this one-to-one line.  Hence, the twins' final times were closer to each other than their personal best times; but not by much.  In fact, this might be an expected difference if we expected there to be a one-to-one relationship.     However, although there is a clear relationship between the difference in final time and the difference in personal best, it is not a strong one-to-one relationship.  We've added a dotted smoother to display a cubic splines estimate of the conditional averages.  While the Hahner twins may be close to the one-to-one line, they are much further away from the average set of runners.  Hence, we would expect for any pair of runners, the difference in their final results should be much greater than their difference in their personal best.  However, the Hahner twins do not fit this expectation.   Yet, how different from this expectation are they?
 

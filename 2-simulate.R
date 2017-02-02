@@ -98,8 +98,8 @@ ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) +
   #geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   #geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
   coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
-  ylab("Absolute Difference Olympic result in seconds\n") + 
-  xlab("\nAbsolute Difference in Personal Best in seconds") + 
+  ylab("Absolute difference Olympic result, in seconds\n") + 
+  xlab("\nAbsolute difference in personal best, in seconds") + 
   #ggtitle("Among all dyadic combinations") +
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
