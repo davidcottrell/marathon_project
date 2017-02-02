@@ -15,7 +15,7 @@ pdf("plots/scatter_plot.pdf", height = 5,  width = 5)
 ggplot(aes(y=FINAL, x=PB), data = df) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = df[!is.na(df$TWINS),], aes( col = TWINS)) +
-  geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
   geom_abline(intercept = 0, slope =1) +
   geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
