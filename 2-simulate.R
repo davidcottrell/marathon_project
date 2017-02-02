@@ -7,11 +7,14 @@ df <- read.csv("data/times.csv", stringsAsFactors = FALSE) %>% tbl_df()
 # Remove Irvette Van Zyl, since she did not start the race due to injury.  Her bib number is 1172.
 df <- df[df$BIB != 1172,]
 
+# Remove slowest PBs with the assumption that these are different
+# df <- df[df$PB < 10000,]
+
 pdf("plots/scatter_plot.pdf", height = 5,  width = 5)
 ggplot(aes(y=FINAL, x=PB), data = df) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = df[!is.na(df$TWINS),], aes( col = TWINS)) +
-  geom_smooth(method = "lm", colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
   geom_abline(intercept = 0, slope =1) +
   geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
@@ -107,11 +110,13 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
 dev.off()
 
 # Plot Studentized Residuals
-pdf("plots/studentized_residuals.pdf", height = 5, width = 5)
-fit <- lm(FINAL ~ PB + PB^2, data = df)
+
+fit <- lm(FINAL ~ PB + I(PB^2), data = df)
 dta <- data.frame( df[!is.na(df$FINAL), c("ATHLETE", "TWINS")], STUD_RESID =  rstudent(fit) )
 dta <- arrange(dta, STUD_RESID)
 dta <- dta %>% mutate(PERCENTILE = cume_dist(STUD_RESID)*100 )
+
+pdf("plots/studentized_residuals.pdf", height = 5, width = 5)
 ggplot(dta, aes(PERCENTILE,STUD_RESID)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(dta), aes( col = TWINS)) + 
@@ -130,7 +135,7 @@ dev.off()
 dnf_rate <- sum(is.na(df$FINAL))/length(df$FINAL)
 
 # Estimate linear relationship between personal best and marathon result, excluding twins.
-m <- lm(FINAL ~ PB, data = df[is.na(df$TWINS),])
+m <- lm(FINAL ~ PB + I(PB^2), data = df[is.na(df$TWINS),])
 
 # Store the total number of runners, N
 N <- length(df$PB)
@@ -161,7 +166,7 @@ for (i in 1:total_sims){
   e <- rnorm(n = N, mean = 0, sd = summary(m)$sigma)
   
   # Remove the results of those that did not finish
-  y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + e )
+  y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + x^2*B[3] +  e )
   
 
   # Collect the results
