@@ -21,7 +21,7 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
   coord_fixed(xlim = c(8000,12500), ylim = c(8000,12500)) +
   ylab("Olympic result, in seconds\n") + 
-  xlab("\nPersonal Best, in seconds") + 
+  xlab("\nPersonal nest, in seconds") + 
     ##  ggtitle("Distribution of Y | X") +
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
