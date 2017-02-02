@@ -4,7 +4,8 @@ library(lubridate)
 library(stringr)
 df <- read.csv("data/times.csv", stringsAsFactors = FALSE) %>% tbl_df()
 
-# Remove Irvette Van Zyl, since she did not start the race due to injury.  Her bib number is 1172.
+# Remove Irvette Van Zyl, since she did not start the race due to
+# injury.  Her bib number is 1172.
 df <- df[df$BIB != 1172,]
 
 # Remove slowest PBs with the assumption that these are different
@@ -19,13 +20,34 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
   geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
   coord_fixed(xlim = c(8000,12500), ylim = c(8000,12500)) +
-  ylab("Olympic result in seconds\n") + 
-  xlab("\nPersonal Best in seconds") + 
+  ylab("Olympic result, in seconds\n") + 
+  xlab("\nPersonal Best, in seconds") + 
     ##  ggtitle("Distribution of Y | X") +
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
 dev.off()
+
+## make scatter plot for half marathon split
+pdf("plots/scatter_plot_half.pdf", height = 5,  width = 5)
+df2use <- filter(df, !is.na(SPLIT_HALF))
+ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
+    geom_point(size = 1, colour = "gray") + 
+    geom_point(data = df2use[!is.na(df2use$TWINS),], aes( col = TWINS)) +
+    geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
+    ## geom_abline(intercept = 0, slope = 1) +
+    geom_rug(data = df2use[is.na(df2use$FINAL),], aes(x = SPLIT_HALF), colour = "gray") +
+    geom_rug(data = df2use[is.na(df2use$FINAL) & df2use$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+    ##    coord_fixed(xlim = c(4000, 6000), ylim = c(8500, 12500)) +
+    ylab("Olympic result, in seconds\n") + 
+    xlab("\nHalf marathon split, in seconds") + 
+    ##  ggtitle("Distribution of Y | X") +
+    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    theme_bw() +
+    theme(legend.position = c(0.8, 0.2))
+dev.off()
+
+
 
 nms <- df$ATHLETE
 pb <- df$PB
