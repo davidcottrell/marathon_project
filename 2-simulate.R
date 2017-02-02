@@ -225,11 +225,15 @@ pct_consecutive_hahner <- sum(hahner_rank)/length(hahner_rank)
 
 hahner_df <- data_frame(time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), rank_diff =  abs(anna_sim$RANK - lisa_sim$RANK))
 
+max_t <- max(hahner_df$time_diff, na.rm = T)
+max_r <- max(hahner_df$rank_diff, na.rm = T)
+
 pdf("plots/simulated_time.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(time_diff)) + 
   geom_histogram(binwidth = 30, colour = "black", fill = NA) +
   xlab("\nDifference in seconds") +
   ylab("Count\n") +
+  xlim(0, max_t) + 
 #  ggtitle("\nSimulated final time") +
   theme_bw()
 dev.off()
@@ -239,10 +243,13 @@ ggplot(hahner_df, aes(rank_diff)) +
   geom_histogram(binwidth = 1, colour = "black", fill = NA) +
   xlab("\nDifference in rank") +
   ylab("Count\n") +
+  xlim(0, max_r) + 
 #  ggtitle("\nSimulated final rank") +
   theme_bw()
 dev.off()
 
+
+source("simhalf.r")
 
 # Compare Gyong to Song
 #

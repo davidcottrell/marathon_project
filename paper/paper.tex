@@ -164,7 +164,7 @@ this spirt by not trying hard enough. It is perhaps too easy for us to
 write such a glib sentence---neither of us can fathom being able to
 complete a marathon anywhere in the vicinity of two and a half
 hours---but we nonetheless want to know what the data from the Olympic
-marathon data tell us.  Was the Hahner finish in the 2016 women's
+marathon tell us.  Was the Hahner finish in the 2016 women's
 Olympic marathon a lovely coincidence or something else?
 
 Among female Olympic marathoners, the Hahner twins were not alone in
@@ -363,7 +363,7 @@ greatest compression based on finishing time.
 
 We can generalize this result by looking at all pairs of runners in
 the marathon.  For the 8,778 pairs of 133 finishers, Figure
-\ref{fig:diffdiff} plots differences in finishing times against
+\ref{fig:diffdiffscatter} plots differences in finishing times against
 differences in personal best times, and pairs of twins/triplets are
 identified by the same color scheme we used earlier.
 
@@ -580,7 +580,7 @@ One way we can quantify the degree to which the twins are outliers is by compari
 
 We arrange all 8,778 difference-in-differences from small to large in the first plot in Figure \ref{fig:diffdiff}. The Hahner twins are denoted by the yellow point.  Using this plot we can visualize where the twins fall within the distribution of difference-in-differences.  It is clear that they are closer to the lower tail of the distribution.  However, compared to all other difference-in-differences, their result is not that extreme.  Nearly 21\% of the difference-in-dfferences were less than the that of the twins'. Hence, we'd expect at least one in five pairs of runners to have a reduction in difference at least as great as the twins.
 
-However, if we limit the observations to only those runners who had personal best times that were at least as close to each other as the Hahner twins, we get a different persepective.  Among those runners,  the Hahner twins reduced the distance between them to the greatest extent.  There was no other pair of runners whose reduced the difference in the final time relative to their difference in personal bests more than them.         
+However, if we limit the observations to only those runners who had personal best times that were at least as close to each other as the Hahner twins, we get a different perspective.  Among those runners,  the Hahner twins reduced the distance between them to the greatest extent.  There was no other pair of runners whose reduced the difference in the final time relative to their difference in personal bests more than them.         
 
 \begin{figure}[!ht]
  \caption{How Hahner Twins Rank in Difference-in-Differences}
@@ -593,8 +593,24 @@ However, if we limit the observations to only those runners who had personal bes
  \end{subfigure}
 \end{figure}
 
+
+
+
 \newpage
-\subsection*{Steps of the simulation}
+\subsection*{Simulating the Marathon}
+
+The Hahner sisters claimed that they ran the marathon independent of each other.  Their simultaneous finish was no more than a product of ability and luck.  One might expect such a finish given that their personal best marathons are within 114 seconds of each other.  Add a little bit of luck to the occasion and, as the twins have claimed all along, one might easily argue that the simultaneous finish is simply a joyous coincidence rather than a wholly implausible event.
+
+This begs the question: if we take into consideration their similarities as runners as well as some natural variation in finishing a marathon, what are the odds that the twins unintentionally finished at the same time?   To answer this question we would want to know the counterfactual distribution of potential finishing times that would have occurred had the twins independently and repeatedly run the marathon over again.  Holding the twins' similarities constant, this would establish the set of potential outcomes that would have occurred as result of natural variation in the finishing the race.   Then we could use this distribution of outcomes to determine the likelihood that a simultaneous finish (or at least a near-simultaneous finish) occurred by chance alone.   If the twins rarely finished the race together in this counterfactual, then one should be skeptical that such a finish occurred without coordination.
+
+Unfortunately, it is not possible to rerun the women's marathon in Rio to establish this counterfactual distribution.  However, we can attempt to simulate it, by estimating the distribution of every other runner's results -  conditioned on their prior abilities - and drawing from that distribution in order to observe the likelihood that Lisa and Anna finish simultaneously.  
+
+To estimate the conditional distribution of every runner's results, we must assume that each runner's time is distributed with a mean that is a quadratic function of $X_i$  and $\beta_j$, such that
+
+$$Y_i \mid X_i \sim N(\beta_0 + \beta_1X_{i} + \beta_2X^2_{i}  + e_i, \sigma).$$
+
+This means that we are assuming that each runner's time is drawn from the normal distribution with a mean that is a quadratic function of their personal best and variance that is constant across all runners.  We simply estimate $\beta_j$ and $\sigma$ using ordinary least squares.  We then draw every runner's time from this estimated distribution, conditioned on their personal best outcome.  Once a race is simulated, we locate Anna and Lisa and record the time between their finishes and the difference in their rank.  We then simulate a new race - drawing a new set of finishing times - and record the same quantities.  After repeating this procedure 10,000 times, we plot the distribution in Figure \ref{fig:simdiff}.  The steps of the simulation are detailed below.
+
 
 \begin{enumerate}
 \item Ignoring twins and triplets, estimate with least squares a
@@ -623,6 +639,10 @@ However, if we limit the observations to only those runners who had personal bes
 \item Plot a histogram of the results in Figure \ref{fig:simdiff}.
 \end{enumerate}
 
+
+We can observe from the results of the simulations in Figure \ref{fig:simdiff} that if Anna and Lisa had run independently of each other, they would have rarely finished simultaneously.  We see that Anna and Lisa finished within 30 seconds of each other in less than 300 of the 10,000 simulated races.  And they finished in consecutive rank in less than 175 of the 10,000 races.  Therefore, the close finish that we observed would be very unlikely if we were to believe the twins raced independently of each other.  
+
+
 \begin{figure}[!ht]
   \centering
   \caption{Distribution of simulated results for the Hahner twins}
@@ -635,6 +655,24 @@ However, if we limit the observations to only those runners who had personal bes
   \end{subfigure}
   \begin{subfigure}{.45\textwidth}
     \includegraphics[width=\textwidth, keepaspectratio]{simulated_rank.pdf}
+    \caption{Simulated differences in places}
+    \label{fig:simulatedranks}
+  \end{subfigure}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Distribution of simulated results for the Hahner twins (using halfway split as predictor)}
+  \label{fig:simdiffhalf} 
+  \begin{subfigure}{.45\textwidth}
+    \includegraphics[width=\textwidth,
+    keepaspectratio]{simulated_time_half.pdf}
+    \caption{Simulated differences in finishing times}
+    \label{fig:simulatedfinishtimes}
+  \end{subfigure}
+  \begin{subfigure}{.45\textwidth}
+    \includegraphics[width=\textwidth, keepaspectratio]{simulated_rank_half.pdf}
     \caption{Simulated differences in places}
     \label{fig:simulatedranks}
   \end{subfigure}

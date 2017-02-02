@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 FEB 2017 00:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 FEB 2017 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,7 +496,29 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 )
 \myfootnotesep=\skip70
 
-(./paper.aux)
+(./paper.aux
+
+LaTeX Warning: Label `fig:scatter' multiply defined.
+
+
+LaTeX Warning: Label `fig:45degreeplot' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:45degreeplot' multiply defined.
+
+
+LaTeX Warning: Label `fig:simulatedfinishtimes' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:simulatedfinishtimes' multiply defined.
+
+
+LaTeX Warning: Label `fig:simulatedranks' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:simulatedranks' multiply defined.
+
+)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -589,14 +611,14 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 113.
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
 [][][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes
 \OML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / tw
 ins -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
 \OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
 -[] country -[] says -[] they -[]
  []
@@ -605,142 +627,188 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154 W
-       hat happened in the women's Olympic marathon, and how might we [1]
-[2] [3] <../plots/seconds-behind.pdf, id=66, 505.89pt x 505.89pt>
-File: ../plots/seconds-behind.pdf Graphic file (type pdf)
-
-<use ../plots/seconds-behind.pdf>
-Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 234.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-
-Overfull \hbox (36.13373pt too wide) in paragraph at lines 234--235
- [][] 
- []
-
-[4]
-
-LaTeX Warning: Text page 5 contains only floats.
-
-[5 <../plots/seconds-behind.pdf>] [6]
-<../plots/scatter_plot.pdf, id=91, 361.35pt x 361.35pt>
+l.152 
+       [1] [2] [3] <../plots/scatter_plot.pdf, id=36, 361.35pt x 361.35pt>
 File: ../plots/scatter_plot.pdf Graphic file (type pdf)
 
 <use ../plots/scatter_plot.pdf>
-Package pdftex.def Info: ../plots/scatter_plot.pdf used on input line 351.
+Package pdftex.def Info: ../plots/scatter_plot.pdf used on input line 238.
 (pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
 
-<../plots/studentized_residuals.pdf, id=92, 361.35pt x 361.35pt>
-File: ../plots/studentized_residuals.pdf Graphic file (type pdf)
+<../plots/scatter_plot_half.pdf, id=37, 361.35pt x 361.35pt>
+File: ../plots/scatter_plot_half.pdf Graphic file (type pdf)
 
-<use ../plots/studentized_residuals.pdf>
-Package pdftex.def Info: ../plots/studentized_residuals.pdf used on input line 
-358.
-(pdftex.def)             Requested size: 229.00699pt x 229.00809pt.
+<use ../plots/scatter_plot_half.pdf>
+Package pdftex.def Info: ../plots/scatter_plot_half.pdf used on input line 244.
 
-Overfull \hbox (2.28001pt too wide) in paragraph at lines 348--362
+(pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
+
+Overfull \hbox (2.28001pt too wide) in paragraph at lines 236--248
 []$[]$ $[]$ 
  []
 
-[7] [8 <../plots/scatter_plot.pdf> <../plots/studentized_residuals.pdf>]
-<../plots/diff_in_diff_scatter_plot.pdf, id=123, 361.35pt x 361.35pt>
+[4 <../plots/scatter_plot.pdf> <../plots/scatter_plot_half.pdf>] [5]
+<../plots/diff_in_diff_scatter_plot.pdf, id=68, 361.35pt x 361.35pt>
 File: ../plots/diff_in_diff_scatter_plot.pdf Graphic file (type pdf)
 
 <use ../plots/diff_in_diff_scatter_plot.pdf>
 Package pdftex.def Info: ../plots/diff_in_diff_scatter_plot.pdf used on input l
-ine 407.
+ine 360.
 (pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
- [9] [10 <../plots/diff_in_diff_scatter_plot.pdf>] <../plots/diff_in_diff_1.pdf
-, id=147, 361.35pt x 361.35pt>
-File: ../plots/diff_in_diff_1.pdf Graphic file (type pdf)
+ [6 <../plots/diff_in_diff_scatter_plot.pdf>] <../plots/seconds-behind.pdf, id=
+90, 361.35pt x 361.35pt>
+File: ../plots/seconds-behind.pdf Graphic file (type pdf)
 
-<use ../plots/diff_in_diff_1.pdf>
-Package pdftex.def Info: ../plots/diff_in_diff_1.pdf used on input line 423.
+<use ../plots/seconds-behind.pdf>
+Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 413.
+(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
+ [7] [8 <../plots/seconds-behind.pdf>]
+[9]
+File: ../plots/scatter_plot.pdf Graphic file (type pdf)
+ <use ../plots/scatter_plot.pdf>
+Package pdftex.def Info: ../plots/scatter_plot.pdf used on input line 518.
 (pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
 
-<../plots/diff_in_diff_2.pdf, id=148, 361.35pt x 361.35pt>
-File: ../plots/diff_in_diff_2.pdf Graphic file (type pdf)
+<../plots/studentized_residuals.pdf, id=113, 361.35pt x 361.35pt>
+File: ../plots/studentized_residuals.pdf Graphic file (type pdf)
 
-<use ../plots/diff_in_diff_2.pdf>
-Package pdftex.def Info: ../plots/diff_in_diff_2.pdf used on input line 426.
-(pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
+<use ../plots/studentized_residuals.pdf>
+Package pdftex.def Info: ../plots/studentized_residuals.pdf used on input line 
+524.
+(pdftex.def)             Requested size: 229.00699pt x 229.00809pt.
 
-Overfull \hbox (2.28001pt too wide) in paragraph at lines 422--428
+Overfull \hbox (2.28001pt too wide) in paragraph at lines 516--528
 []$[]$ $[]$ 
  []
 
-[11]
+[10] [11 <../plots/studentized_residuals.pdf>] [12] [13]
+<../plots/diff_in_diff_1.pdf, id=146, 361.35pt x 361.35pt>
+File: ../plots/diff_in_diff_1.pdf Graphic file (type pdf)
+
+<use ../plots/diff_in_diff_1.pdf>
+Package pdftex.def Info: ../plots/diff_in_diff_1.pdf used on input line 589.
+(pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
+
+<../plots/diff_in_diff_2.pdf, id=147, 361.35pt x 361.35pt>
+File: ../plots/diff_in_diff_2.pdf Graphic file (type pdf)
+
+<use ../plots/diff_in_diff_2.pdf>
+Package pdftex.def Info: ../plots/diff_in_diff_2.pdf used on input line 592.
+(pdftex.def)             Requested size: 234.8775pt x 234.88023pt.
+
+Overfull \hbox (2.28001pt too wide) in paragraph at lines 588--594
+[]$[]$ $[]$ 
+ []
+
+[14 <../plots/diff_in_diff_1.pdf> <../plots/diff_in_diff_2.pdf>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 431.
- [12 <../plots/diff_in_diff_1.pdf> <../plots/diff_in_diff_2.pdf>]
-<../plots/simulated_time.pdf, id=179, 361.35pt x 361.35pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 600.
+ [15] [16]
+<../plots/simulated_time.pdf, id=185, 361.35pt x 361.35pt>
 File: ../plots/simulated_time.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time.pdf>
-Package pdftex.def Info: ../plots/simulated_time.pdf used on input line 462.
+Package pdftex.def Info: ../plots/simulated_time.pdf used on input line 652.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank.pdf, id=180, 361.35pt x 361.35pt>
+<../plots/simulated_rank.pdf, id=186, 361.35pt x 361.35pt>
 File: ../plots/simulated_rank.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank.pdf>
-Package pdftex.def Info: ../plots/simulated_rank.pdf used on input line 467.
+Package pdftex.def Info: ../plots/simulated_rank.pdf used on input line 657.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
- [13 <../plots/simulated_time.pdf> <../plots/simulated_rank.pdf>]
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 480.
- (./paper.xwm)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<../plots/simulated_time_half.pdf, id=187, 361.35pt x 361.35pt>
+File: ../plots/simulated_time_half.pdf Graphic file (type pdf)
 
-(./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 480.
+<use ../plots/simulated_time_half.pdf>
+Package pdftex.def Info: ../plots/simulated_time_half.pdf used on input line 67
+0.
+(pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
+
+<../plots/simulated_rank_half.pdf, id=188, 361.35pt x 361.35pt>
+File: ../plots/simulated_rank_half.pdf Graphic file (type pdf)
+
+<use ../plots/simulated_rank_half.pdf>
+Package pdftex.def Info: ../plots/simulated_rank_half.pdf used on input line 67
+5.
+(pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
+ [17 <../plots/simulated_time.pdf> <../plots/simulated_rank.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 692.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 692.
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
+[][]$\OT1/pcr/m/n/12 http : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 telegraph\
+OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
+ics / 2016 / 08 / 17 / german -[] twins -[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 695--696
+[][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
+ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
+s -[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 695--696
+\OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
+-[] country -[] says -[] they -[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
+[][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
+cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 701.
+[18 <../plots/simulated_time_half.pdf> <../plots/simulated_rank_half.pdf>]
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 701.
+
+(./paper.xwm) (./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 701.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 701.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 480.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 701.
  ) 
 Here is how much of TeX's memory you used:
- 13435 strings out of 493117
- 219360 string characters out of 6135433
- 437823 words of memory out of 5000000
- 16661 multiletter control sequences out of 15000+600000
+ 13471 strings out of 493117
+ 220193 string characters out of 6135433
+ 435087 words of memory out of 5000000
+ 16690 multiletter control sequences out of 15000+600000
  29470 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,12n,58p,960b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{figure.caption.12} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.9} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.7} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
-, replaced by a fixed one
+ 53i,12n,58p,960b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+st, replaced by a fixed one
 
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on paper.pdf (14 pages, 669251 bytes).
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on paper.pdf (19 pages, 702789 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 200 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 276 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
