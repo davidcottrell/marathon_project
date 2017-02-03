@@ -68,7 +68,7 @@ hahner_df <- data_frame(time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), rank_dif
 pdf("plots/simulated_time_half.pdf", height = 5, width = 5)
 p <- ggplot(hahner_df, aes(time_diff)) + 
   geom_histogram(binwidth = 30, colour = "black", fill = NA) +
-  xlab("\nDifference in seconds") +
+  xlab("\nFinishing time difference, in seconds") +
   ylab("Count\n") +
   xlim(0, max_t) + 
   #  ggtitle("\nSimulated final time") +

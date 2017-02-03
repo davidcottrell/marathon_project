@@ -91,19 +91,19 @@ df2b <- df2 %>% filter(name_i != name_j, !is.na(diff_in_diff)) %>% arrange(diff_
 
 pdf("plots/diff_in_diff_scatter_plot.pdf", height = 5,  width = 5)
 ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) + 
-  geom_point(size = .5, colour = "gray", alpha = .5) + 
-  geom_point(data = df2b[!is.na(df2b$twins),], aes( col = twins)) +
-  geom_smooth( colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") + 
-  geom_abline(intercept = 0, slope =1) +
-  #geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
-  #geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
-  coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
-  ylab("Absolute difference Olympic result, in seconds\n") + 
-  xlab("\nAbsolute difference in personal best, in seconds") + 
-  #ggtitle("Among all dyadic combinations") +
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
-  theme_bw() +
-  theme(legend.position = c(.8,.2))
+    geom_point(size = .5, colour = "gray", alpha = .5) + 
+    geom_point(data = df2b[!is.na(df2b$twins),], aes( col = twins)) +
+    ## geom_smooth( colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") +  # removed smoother because points are not independent
+    geom_abline(intercept = 0, slope =1) +
+    ## geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
+    ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+    coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
+    ylab("Absolute difference Olympic result, in seconds\n") + 
+    xlab("\nAbsolute difference in personal best, in seconds") + 
+    ## ggtitle("Among all dyadic combinations") +
+    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    theme_bw() +
+    theme(legend.position = c(.8,.2))
 dev.off()
 
 
@@ -272,12 +272,12 @@ pct_consecutive_hahner_and_kim <- sum(hahner_rank & kim_rank)/length(hahner_rank
 
 # Calculate the percent of the races where the twins placed in consecutive order.
 
-cat("The race was simulated", total_sims, "times.")
-cat("The Hahner twins place consecutively in ", round(pct_consecutive_hahner*100, 2), "% of the simulations.", sep = "")
-cat("The Kim twins place consecutively in ", round(pct_consecutive_kim*100, 2), "% of the simulations.", sep = "")
-cat("Both the Hahner and Kim twins place consecutively in ", round(pct_consecutive_hahner_and_kim*100, 2), "% of the simulations.", sep = "")
-
-
+cat("The race was simulated", total_sims, "times.\n", sep = "")
+cat("The Hahner twins place consecutively in ", round(pct_consecutive_hahner*100, 2), "% of the simulations.\n", sep = "")
+cat("The Kim twins place consecutively in ", round(pct_consecutive_kim*100, 2), "% of the simulations.\n", sep = "")
+cat("Both the Hahner and Kim twins place consecutively in ", round(pct_consecutive_hahner_and_kim*100, 2), "% of the simulations.\n", sep = "")
+cat("95% simulated interval for Anna Hahner finishing time in seconds:",round(quantile(x = anna_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")
+cat("95% simulated interval for Lisa Hahner finishing time in seconds:",round(quantile(x = lisa_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")
 
 
 # time <- c("SPLIT_5K", "SPLIT_10K","SPLIT_15K", "SPLIT_20K", "SPLIT_HALF", "SPLIT_25K", "SPLIT_30K", "SPLIT_35K", "SPLIT_40K", "FINAL")

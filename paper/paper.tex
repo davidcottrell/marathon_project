@@ -430,70 +430,75 @@ during the entire race marathon.
 % along, one might easily argue that the simultaneous finish is simply a
 % joyous coincidence rather than a wholly implausible event.
 
-We now consider the following: if we take into consideration the
-Hahner twin's similarities as runners as well as some natural
-variation in finishing a marathon, what is the probability that the
-twins finished at roughly the same time and/or sequentially?  To
-answer this question we need to know the counterfactual distribution
-of potential marathon finishing times that would have occurred had the
-Hahner twins independently and repeatedly run the Rio marathon over
-again.  Holding the twin's abilities constant, this would establish
-the set of potential outcomes that would have occurred as result of
-natural variation in the finishing the marathon.  We could use this
-distribution of outcomes to determine the likelihood that a
-simultaneous finish by the Hanhers, or at least a near-simultaneous
-finish, occurred by chance alone.  If the twins rarely finish the
+We now consider the following question: if we take into consideration
+the Hahner twin's similarities as runners as well as natural variation
+in marathon finishing times, what is the probability that the twins
+would finish the Rio race at roughly the same time and/or
+sequentially?  To answer this question we need to know the
+counterfactual distribution of potential marathon finishing times that
+would have occurred had the Hahner twins independently (in particular,
+of each other) and repeatedly run the Rio marathon, holding constant
+marathon conditions, the abilities of other runners, and so forth.
+Access to such a distribution would establish the set of potential
+outcomes that could have occurred on August 14, 2016, and we could in
+principle use this distribution to determine the likelihood that a
+simultaneous finish by the Hahners, or at least a near-simultaneous
+finish, occurred by chance alone.  If these twins rarely finish the
 marathon together in such a counterfactual world, then one might be
 skeptical that their observed finish occurred without
 coordination---as they in fact claimed.
 
 Unfortunately for us but nonetheless fortunately for the race's
 participants, it is not possible to rerun the women's Olympic marathon
-in Rio to establish a counterfactual distribution of potential race
-outcomes for the Hahner twins.  However, we can attempt to simulate
-this distribution by estimating the distribution of every other
-runner's finishing time, conditioned on prior abilities, and drawing
-from that distribution in order to observe the likelihood that Lisa
-and Anna Hahner finish simultaneously.
+in Rio to establish a distribution of potential race outcomes for the
+Hahner twins.  However, we can attempt to simulate this distribution
+by estimating the distribution of every other runner's finishing time,
+conditional on prior abilities, and drawing from that distribution in
+order to observe the likelihood that, for example, Lisa and Anna
+Hahner finished simultaneously.
 
-To estimate the conditional distribution of Rio runner's result, we
+To estimate the conditional distribution of each Rio final results, we
 assume that each runner's marathon time \Yi\ is distributed normally
 with a mean that is a quadratic function of her personal best time
 $X_i$:
 
 $$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i} + \beta_2\,X^2_{i}  + e_i, \sigma\right).$$
 %%
-where $N\left(\cdot,\cdot\right)$ denotes a normal distribution. We
-estimate $\beta_1$ , $\beta_2$, and $\sigma$ using ordinary least
-squares and our set of 133 finishing runners.  For a simulated
-marathon, we then draw a runner's time from an estimated distribution,
-conditioned on the runner's personal best outcome.  Once a race is
-simulated, we locate Anna and Lisa Hahner and record both the time
-between their finishes and the difference in their ranks.  We then
-simulate a new race---drawing a new set of finishing times---and
-record the same quantities.  In particular, the steps of the
-simulation are as follows.
+where $N\left(\cdot,\cdot\right)$ denotes a normal distribution.
+Personal best times are all prior to the Rio marathon.  We estimate
+$\beta_1$ , $\beta_2$, and $\sigma$ using ordinary least squares and
+all finishing runners except for the twins and triplets.  For a
+simulated marathon, we then draw a runner's time from an estimated
+distribution, conditioned on the runner's personal best marathon time.
+Once a race is simulated for all runners, twins and triplets included,
+we locate Anna and Lisa Hahner in our set of simulated results and
+record both the time between their simulated finishes and the
+difference in their simulated ranks.  We then simulate a new
+race---drawing a new set of finishing times---and record the same
+quantities.  In particular, the steps of the simulation are as
+follows.
 
 \begin{enumerate}
 \item Ignoring twins and triplets, estimate with least squares a
-  linear model that predicts a runner's finishing time ($Y_i$) based
-  on her pre-Olympic personal best time ($X_i$) and her best time
-  squared.
-\item Extract coefficient vector, estimated covariance matrix, and
-  estimated regression variance from this model.
+  linear model that predicts a runner's finishing time $Y_i$ based on
+  her pre-Olympic personal best time $X_i$ and her best time squared.
+\item Extract the resulting coefficient vector, estimated covariance
+  matrix, and estimated regression variance from this model.
 \item For each simulated rate, draw intercept and slope estimates
   $\tilde{\beta}_0$, $\tilde{\beta}_1$, and $\tilde{\beta}_2$,
   respectively, from a multivariate normal distribution with mean
-  equal to the estimated coefficient vector and covariance equal to
-  the estimated covariance matrix.
-\item For each runner, draw an error $\tilde{e}$ from a normal
-  distribution with mean zero and a standard deviation equal to the
-  standard deviation of the original regression model's residuals.
-\item For each runner, predict the final result by combining the randomly
-  generated beta coefficients and error terms, $\tilde{y} = \tilde{\beta}_0 +
-  \tilde{\beta}_1\,X_i + \tilde{\beta}_2\,X_i^2 + \tilde{e}$.
-\item Eliminate each runner from the race with a probability equal to
-  the observed fraction of marathoners who did not finish the
+  equal to the previously estimated coefficient vector and covariance
+  equal to the previously estimated covariance matrix.
+\item Given values of $\tilde{\beta}_0$, $\tilde{\beta}_1$, and
+  $\tilde{\beta}_2$, for each runner draw an error $\tilde{e}$ from a
+  normal distribution with mean zero and a standard deviation equal to
+  the standard deviation of the original regression model's residuals.
+\item For each runner, predict her final result by combining the
+  randomly generated beta coefficients and error terms,
+  $\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1\,X_i +
+  \tilde{\beta}_2\,X_i^2 + \tilde{e}$.
+\item Eliminate each runner from the simulated race with a probability
+  equal to the observed fraction of marathoners who did not finish the
   marathon.
 \item Calculate the difference in time and difference in ranking
   between Anna Hahner and Lisa Hahner, assuming both finished the
@@ -501,18 +506,45 @@ simulation are as follows.
 \item Repeat above steps 10,000 times.
 \end{enumerate}
 
-Before considering results, DNF biz...
+%% Before considering results, DNF biz...
 
-Figure \ref{fig:simdiff} contains two histograms of differences
-between Anna and Lisa's finishes.  Figure
-\ref{fig:simulatedfinishtimes} shows the distribution of absolute
-differences in time where differences are grouped in 30 second bins
-along the horizontal axis of the histogram.  The count for each bin is
-denoted by the vertical length of the bars.  Figure
-\ref{fig:simulatedranks} shows the distribution of the absolute
-differences in Hahner twin rankings.  Differences are grouped as
-single units ranging from no runner between the twins to nearly 120
-runners between them.
+From our simulations we can generate intervals which describe the
+extent of the variability in racer finishing times.  In 95\% of the
+simulations in which Anna Hahner completed the marathon, her finishing
+time was between 9,480 seconds and 10,703 seconds.  This is consistent
+with Anna's observed finishing time, which was 9,932 seconds.  In
+fact, our simulations estimate that Anna should have finished the Rio
+marathon in 10,092 seconds, which is slightly more than two and
+one-half minutes slower than her actual time.  Lisa Hahner's
+corresponding interval is 9,427 to 10,619 with an observed finishing
+time of 9,933 seconds. 
+
+The bottom line here is that our simulated marathon finishes are
+consistent with the Hahner twins' finishing times.  And note that the
+regression model underlying the simulations was estimated without the
+Hahner twins (and same for the Kim twins and Luik triplets).
+According to the our simulations, then, neither Hahner twin ran
+appreciably slowly, conditional on personal best times prior to the
+Rio Olympics.
+
+% 95% simulated interval for Anna Hahner finishing time in seconds: 9480 10703 
+% 95% simulated interval for Lisa Hahner finishing time in seconds: 9427 10619 
+
+% > df$FINAL[df$ATHLETE == "Anna Hahner"]
+% [1] 9932
+% > df$FINAL[df$ATHLETE == "Lisa Hahner"]
+% [1] 9933
+
+With an eye on the matter of simultaneous finishing, Figure
+\ref{fig:simdiff} contains two histograms based on our simulated race
+results. Figure \ref{fig:simulatedfinishtimes} is a histogram which
+shows the distribution of absolute differences in Hahner twin
+finishing time where differences are grouped in 30 second bins; counts
+for the various bins are denoted by the vertical lengths of the bars.
+Figure \ref{fig:simulatedranks} is similar but depicts the
+distribution of the absolute differences in Hahner twin rankings.
+Differences are grouped as single units ranging from no runner between
+the twins to nearly 120 runners between them.
 
 \begin{figure}[!ht]
   \centering
@@ -531,25 +563,25 @@ runners between them.
   \end{subfigure}
 \end{figure}
 
+The results plotted in the histograms raise questions about the
+credibility of Anna and Lisa Hahner's story.  In particular, the
+histogram suggest that a simultaneous finish would be very rare if
+Anna and Lisa had run independently of each other.  For example, in
+fewer than 300 of the 10,000 simulated races did Anna and Lisa
+finished within 30 seconds of each other.  Moreover, they finished in
+consecutive rank in fewer than 175 of the 10,000 races.  Therefore,
+the close finish that was observed, where Anna and Lisa crossed the
+finish line one-after-the-other, would be highly unlikely if the two
+German twins had raced independently of each other.
 
-The results plotted in the histograms question the credibility of Anna
-and Lisa's story.  The results suggest that a simultaneous finish
-would be very rare if Anna and Lisa had run independently of each
-other.  For example, in less than 300 of the 10,000 simulated races
-did Anna and Lisa finished within 30 seconds of each other .  And they
-finished in consecutive rank in less than 175 of the 10,000 races.
-Therefore, the close finish that we observed, where Anna and Lisa
-crossed the finish line one-after-the-other, would be very unlikely if
-we were to believe the twins raced independently of each other.
-
-The results holds even if you replace their personal best time with
-their time halfway through the race.  While this reduces the variation
-in the predicted outcome of each runner and, therefore, reduces the
-expected distance between Anna and Lisa, it is still quite rare for
+Earlier we noted that personal best times might arguably be poor
+measures of runner abilities.  With this in mind, we repeated our
+simulations but replaced personal best times with half marathon
+splits.  See Figure \ref{fig:simdiffhalf}.  While this change reduces
+the variation in the predicted outcome of each runner and therefore,
+reduces the expected distance between Anna and Lisa Hahner, even with
+half marathon split as a measure of ability it is still quite rare for
 Anna and Lisa to finish simultaneously or consecutively.
-
-
-
 
 \begin{figure}[!ht]
   \centering
