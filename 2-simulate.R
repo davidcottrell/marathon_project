@@ -24,8 +24,8 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
     geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
     xlim(8000,12500) +
     ylim(8000, 12500) +
-    ylab("Olympic result, in seconds\n") + 
-    xlab("\nPersonal best, in seconds") + 
+    ylab("Olympic finishing time, in seconds\n") + 
+    xlab("\nSeconds") + 
     ##  ggtitle("Distribution of Y | X") +
     scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
     scale_shape_manual(values = c(19, 15), guide = FALSE) +
@@ -45,8 +45,8 @@ ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
     geom_rug(data = df2use[is.na(df2use$FINAL),], aes(x = SPLIT_HALF), colour = "gray") +
     geom_rug(data = df2use[is.na(df2use$FINAL) & df2use$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
     ##    coord_fixed(xlim = c(4000, 6000), ylim = c(8500, 12500)) +
-    ylab("Olympic result, in seconds\n") + 
-    xlab("\nHalf marathon split, in seconds") + 
+    ylab("Olympic finishing time, in seconds\n") + 
+    xlab("\nSeconds") + 
     ##  ggtitle("Distribution of Y | X") +
     scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
     theme_bw() +
@@ -146,8 +146,8 @@ ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) +
     ## geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
     ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
     coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
-    ylab("Absolute difference Olympic result, in seconds\n") + 
-    xlab("\nAbsolute difference in personal best, in seconds") + 
+    ylab("Absolute difference in Olympic finishing times, in seconds\n") + 
+    xlab("\nAbsolute differences, in seconds") + 
     ## ggtitle("Among all dyadic combinations") +
     scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
     theme_bw() +
@@ -164,8 +164,8 @@ ggplot(aes(y=abs(result_diff), x=abs(hf_diff)), data = df2b) +
   ## geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
   ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
   coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
-  ylab("Absolute difference Olympic result, in seconds\n") + 
-  xlab("\nAbsolute difference in half split, in seconds") + 
+  ylab("Absolute difference in Olympic finishing times, in seconds\n") + 
+  xlab("\nAbsolute differences, in seconds") + 
   ## ggtitle("Among all dyadic combinations") +
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
@@ -278,7 +278,7 @@ max_r <- max(hahner_df$rank_diff, na.rm = T)
 pdf("plots/simulated_time.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(time_diff)) + 
     geom_histogram(binwidth = 30, colour = "black", fill = NA) +
-    xlab("\nFinishing time difference, in seconds") +
+    xlab("\nTime difference, in seconds") +
     ylab("Count\n") +
     xlim(0, max_t) + 
     ##  ggtitle("\nSimulated final time") +
