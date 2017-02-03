@@ -93,8 +93,8 @@ ggplot(dta, aes(STUD_RESID, PERCENTILE)) +
   geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "blue") +
   geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "blue") +
   ##  ggtitle("Distribution of Studentized Residuals") +
-  ylab("Studentized residual\n") +
-  xlab("\nPercentile") + 
+  ylab("Percentile\n") +
+  xlab("\nStudentized residual") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
