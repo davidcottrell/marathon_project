@@ -222,35 +222,55 @@ about their validity.
 
 \section*{Visualizing the Olympic marathon}
 
-Figure \ref{fig:scatter} contains two plots, both of which describe
+Figure \ref{fig:scatter} and Figure \ref{fig:scatterhalf} contain two plots, both of which describe
 how finishing times from the Rio Olympic women's marathon varied as a
-function of athletes' personal best times and their Rio half marathon
+function of athletes' personal best times and and as function of their Rio half marathon
 split times.  The points in the plots are colored by twin/triplet
 status, and both plots contain second-order polynomial regression
 lines.  We treat an athlete's prior personal best marathon time as a
-measure of the athlete's underlying marathon talent, and we interpret
+measure of the athlete's underlying marathon talent (seen in Figure \ref{fig:scatter}), and we interpret
 an athlete's half marathon split as a measure of the athlete's skill
 at marathon running on August 14, 2016, the date of the women's
-marathon in Rio.
+marathon in Rio (seen in Figure \ref{fig:scatterhalf}).
 
 \begin{figure}[!ht]
-  \caption{Olympic results and measures of marathon ability}
+  \caption{Olympic results as a function of ability measured by personal best}
   \label{fig:scatter}
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot.pdf}
-    \caption{Finishing and personal best times}
+    \caption{} 
     \label{fig:45degreeplot}
   \end{subfigure}
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot_half.pdf}
-    \caption{Finishing and half marathon split times}
-    \label{fig:45degreeplot_half}
+    \includegraphics[width=\textwidth, keepaspectratio]{studentized_residuals.pdf}
+    \caption{}
+    \label{fig:studentizedresiduals}
   \end{subfigure}
 \end{figure}
 
-Figure \ref{fig:45degreeplot_half} includes a solid 45-degree line as
+
+\begin{figure}[!ht]
+  \caption{Olympic results as a function of ability measured by half marathon split}
+  \label{fig:scatterhalf}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot_half.pdf}
+    \caption{}
+    \label{fig:45degreeplot_half}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{studentized_residuals_half.pdf}
+    \caption{}
+    \label{fig:studentizedresidualshalf}
+  \end{subfigure}
+\end{figure}
+
+
+
+Figure \ref{fig:45degreeplot} includes a solid 45-degree line as
 the axes in the figure correspond to full marathons; in addition, the
 figure's rug marks denote personal best times of runners who DNFed.
 Given the paucity of points (five of them) below the pictured
@@ -356,10 +376,14 @@ greatest compression based on finishing time.
 
 \begin{figure}[!ht]
  \caption{Differences in personal best times and finishing times}
- \label{fig:diffdiffscatter}
  \centering
- \begin{subfigure}{.5\textwidth}
+ \begin{subfigure}{.49\textwidth}
  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
+  \label{fig:diffdiffscatter}
+ \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+ \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot_half.pdf}
+  \label{fig:diffdiffscatterhalf}
  \end{subfigure}
 \end{figure}
 
@@ -374,7 +398,7 @@ horizontal axis because their difference in finishing times is one
 second.  However, there are many points about the Hahner's orange dot,
 and this shows that, conditional on an approximate 115 second
 difference in personal best times, most marathoners did not have close
-finishing times like the Hahnes.  Some pairs of runners with around
+finishing times like the Hahners.  Some pairs of runners with around
 115 second personal best differences had finishing time differences of
 1000 seconds, i.e., in excess of 15 minutes.  Of course the points in
 Figure \ref{fig:diffdiffscatter} are not independent, but they provide
@@ -508,13 +532,6 @@ follows.
 
 David---comments here?    Or above?  This is not from the simulation
 --- so perhaps move to top of section??
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[keepaspectratio]{studentized_residuals.pdf}
-    \caption{Studentized residuals}
-    \label{fig:studentizedresiduals}
-  \end{figure}
 
 
 

@@ -54,9 +54,9 @@ splits <- full_join(splits_dist,splits_rank, by = "ATHLETE")
 
 df <- start %>% full_join(splits, by = "ATHLETE") %>% full_join(result, by = "ATHLETE")
 
-df <- df %>% mutate(TWINS = ifelse(BIB %in% c(748, 749), "Hahner Twins",
-                                   ifelse(BIB %in% c(1137, 1138), "Kim Twins",
-                                          ifelse(BIB %in% c(633:635), "Luik Triplets", NA))))
+df <- df %>% mutate(TWINS = ifelse(BIB %in% c(748, 749), "Hahner twins",
+                                   ifelse(BIB %in% c(1137, 1138), "Kim twins",
+                                          ifelse(BIB %in% c(633:635), "Luik triplets", NA))))
 
 nms <- c("LANE","BIB","ATHLETE","COUNTRY","TWINS","SB","PB","SPLIT_5K", "SPLIT_10K","SPLIT_15K", "SPLIT_20K", "SPLIT_HALF", "SPLIT_25K", "SPLIT_30K", "SPLIT_35K", "SPLIT_40K", "FINAL", "RK_PB", "RK_5K", "RK_10K","RK_15K","RK_20K","RK_HALF","RK_25K","RK_30K","RK_35K","RK_40K","RK_FINAL") 
 

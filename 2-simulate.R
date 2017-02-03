@@ -21,8 +21,9 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
     geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
     geom_abline(intercept = 0, slope =1) +
     geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
-    geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
-    coord_fixed(xlim = c(8000,12500), ylim = c(8000, 12500)) +
+    geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
+    xlim(8000,12500) +
+    ylim(8000, 12500) +
     ylab("Olympic result, in seconds\n") + 
     xlab("\nPersonal best, in seconds") + 
     ##  ggtitle("Distribution of Y | X") +
@@ -31,8 +32,6 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
     theme_bw() +
     theme(legend.position = c(.8,.2))
 dev.off()
-
-
 
 
 ## make scatter plot for half marathon split
@@ -44,7 +43,7 @@ ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
     geom_smooth(method = "lm", formula = y ~ x + I(x^2), colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black", se = FALSE) + 
     ## geom_abline(intercept = 0, slope = 1) +
     geom_rug(data = df2use[is.na(df2use$FINAL),], aes(x = SPLIT_HALF), colour = "gray") +
-    geom_rug(data = df2use[is.na(df2use$FINAL) & df2use$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+    geom_rug(data = df2use[is.na(df2use$FINAL) & df2use$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
     ##    coord_fixed(xlim = c(4000, 6000), ylim = c(8500, 12500)) +
     ylab("Olympic result, in seconds\n") + 
     xlab("\nHalf marathon split, in seconds") + 
@@ -55,14 +54,62 @@ ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
 dev.off()
 
 
+# Plot Studentized Residuals
+print_pct <- function(x) {paste0(formatC(round(x,1), format = "f", flag = "0", digits = 1 ), "%")}
+fit <- lm(FINAL ~ PB + I(PB^2), data = df)
+dta <- data.frame( df[!is.na(df$FINAL), c("ATHLETE", "TWINS")], STUD_RESID =  rstudent(fit) )
+dta <- arrange(dta, STUD_RESID)
+dta <- dta %>% mutate(PERCENTILE = cume_dist(STUD_RESID)*100 )
+
+pdf("plots/studentized_residuals.pdf", height = 5, width = 5)
+ggplot(dta, aes(STUD_RESID, PERCENTILE)) + 
+  geom_point(size = 1, colour = "gray") + 
+  geom_point(data = na.omit(dta), aes( col = TWINS)) + 
+  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = -.4, colour = "orange") +
+  geom_text(data = dta[dta$TWINS == "Kim twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .4, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Luik triplets",], aes(label = print_pct(PERCENTILE)), nudge_x = .4, colour = "blue") +
+  scale_x_continuous(breaks = -10:10) +
+  ##  ggtitle("Distribution of Studentized Residuals") +
+  ylab("Percentile\n") +
+  xlab("\nStudentized residual") + 
+  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  theme_bw() +
+  theme(legend.position = c(.8,.2))
+dev.off()
+
+fit <- lm(FINAL ~ SPLIT_HALF + I(SPLIT_HALF^2), data = df)
+dta <- data.frame( df[!is.na(df$FINAL), c("ATHLETE", "TWINS")], STUD_RESID =  rstudent(fit) )
+dta <- arrange(dta, STUD_RESID)
+dta <- dta %>% mutate(PERCENTILE = cume_dist(STUD_RESID)*100 )
+
+pdf("plots/studentized_residuals_half.pdf", height = 5, width = 5)
+ggplot(dta, aes(STUD_RESID, PERCENTILE)) + 
+  geom_point(size = 1, colour = "gray") + 
+  geom_point(data = na.omit(dta), aes( col = TWINS)) + 
+  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "orange") +
+  #geom_text(data = dta[dta$TWINS == "Kim twins",], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "blue") +
+  geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "blue") +
+  ##  ggtitle("Distribution of Studentized Residuals") +
+  ylab("Studentized residual\n") +
+  xlab("\nPercentile") + 
+  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  theme_bw() +
+  theme(legend.position = c(.8,.2))
+dev.off()
+
 
 nms <- df$ATHLETE
 pb <- df$PB
+hf <- df$SPLIT_HALF
 result <- df$FINAL
 rank <- min_rank(df$FINAL)
 name_i <- vector()
 name_j <- vector()
 pb_diff <- vector()
+hf_diff <- vector()
 result_diff <- vector()
 consecutive <- vector()
 k = 1
@@ -72,6 +119,7 @@ for(i in 1:length(pb)){
     name_i[k] = nms[i]
     name_j[k] = nms[j]
     pb_diff[k] = pb[i] - pb[j]
+    hf_diff[k] = hf[i] - hf[j]
     result_diff[k] = result[i] - result[j]
     consecutive[k] = ifelse(abs(rank[i] - rank[j]) == 1, T, F) 
     k = k + 1
@@ -80,11 +128,11 @@ for(i in 1:length(pb)){
 }
 
 
-df2 <- data_frame(name_i, name_j, pb_diff, result_diff, diff_in_diff = abs(result_diff) - abs(pb_diff), consecutive)
+df2 <- data_frame(name_i, name_j, pb_diff, hf_diff, result_diff, diff_in_diff = abs(result_diff) - abs(pb_diff), consecutive)
 
-df2$twins <- ifelse(df2$name_i == "Anna Hahner" & df2$name_j == "Lisa Hahner", "Hahner Twins",
-                    ifelse(df2$name_i == "Hye-Gyong Kim" & df2$name_j == "Hye-Song Kim", "Kim Twins",
-                           ifelse(df2$name_i == "Leila Luik" & df2$name_j == "Lily Luik", "Luik Triplets", NA)))
+df2$twins <- ifelse(df2$name_i == "Anna Hahner" & df2$name_j == "Lisa Hahner", "Hahner twins",
+                    ifelse(df2$name_i == "Hye-Gyong Kim" & df2$name_j == "Hye-Song Kim", "Kim twins",
+                           ifelse(df2$name_i == "Leila Luik" & df2$name_j == "Lily Luik", "Luik triplets", NA)))
 
 
 df2b <- df2 %>% filter(name_i != name_j, !is.na(diff_in_diff)) %>% arrange(diff_in_diff)
@@ -96,7 +144,7 @@ ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) +
     ## geom_smooth( colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") +  # removed smoother because points are not independent
     geom_abline(intercept = 0, slope =1) +
     ## geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
-    ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik Triplets",], aes(x = PB), colour = "blue") +
+    ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
     coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
     ylab("Absolute difference Olympic result, in seconds\n") + 
     xlab("\nAbsolute difference in personal best, in seconds") + 
@@ -107,13 +155,31 @@ ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) +
 dev.off()
 
 
+pdf("plots/diff_in_diff_scatter_plot_half.pdf", height = 5,  width = 5)
+ggplot(aes(y=abs(result_diff), x=abs(hf_diff)), data = df2b) + 
+  geom_point(size = .5, colour = "gray", alpha = .5) + 
+  geom_point(data = df2b[!is.na(df2b$twins),], aes( col = twins)) +
+  ## geom_smooth( colour = "black", alpha = .5, size = .5, linetype = "dashed", fill = "black") +  # removed smoother because points are not independent
+  geom_abline(intercept = 0, slope =1) +
+  ## geom_rug(data = df[is.na(df$FINAL),], aes(x = PB), colour = "gray") +
+  ## geom_rug(data = df[is.na(df$FINAL) & df$TWINS == "Luik triplets",], aes(x = PB), colour = "blue") +
+  coord_fixed(xlim = c(0,3500), ylim = c(0,3500)) +
+  ylab("Absolute difference Olympic result, in seconds\n") + 
+  xlab("\nAbsolute difference in half split, in seconds") + 
+  ## ggtitle("Among all dyadic combinations") +
+  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  theme_bw() +
+  theme(legend.position = c(.8,.2))
+dev.off()
+
+
 pdf("plots/diff_in_diff_1.pdf", height = 5, width = 5)
 df2b <- df2b %>% mutate(PERCENTILE = cume_dist(diff_in_diff)*100 )
 ggplot(df2b, aes(PERCENTILE,diff_in_diff)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(df2b), aes( col = twins)) + 
-  geom_text(data = df2b[df2b$twins == "Hahner Twins",], aes(label =  paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 100, colour = "orange") +
-  geom_text(data = df2b[df2b$twins == "Kim Twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "red") +
+  geom_text(data = df2b[df2b$twins == "Hahner twins",], aes(label =  paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 100, colour = "orange") +
+  geom_text(data = df2b[df2b$twins == "Kim twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "red") +
   ggtitle("Distribution of Difference in Differences\n(All Dyads)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPercentile") + 
@@ -123,13 +189,13 @@ ggplot(df2b, aes(PERCENTILE,diff_in_diff)) +
 dev.off()
 
 pdf("plots/diff_in_diff_2.pdf", height = 5, width = 5)
-h_diff <- df2b$pb_diff[df2b$twins == "Hahner Twins" & !is.na(df2b$twins)]
+h_diff <- df2b$pb_diff[df2b$twins == "Hahner twins" & !is.na(df2b$twins)]
 df2c <- df2b %>% filter(abs(pb_diff) <= abs(h_diff)) %>% mutate(PERCENTILE = cume_dist(diff_in_diff)*100 )
 ggplot(df2c, aes(PERCENTILE,diff_in_diff)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(df2c), aes( col = twins)) + 
-  geom_text(data = df2c[df2c$twins == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
-  geom_text(data = df2c[df2c$twins == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
+  geom_text(data = df2c[df2c$twins == "Hahner twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
+  geom_text(data = df2c[df2c$twins == "Kim twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
   ggtitle("Distribution of Difference in Differences\n(Diads where difference in PB < Hahner's)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPercentile") + 
@@ -138,26 +204,7 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
   theme(legend.position = c(.85,.15))
 dev.off()
 
-# Plot Studentized Residuals
 
-fit <- lm(FINAL ~ PB + I(PB^2), data = df)
-dta <- data.frame( df[!is.na(df$FINAL), c("ATHLETE", "TWINS")], STUD_RESID =  rstudent(fit) )
-dta <- arrange(dta, STUD_RESID)
-dta <- dta %>% mutate(PERCENTILE = cume_dist(STUD_RESID)*100 )
-
-pdf("plots/studentized_residuals.pdf", height = 5, width = 5)
-ggplot(dta, aes(PERCENTILE,STUD_RESID)) + 
-  geom_point(size = 1, colour = "gray") + 
-  geom_point(data = na.omit(dta), aes( col = TWINS)) + 
-  geom_text(data = dta[dta$TWINS == "Hahner Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_x = -10, colour = "orange") +
-  geom_text(data = dta[dta$TWINS == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_x = 10, colour = "red") +
-##  ggtitle("Distribution of Studentized Residuals") +
-  ylab("Studentized residual\n") +
-  xlab("\nPercentile") + 
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
-  theme_bw() +
-  theme(legend.position = c(.8,.2))
-dev.off()
 
 # Calculate the percent of runners who did not finish.
 # (includes women who did not start)
