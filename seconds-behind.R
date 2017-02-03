@@ -23,9 +23,9 @@ for (col2use in cols2use <- grep("SPLIT|FINAL", colnames(dta))) {
     cex2use[dta2use$BIB == 633 | dta2use$BIB == 634 | dta2use$BIB == 635] <- .7
     
     pch2use <- rep(19, times = nrow(dta2use))
-    pch2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- 19
-    pch2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- 19
-    pch2use[dta2use$BIB == 633  | dta2use$BIB == 634 | dta2use$BIB == 635] <- 19
+    pch2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- 1
+    pch2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- 1
+    pch2use[dta2use$BIB == 633  | dta2use$BIB == 634 | dta2use$BIB == 635] <- 1
 
     color2use <- rep("grey50", times = nrow(dta2use))
     color2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- "orange"
@@ -40,21 +40,20 @@ for (col2use in cols2use <- grep("SPLIT|FINAL", colnames(dta))) {
 }
 
 axis (side = 1, at = dists,
-      labels = c("5K", "10K", "15K", "20K", "", "25K", "30K", "35K", "40K", ""),
+      labels = c("5K", "10K", "15K", "", "", "25K", "30K", "35K", "", ""),
       cex.axis = 0.75,
-      padj = -1.25)
+      padj = 0)
 
-axis (side = 1, at = dists[c(5,10)],
-      labels = c("(Half)", "(Final)"),
-      cex.axis = 0.7,
-      padj = 1,
-      tick = F,
-      tck = -.1)
+axis (side = 1, at = dists[c(4,9)] + c(dists[c(5,10)] - dists[c(4,9)])/2 ,
+      labels = c("20K Half", "40K Final"),
+      cex.axis = 0.75,
+      padj = 0,
+      tick = F)
 
 legend (x = 5, y = 2000,
-        col = c("blue", "orange", "red", "grey50"),
-        pch = 19,
-        legend = c("Luik triplets", "Hahner twins", "Kim twins", "Others"),
+        col = c("blue", "orange", "red"),
+        pch = 1,
+        legend = c("Luik triplets", "Hahner twins", "Kim twins"),
         cex = 0.75,
         bty = "n"
         )
