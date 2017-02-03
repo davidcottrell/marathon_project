@@ -230,18 +230,18 @@ max_r <- max(hahner_df$rank_diff, na.rm = T)
 
 pdf("plots/simulated_time.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(time_diff)) + 
-  geom_histogram(binwidth = 30, colour = "black", fill = NA) +
-  xlab("\nDifference in seconds") +
-  ylab("Count\n") +
-  xlim(0, max_t) + 
-#  ggtitle("\nSimulated final time") +
-  theme_bw()
+    geom_histogram(binwidth = 30, colour = "black", fill = NA) +
+    xlab("\nFinishing time difference, in seconds") +
+    ylab("Count\n") +
+    xlim(0, max_t) + 
+    ##  ggtitle("\nSimulated final time") +
+    theme_bw()
 dev.off()
 
 pdf("plots/simulated_rank.pdf", height = 5, width = 5)
 ggplot(hahner_df, aes(rank_diff)) + 
   geom_histogram(binwidth = 1, colour = "black", fill = NA) +
-  xlab("\nDifference in rank") +
+  xlab("\nRank difference") +
   ylab("Count\n") +
   xlim(0, max_r) + 
 #  ggtitle("\nSimulated final rank") +

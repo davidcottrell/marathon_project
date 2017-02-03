@@ -73,7 +73,7 @@
 \renewcommand{\dbltopfraction}{.66}
 \renewcommand{\dblfloatpagefraction}{.66}
 
-\newcommand{\yi}{\ensuremath{Y_i}}
+\newcommand{\Yi}{\ensuremath{Y_i}}
 
 % \urldef\myurlncsl1\url{foo%.com}
 % \begin{document}
@@ -420,228 +420,99 @@ during the entire race marathon.
 \end{figure}
 
 
-\section*{The probability of an unintentional simultaneous finish}
+\section*{Simulating the Marathon}
 
-Thomas Kurschilgen's accusations of an intentional finish stems from
-two observations. First, the Hahner twins finished slower than he
-expected given respective personal bests. Second, the twins finished
-together at the exactly same time. Kurschilgen clearly believed that
-neither of these events would have occurred had both Hahner run the
-marathon independently, absent coordination. By his logic, the German
-twins should have run faster and not have finished simultaneously.
+% The Hahner sisters claimed that they ran the marathon independent of
+% each other.  Their simultaneous finish was no more than a product of
+% ability and luck.  One might expect such a finish given that their
+% personal best marathons are within 114 seconds of each other.  Add a
+% little bit of luck to the occasion and, as the twins have claimed all
+% along, one might easily argue that the simultaneous finish is simply a
+% joyous coincidence rather than a wholly implausible event.
 
-On the other hand, only a handful of runners completed the Rio
-marathon with times that were faster than their recorded best times.
-Thus, 18 minutes behind a personal record may not be the outlier that
-Kurschilgen claimed it to be. Moreover, there is good reason to
-suspect that an unintended simultaneous finish was more likely for the
-Hahner twin than it would be for any other set of runners. After all,
-these two women are twins with presumably similar abilities. Not only
-do they train together, but their pre-Rio best times are less than two
-minutes apart. While Anna may be slightly faster than Lisa measured by
-personal bests, we might expect the difference in their Rio result to
-be just as close as the differences in their recorded bests. And given
-random variation in finishing times, a simultaneous finish might not
-be out of the ordinary.
+We now consider the following: if we take into consideration the
+Hahner twin's similarities as runners as well as some natural
+variation in finishing a marathon, what is the probability that the
+twins finished at roughly the same time and/or sequentially?  To
+answer this question we need to know the counterfactual distribution
+of potential marathon finishing times that would have occurred had the
+Hahner twins independently and repeatedly run the Rio marathon over
+again.  Holding the twin's abilities constant, this would establish
+the set of potential outcomes that would have occurred as result of
+natural variation in the finishing the marathon.  We could use this
+distribution of outcomes to determine the likelihood that a
+simultaneous finish by the Hanhers, or at least a near-simultaneous
+finish, occurred by chance alone.  If the twins rarely finish the
+marathon together in such a counterfactual world, then one might be
+skeptical that their observed finish occurred without
+coordination---as they in fact claimed.
 
-Even though they seem similar, finishing at very similar times and
-finishing together are different phenomena. If, for example, both
-Hahners were of similar ability to each other and also to many other
-runners, then we might expect similar finishing times yet not
-necessarily similar placements. The latter will be a function of the
-extent to which all runners on the Rio course have similar talent
-levels.  This point is an important one and will be evident in the
-results that follow.
+Unfortunately for us but nonetheless fortunately for the race's
+participants, it is not possible to rerun the women's Olympic marathon
+in Rio to establish a counterfactual distribution of potential race
+outcomes for the Hahner twins.  However, we can attempt to simulate
+this distribution by estimating the distribution of every other
+runner's finishing time, conditioned on prior abilities, and drawing
+from that distribution in order to observe the likelihood that Lisa
+and Anna Hahner finish simultaneously.
 
-To test the assertion that the Hahner twins paced themselves to finish
-at the same time and with back-to-back placements, we need to compute
-the probability that such a result would have occurred
-unintentionally. Hence we need to know the probability distribution of
-Anna and Lisa's finishing times if their runs had been independent of
-each other. The challenge, of course, is that this distribution is
-unknown.  
+To estimate the conditional distribution of Rio runner's result, we
+assume that each runner's marathon time \Yi\ is distributed normally
+with a mean that is a quadratic function of her personal best time
+$X_i$:
 
-\section*{Modeling}
-
-
-The Hahner twins either acted independently $I$ or coordinated their
-times $C$; these are the two possible states of the race
-$\psi = \{I, C\}$. Given that we observed Anna and Lisa's finishing
-times, $Y_A = y_A$ and $Y_L = y_L$, we want to know the probability
-that they ran independently, as they say they did. Hence, we are
-looking to determine, 
-
-$$P(\psi = I \mid y_A  \cap y_L )$$
-
-However, to determine this, we need to have some understanding of a
-likelihood function that specifies Rio finishing times. We want to
-know the likelihood of Anna's and Lisa's final times given
-independence $P(y_A \cap y_L \mid \psi = I )$. We can estimate this
-function with a few assumptions. First, we assume that under
-independence, any given runner's final time $Y_i$ is conditional on
-his/her running ability plus noise. Specifically, we assume that the
-$Y_i$ is a linear function of the runner's ability $X_i$ plus a
-normally distributed error term $e_i \sim N(0, \sigma)$. Second, we
-assume that every runner shares the same linear relationship - meaning
-the slope and intercept remain constant across runners. Third, we
-assume that the error term is drawn from a common distribution across
-runners. Hence, luck and misfortune are drawn from the same
-distribution. Therefore,
-
-$$Y_i \sim N(\beta_0 + X_{i}\beta_1 + e_i, \sigma)$$
-
-We also assume that a runner's ability $X_i$ can be measured precisely
-by her best marathon performance leading up to the Olympics. 
-
-%% Any measurement error must therefore be negligible.
-
-If Anna and Lisa intentionally slowed down as a result of coordination
-then we would likely observe $y_A > E(Y_A \mid \psi = I) $ and
-$y_L > E(Y_L\mid \psi = I )$. In other words, the final times that
-Anna and Lisa recorded in the race would be greater than we would
-expect if they had run independently.
-
-Moreover, if Anna and Lisa coordinated to finish simultaneously, then
-the difference between the two sisters' final times would be less that
-the expected difference had they run independently. Therefore, under a
-coordinated finish we would expect $\left|y_A - y_L\right| < E(\left|Y_A - Y_L\right| \mid \psi = I )$.
-
-\section*{Did Anna and Lisa intentionally slow down?}
-
-According to Kurschilgen, Anna and Lisa underperformed in the Rio marathon. He claimed that because their goal was to finish simultaneously rather than finish at their fastest pace, their times were slower than they otherwise would have been.  He claimed that the twins were simply trading speed for a photo-finish.
-
-If this were the case, the function generating Anna and Lisa's final times would deviate from the function that generated everyone else's final times.  Given everyone else would draw their times from the independent distribution  $Y_i \sim N(\beta_0 + X_{i}\beta_1 + e, \sigma)$,  Anna and Lisa would draw from a distribution of times that are slower in expectation. Hence, they would lie well-above the line that links a runner's performance in Rio to their previous best performance.    
-
-\begin{figure}[!ht]
-  \caption{Relationship between Personal Best and Result  -- caption?}
-  \label{fig:scatter}
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot.pdf}
-    \caption{Rio finishing times and personal best times}
-    \label{fig:45degreeplot}
-  \end{subfigure}
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=.975\textwidth, keepaspectratio]{studentized_residuals.pdf}
-    \caption{Studentized residuals}
-    \label{fig:studentizedresiduals}
-  \end{subfigure}
-\end{figure}
-
-Figure \ref{fig:45degreeplot} displays the relationship between a
-runner's personal best (horizontal axis) and her final result
-(vertical axis).  The 133 finishers are plotted as grey points, and
-the 23 DNFs are depicted below along the horizontal axis with
-tick-marks.  The dashed black line with grey confidence intervals
-represent ordinarily least squares estimates of the linear
-relationship between racer's finishing and personal best times.
-
-One can see in Figure \ref{fig:scatter} that there is a clear
-relationship between a runner's personal best time and her performance
-in the Olympics.  While there is a significant amount of noise in the
-relationship, the Hahner twins' dots are well above the regression's
-fitted line notwithstanding this point.  They finished the Rio
-marathon much slower than they should have, per their pre-Olympic
-personal best times.  In fact, if we sort studentized residual, we can
-see in Figure \ref{fig:studentizedresiduals} that the Hahner twins are
-in the tail-end of the residual distribution.  Anna Hahner's residual
-deviation is greater than 91.7\% of the runners who completed the
-marathon while Lisa Hahner's deviation is greater than 86.5\%.  Hence,
-the twins appear to have finished at a much slower pace than expected,
-which is what we might expect if they were coordinating their runs.
-The North Korean Kim twins are also in the tail of the residual
-distribution---but the left tail.  These twins finished much faster
-than expected. 
-
-\section*{Did Anna and Lisa intentionally finish together?}
-
-Anna and Lisa finished the marathon at an unusually slow rate, which is what we might expect if the twins intentionally slowed their pace to finish simultaneously.  However, the observation of a slow finish does not necessarily imply that it was an intentional result .  It only suggests that Kurschilgen's claim regarding this issue holds up in the data.
-
-Perhaps it would be easier to refute the claim if we could show that the Twins's back-to-back finish was not such an unusual event.  Given that Anna and Lisa were so close in their personal best times, it may seem reasonable to expect that they would also be close in their finishing times.   Hence, one way to determine if the twins's finish was intentional is to quantify the likelihood that such a close finish would occur by chance given the differences in their ability. 
-
-We can attempt to quantify this likelihood by looking at how differences in the personal best time of two runners translate into differences in Olympic times .  If Anna and Lisa's finish was unintentional we'd expect that such a close finish would be unlikely given their difference in personal best times.   Yet, how does the difference in personal best times relate to the difference in finishing times?
-
-One way we can estimate this relationship is to look at all of the differences that we observe in the marathon.  We can take the difference in personal best time for every combination of runners in the data and look at the difference in their final times.  We should expect that compared to the difference in their personal best times, the difference in Anna and Lisa's final times should be commensurate with the conditional difference of all other runners. %This needs a better explanation.
-
-Therefore, we find all combinations of runners in the marathon and calculate two quantities: 1) the difference in their personal best time and 2) the difference in their final time. We plot the relationship between the two quantities in Figure \ref{fig:diffdiffscatter}.   All 8,778 dyadic combinations of runners are displayed by grey points in the scatter plot.   The solid black line indicates a one-to-one relationship, where every point would fall if the difference in final times were systematically equivalent to the difference in personal bests.  
-
-
-% \begin{figure}[!ht]
-%  \caption{Relationship between Difference in Personal Best and Difference in Result}
-%  \label{fig:diffdiffscatter}
-%  \centering
-%  \begin{subfigure}{.5\textwidth}
-%  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
-%  \end{subfigure}
-% \end{figure}
-
-We can see from the yellow dot that the Hahner Twins are just below this one-to-one line.  Hence, the twins' final times were closer to each other than their personal best times; but not by much.  In fact, this might be an expected difference if we expected there to be a one-to-one relationship.     However, although there is a clear relationship between the difference in final time and the difference in personal best, it is not a strong one-to-one relationship.  We've added a dotted smoother to display a cubic splines estimate of the conditional averages.  While the Hahner twins may be close to the one-to-one line, they are much further away from the average set of runners.  Hence, we would expect for any pair of runners, the difference in their final results should be much greater than their difference in their personal best.  However, the Hahner twins do not fit this expectation.   Yet, how different from this expectation are they?
-
-One way we can quantify the degree to which the twins are outliers is by comparing their difference in difference to every other pair of runner's difference-in-differences.  We calculate the difference-in-differences for each pair of runners by simply subtracting their difference in result (y-axis) from their difference in personal best (x-axis).  Therefore positive difference-in-differences mean that the runners ended up further apart than their difference in personal bests.  Negative difference-in-differences mean that the runners end up closer together.  Hence, the Hahner twins have a difference-in-difference of -114 seconds.  They finished 114 seconds closer together than the distance between their personal bests.  
-
-We arrange all 8,778 difference-in-differences from small to large in the first plot in Figure \ref{fig:diffdiff}. The Hahner twins are denoted by the yellow point.  Using this plot we can visualize where the twins fall within the distribution of difference-in-differences.  It is clear that they are closer to the lower tail of the distribution.  However, compared to all other difference-in-differences, their result is not that extreme.  Nearly 21\% of the difference-in-dfferences were less than the that of the twins'. Hence, we'd expect at least one in five pairs of runners to have a reduction in difference at least as great as the twins.
-
-However, if we limit the observations to only those runners who had personal best times that were at least as close to each other as the Hahner twins, we get a different perspective.  Among those runners,  the Hahner twins reduced the distance between them to the greatest extent.  There was no other pair of runners whose reduced the difference in the final time relative to their difference in personal bests more than them.         
-
-\begin{figure}[!ht]
- \caption{How Hahner Twins Rank in Difference-in-Differences}
- \label{fig:diffdiff}
- \begin{subfigure}{.5\textwidth}
- \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_1.pdf}
- \end{subfigure}
- \begin{subfigure}{.5\textwidth}
- \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_2.pdf}
- \end{subfigure}
-\end{figure}
-
-
-
-
-\newpage
-\subsection*{Simulating the Marathon}
-
-The Hahner sisters claimed that they ran the marathon independent of each other.  Their simultaneous finish was no more than a product of ability and luck.  One might expect such a finish given that their personal best marathons are within 114 seconds of each other.  Add a little bit of luck to the occasion and, as the twins have claimed all along, one might easily argue that the simultaneous finish is simply a joyous coincidence rather than a wholly implausible event.
-
-This begs the question: if we take into consideration their similarities as runners as well as some natural variation in finishing a marathon, what are the odds that the twins unintentionally finished at the same time?   To answer this question we would want to know the counterfactual distribution of potential finishing times that would have occurred had the twins independently and repeatedly run the marathon over again.  Holding the twins' similarities constant, this would establish the set of potential outcomes that would have occurred as result of natural variation in the finishing the race.   Then we could use this distribution of outcomes to determine the likelihood that a simultaneous finish (or at least a near-simultaneous finish) occurred by chance alone.   If the twins rarely finished the race together in this counterfactual, then one should be skeptical that such a finish occurred without coordination.
-
-Unfortunately, it is not possible to rerun the women's marathon in Rio to establish this counterfactual distribution.  However, we can attempt to simulate it, by estimating the distribution of every other runner's results -  conditioned on their prior abilities - and drawing from that distribution in order to observe the likelihood that Lisa and Anna finish simultaneously.  
-
-To estimate the conditional distribution of every runner's results, we must assume that each runner's time is distributed with a mean that is a quadratic function of $X_i$  and $\beta_j$, such that
-
-$$Y_i \mid X_i \sim N(\beta_0 + \beta_1X_{i} + \beta_2X^2_{i}  + e_i, \sigma).$$
-
-This means that we are assuming that each runner's time is drawn from the normal distribution with a mean that is a quadratic function of their personal best and variance that is constant across all runners.  We simply estimate $\beta_j$ and $\sigma$ using ordinary least squares.  We then draw every runner's time from this estimated distribution, conditioned on their personal best outcome.  Once a race is simulated, we locate Anna and Lisa and record the time between their finishes and the difference in their rank.  We then simulate a new race - drawing a new set of finishing times - and record the same quantities.  After repeating this procedure 10,000 times, we plot the distribution in Figure \ref{fig:simdiff}.  The steps of the simulation are detailed below.
-
+$$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i} + \beta_2\,X^2_{i}  + e_i, \sigma\right).$$
+%%
+where $N\left(\cdot,\cdot\right)$ denotes a normal distribution. We
+estimate $\beta_1$ , $\beta_2$, and $\sigma$ using ordinary least
+squares and our set of 133 finishing runners.  For a simulated
+marathon, we then draw a runner's time from an estimated distribution,
+conditioned on the runner's personal best outcome.  Once a race is
+simulated, we locate Anna and Lisa Hahner and record both the time
+between their finishes and the difference in their ranks.  We then
+simulate a new race---drawing a new set of finishing times---and
+record the same quantities.  In particular, the steps of the
+simulation are as follows.
 
 \begin{enumerate}
 \item Ignoring twins and triplets, estimate with least squares a
   linear model that predicts a runner's finishing time ($Y_i$) based
   on her pre-Olympic personal best time ($X_i$) and her best time
   squared.
-\item Extract coefficient vector and the covariance matrix from this
-  model.
+\item Extract coefficient vector, estimated covariance matrix, and
+  estimated regression variance from this model.
 \item For each simulated rate, draw intercept and slope estimates
-  $\beta_0$, $\beta_1$, and $\beta_2$, respectively, from a
-  multivariate normal distribution with mean equal to the estimated
-  coefficient vector and covariance equal to the estimated covariance
-  matrix.
-\item For each runner, draw an error ($e$) from a normal distribution
-  with mean zero and a standard deviation equal to the standard
-  deviation of the model's residuals ($\sigma$).
+  $\tilde{\beta}_0$, $\tilde{\beta}_1$, and $\tilde{\beta}_2$,
+  respectively, from a multivariate normal distribution with mean
+  equal to the estimated coefficient vector and covariance equal to
+  the estimated covariance matrix.
+\item For each runner, draw an error $\tilde{e}$ from a normal
+  distribution with mean zero and a standard deviation equal to the
+  standard deviation of the original regression model's residuals.
 \item For each runner, predict the final result by combining the randomly
-  generated beta coefficients and error terms, $\hat{y} = \beta_0 +
-  \beta_1\,X_i + \beta_2\,X_i^2 + e$.
+  generated beta coefficients and error terms, $\tilde{y} = \tilde{\beta}_0 +
+  \tilde{\beta}_1\,X_i + \tilde{\beta}_2\,X_i^2 + \tilde{e}$.
 \item Eliminate each runner from the race with a probability equal to
-  the fraction of runners who did not finish the marathon.
+  the observed fraction of marathoners who did not finish the
+  marathon.
 \item Calculate the difference in time and difference in ranking
   between Anna Hahner and Lisa Hahner, assuming both finished the
   race.
-\item Repeat above steps ten thousand times.
-\item Plot a histogram of the results in Figure \ref{fig:simdiff}.
+\item Repeat above steps 10,000 times.
 \end{enumerate}
 
+Before considering results, DNF biz...
 
+Figure \ref{fig:simdiff} contains two histograms of differences
+between Anna and Lisa's finishes.  Figure
+\ref{fig:simulatedfinishtimes} shows the distribution of absolute
+differences in time where differences are grouped in 30 second bins
+along the horizontal axis of the histogram.  The count for each bin is
+denoted by the vertical length of the bars.  Figure
+\ref{fig:simulatedranks} shows the distribution of the absolute
+differences in Hahner twin rankings.  Differences are grouped as
+single units ranging from no runner between the twins to nearly 120
+runners between them.
 
 \begin{figure}[!ht]
   \centering
@@ -661,11 +532,21 @@ This means that we are assuming that each runner's time is drawn from the normal
 \end{figure}
 
 
-A histogram of the differences between Anna and Lisa's simulated finishes can be found in Figure \ref{fig:simdiff}.  The first plot shows the distribution of the absolute differences in time.  Differences are grouped in 30 second bins along the x-axis and the count for each bin is denoted by the vertical length of bar along the y-axis.  The second plot shows the distribution of the absolute differences in ranking.  Differences are grouped as single units ranging from no runner between the twins to nearly 120 runners between them. 
+The results plotted in the histograms question the credibility of Anna
+and Lisa's story.  The results suggest that a simultaneous finish
+would be very rare if Anna and Lisa had run independently of each
+other.  For example, in less than 300 of the 10,000 simulated races
+did Anna and Lisa finished within 30 seconds of each other .  And they
+finished in consecutive rank in less than 175 of the 10,000 races.
+Therefore, the close finish that we observed, where Anna and Lisa
+crossed the finish line one-after-the-other, would be very unlikely if
+we were to believe the twins raced independently of each other.
 
-The results plotted in the histograms question the credibility of Anna and Lisa's story.  The results suggest that  a simultaneous finish would be very rare if Anna and Lisa had run independently of each other.  For example, in less than 300 of the 10,000 simulated races did Anna and Lisa finished within 30 seconds of each other .  And they finished in consecutive rank in less than 175 of the 10,000 races.  Therefore, the close finish that we observed, where Anna and Lisa crossed the finish line one-after-the-other, would be very unlikely if we were to believe the twins raced independently of each other.  
-
-The results holds even if you replace their personal best time with their time halfway through the race.  While this reduces the variation in the predicted outcome of each runner and, therefore, reduces the expected distance between Anna and Lisa, it is still quite rare for Anna and Lisa to finish simultaneously or consecutively.
+The results holds even if you replace their personal best time with
+their time halfway through the race.  While this reduces the variation
+in the predicted outcome of each runner and, therefore, reduces the
+expected distance between Anna and Lisa, it is still quite rare for
+Anna and Lisa to finish simultaneously or consecutively.
 
 
 
@@ -686,6 +567,187 @@ The results holds even if you replace their personal best time with their time h
     \label{fig:simulatedranks}
   \end{subfigure}
 \end{figure}
+
+
+
+
+% \section*{The probability of an unintentional simultaneous finish}
+
+% Thomas Kurschilgen's accusations of an intentional finish stems from
+% two observations. First, the Hahner twins finished slower than he
+% expected given respective personal bests. Second, the twins finished
+% together at the exactly same time. Kurschilgen clearly believed that
+% neither of these events would have occurred had both Hahner run the
+% marathon independently, absent coordination. By his logic, the German
+% twins should have run faster and not have finished simultaneously.
+
+% On the other hand, only a handful of runners completed the Rio
+% marathon with times that were faster than their recorded best times.
+% Thus, 18 minutes behind a personal record may not be the outlier that
+% Kurschilgen claimed it to be. Moreover, there is good reason to
+% suspect that an unintended simultaneous finish was more likely for the
+% Hahner twin than it would be for any other set of runners. After all,
+% these two women are twins with presumably similar abilities. Not only
+% do they train together, but their pre-Rio best times are less than two
+% minutes apart. While Anna may be slightly faster than Lisa measured by
+% personal bests, we might expect the difference in their Rio result to
+% be just as close as the differences in their recorded bests. And given
+% random variation in finishing times, a simultaneous finish might not
+% be out of the ordinary.
+
+% Even though they seem similar, finishing at very similar times and
+% finishing together are different phenomena. If, for example, both
+% Hahners were of similar ability to each other and also to many other
+% runners, then we might expect similar finishing times yet not
+% necessarily similar placements. The latter will be a function of the
+% extent to which all runners on the Rio course have similar talent
+% levels.  This point is an important one and will be evident in the
+% results that follow.
+
+% To test the assertion that the Hahner twins paced themselves to finish
+% at the same time and with back-to-back placements, we need to compute
+% the probability that such a result would have occurred
+% unintentionally. Hence we need to know the probability distribution of
+% Anna and Lisa's finishing times if their runs had been independent of
+% each other. The challenge, of course, is that this distribution is
+% unknown.  
+
+% \section*{Modeling}
+
+
+% The Hahner twins either acted independently $I$ or coordinated their
+% times $C$; these are the two possible states of the race
+% $\psi = \{I, C\}$. Given that we observed Anna and Lisa's finishing
+% times, $Y_A = y_A$ and $Y_L = y_L$, we want to know the probability
+% that they ran independently, as they say they did. Hence, we are
+% looking to determine, 
+
+% $$P(\psi = I \mid y_A  \cap y_L )$$
+
+% However, to determine this, we need to have some understanding of a
+% likelihood function that specifies Rio finishing times. We want to
+% know the likelihood of Anna's and Lisa's final times given
+% independence $P(y_A \cap y_L \mid \psi = I )$. We can estimate this
+% function with a few assumptions. First, we assume that under
+% independence, any given runner's final time $Y_i$ is conditional on
+% his/her running ability plus noise. Specifically, we assume that the
+% $Y_i$ is a linear function of the runner's ability $X_i$ plus a
+% normally distributed error term $e_i \sim N(0, \sigma)$. Second, we
+% assume that every runner shares the same linear relationship - meaning
+% the slope and intercept remain constant across runners. Third, we
+% assume that the error term is drawn from a common distribution across
+% runners. Hence, luck and misfortune are drawn from the same
+% distribution. Therefore,
+
+% $$Y_i \sim N(\beta_0 + X_{i}\beta_1 + e_i, \sigma)$$
+
+% We also assume that a runner's ability $X_i$ can be measured precisely
+% by her best marathon performance leading up to the Olympics. 
+
+% %% Any measurement error must therefore be negligible.
+
+% If Anna and Lisa intentionally slowed down as a result of coordination
+% then we would likely observe $y_A > E(Y_A \mid \psi = I) $ and
+% $y_L > E(Y_L\mid \psi = I )$. In other words, the final times that
+% Anna and Lisa recorded in the race would be greater than we would
+% expect if they had run independently.
+
+% Moreover, if Anna and Lisa coordinated to finish simultaneously, then
+% the difference between the two sisters' final times would be less that
+% the expected difference had they run independently. Therefore, under a
+% coordinated finish we would expect $\left|y_A - y_L\right| < E(\left|Y_A - Y_L\right| \mid \psi = I )$.
+
+% \section*{Did Anna and Lisa intentionally slow down?}
+
+% According to Kurschilgen, Anna and Lisa underperformed in the Rio marathon. He claimed that because their goal was to finish simultaneously rather than finish at their fastest pace, their times were slower than they otherwise would have been.  He claimed that the twins were simply trading speed for a photo-finish.
+
+% If this were the case, the function generating Anna and Lisa's final times would deviate from the function that generated everyone else's final times.  Given everyone else would draw their times from the independent distribution  $Y_i \sim N(\beta_0 + X_{i}\beta_1 + e, \sigma)$,  Anna and Lisa would draw from a distribution of times that are slower in expectation. Hence, they would lie well-above the line that links a runner's performance in Rio to their previous best performance.    
+
+% \begin{figure}[!ht]
+%   \caption{Relationship between Personal Best and Result  -- caption?}
+%   \label{fig:scatter}
+%   \begin{subfigure}{.5\textwidth}
+%     \centering
+%     \includegraphics[width=\textwidth, keepaspectratio]{scatter_plot.pdf}
+%     \caption{Rio finishing times and personal best times}
+%     \label{fig:45degreeplot}
+%   \end{subfigure}
+%   \begin{subfigure}{.5\textwidth}
+%     \centering
+%     \includegraphics[width=.975\textwidth, keepaspectratio]{studentized_residuals.pdf}
+%     \caption{Studentized residuals}
+%     \label{fig:studentizedresiduals}
+%   \end{subfigure}
+% \end{figure}
+
+% Figure \ref{fig:45degreeplot} displays the relationship between a
+% runner's personal best (horizontal axis) and her final result
+% (vertical axis).  The 133 finishers are plotted as grey points, and
+% the 23 DNFs are depicted below along the horizontal axis with
+% tick-marks.  The dashed black line with grey confidence intervals
+% represent ordinarily least squares estimates of the linear
+% relationship between racer's finishing and personal best times.
+
+% One can see in Figure \ref{fig:scatter} that there is a clear
+% relationship between a runner's personal best time and her performance
+% in the Olympics.  While there is a significant amount of noise in the
+% relationship, the Hahner twins' dots are well above the regression's
+% fitted line notwithstanding this point.  They finished the Rio
+% marathon much slower than they should have, per their pre-Olympic
+% personal best times.  In fact, if we sort studentized residual, we can
+% see in Figure \ref{fig:studentizedresiduals} that the Hahner twins are
+% in the tail-end of the residual distribution.  Anna Hahner's residual
+% deviation is greater than 91.7\% of the runners who completed the
+% marathon while Lisa Hahner's deviation is greater than 86.5\%.  Hence,
+% the twins appear to have finished at a much slower pace than expected,
+% which is what we might expect if they were coordinating their runs.
+% The North Korean Kim twins are also in the tail of the residual
+% distribution---but the left tail.  These twins finished much faster
+% than expected. 
+
+% \section*{Did Anna and Lisa intentionally finish together?}
+
+% Anna and Lisa finished the marathon at an unusually slow rate, which is what we might expect if the twins intentionally slowed their pace to finish simultaneously.  However, the observation of a slow finish does not necessarily imply that it was an intentional result .  It only suggests that Kurschilgen's claim regarding this issue holds up in the data.
+
+% Perhaps it would be easier to refute the claim if we could show that the Twins's back-to-back finish was not such an unusual event.  Given that Anna and Lisa were so close in their personal best times, it may seem reasonable to expect that they would also be close in their finishing times.   Hence, one way to determine if the twins's finish was intentional is to quantify the likelihood that such a close finish would occur by chance given the differences in their ability. 
+
+% We can attempt to quantify this likelihood by looking at how differences in the personal best time of two runners translate into differences in Olympic times .  If Anna and Lisa's finish was unintentional we'd expect that such a close finish would be unlikely given their difference in personal best times.   Yet, how does the difference in personal best times relate to the difference in finishing times?
+
+% One way we can estimate this relationship is to look at all of the differences that we observe in the marathon.  We can take the difference in personal best time for every combination of runners in the data and look at the difference in their final times.  We should expect that compared to the difference in their personal best times, the difference in Anna and Lisa's final times should be commensurate with the conditional difference of all other runners. %This needs a better explanation.
+
+% Therefore, we find all combinations of runners in the marathon and calculate two quantities: 1) the difference in their personal best time and 2) the difference in their final time. We plot the relationship between the two quantities in Figure \ref{fig:diffdiffscatter}.   All 8,778 dyadic combinations of runners are displayed by grey points in the scatter plot.   The solid black line indicates a one-to-one relationship, where every point would fall if the difference in final times were systematically equivalent to the difference in personal bests.  
+
+
+% % \begin{figure}[!ht]
+% %  \caption{Relationship between Difference in Personal Best and Difference in Result}
+% %  \label{fig:diffdiffscatter}
+% %  \centering
+% %  \begin{subfigure}{.5\textwidth}
+% %  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_scatter_plot.pdf}
+% %  \end{subfigure}
+% % \end{figure}
+
+% We can see from the yellow dot that the Hahner Twins are just below this one-to-one line.  Hence, the twins' final times were closer to each other than their personal best times; but not by much.  In fact, this might be an expected difference if we expected there to be a one-to-one relationship.     However, although there is a clear relationship between the difference in final time and the difference in personal best, it is not a strong one-to-one relationship.  We've added a dotted smoother to display a cubic splines estimate of the conditional averages.  While the Hahner twins may be close to the one-to-one line, they are much further away from the average set of runners.  Hence, we would expect for any pair of runners, the difference in their final results should be much greater than their difference in their personal best.  However, the Hahner twins do not fit this expectation.   Yet, how different from this expectation are they?
+
+% One way we can quantify the degree to which the twins are outliers is by comparing their difference in difference to every other pair of runner's difference-in-differences.  We calculate the difference-in-differences for each pair of runners by simply subtracting their difference in result (y-axis) from their difference in personal best (x-axis).  Therefore positive difference-in-differences mean that the runners ended up further apart than their difference in personal bests.  Negative difference-in-differences mean that the runners end up closer together.  Hence, the Hahner twins have a difference-in-difference of -114 seconds.  They finished 114 seconds closer together than the distance between their personal bests.  
+
+% We arrange all 8,778 difference-in-differences from small to large in the first plot in Figure \ref{fig:diffdiff}. The Hahner twins are denoted by the yellow point.  Using this plot we can visualize where the twins fall within the distribution of difference-in-differences.  It is clear that they are closer to the lower tail of the distribution.  However, compared to all other difference-in-differences, their result is not that extreme.  Nearly 21\% of the difference-in-dfferences were less than the that of the twins'. Hence, we'd expect at least one in five pairs of runners to have a reduction in difference at least as great as the twins.
+
+% However, if we limit the observations to only those runners who had personal best times that were at least as close to each other as the Hahner twins, we get a different perspective.  Among those runners,  the Hahner twins reduced the distance between them to the greatest extent.  There was no other pair of runners whose reduced the difference in the final time relative to their difference in personal bests more than them.         
+
+% \begin{figure}[!ht]
+%  \caption{How Hahner Twins Rank in Difference-in-Differences}
+%  \label{fig:diffdiff}
+%  \begin{subfigure}{.5\textwidth}
+%  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_1.pdf}
+%  \end{subfigure}
+%  \begin{subfigure}{.5\textwidth}
+%  \includegraphics[width=\textwidth, keepaspectratio]{diff_in_diff_2.pdf}
+%  \end{subfigure}
+% \end{figure}
+
+
+
 
 
 
