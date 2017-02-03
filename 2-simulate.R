@@ -116,7 +116,7 @@ ggplot(df2b, aes(PERCENTILE,diff_in_diff)) +
   geom_text(data = df2b[df2b$twins == "Kim Twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "red") +
   ggtitle("Distribution of Difference in Differences\n(All Dyads)") +
   ylab("Difference in Difference (sec)\n") +
-  xlab("\nPrecentile") + 
+  xlab("\nPercentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.85,.15))
@@ -132,7 +132,7 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
   geom_text(data = df2c[df2c$twins == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
   ggtitle("Distribution of Difference in Differences\n(Diads where difference in PB < Hahner's)") +
   ylab("Difference in Difference (sec)\n") +
-  xlab("\nPrecentile") + 
+  xlab("\nPercentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.85,.15))
@@ -153,7 +153,7 @@ ggplot(dta, aes(PERCENTILE,STUD_RESID)) +
   geom_text(data = dta[dta$TWINS == "Kim Twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_x = 10, colour = "red") +
 ##  ggtitle("Distribution of Studentized Residuals") +
   ylab("Studentized residual\n") +
-  xlab("\nPrecentile") + 
+  xlab("\nPercentile") + 
   scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
