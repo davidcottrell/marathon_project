@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 FEB 2017 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 FEB 2017 01:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -704,88 +704,87 @@ Overfull \hbox (2.28001pt too wide) in paragraph at lines 588--594
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 600.
  [15] [16]
-<../plots/simulated_time.pdf, id=185, 361.35pt x 361.35pt>
+<../plots/simulated_time.pdf, id=184, 361.35pt x 361.35pt>
 File: ../plots/simulated_time.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time.pdf>
-Package pdftex.def Info: ../plots/simulated_time.pdf used on input line 652.
+Package pdftex.def Info: ../plots/simulated_time.pdf used on input line 650.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank.pdf, id=186, 361.35pt x 361.35pt>
+<../plots/simulated_rank.pdf, id=185, 361.35pt x 361.35pt>
 File: ../plots/simulated_rank.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank.pdf>
-Package pdftex.def Info: ../plots/simulated_rank.pdf used on input line 657.
+Package pdftex.def Info: ../plots/simulated_rank.pdf used on input line 655.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
-
-<../plots/simulated_time_half.pdf, id=187, 361.35pt x 361.35pt>
+ [17 <../plots/simulated_time.pdf> <../plots/simulated_rank.pdf>]
+<../plots/simulated_time_half.pdf, id=202, 361.35pt x 361.35pt>
 File: ../plots/simulated_time_half.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time_half.pdf>
 Package pdftex.def Info: ../plots/simulated_time_half.pdf used on input line 67
-0.
+7.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank_half.pdf, id=188, 361.35pt x 361.35pt>
+<../plots/simulated_rank_half.pdf, id=203, 361.35pt x 361.35pt>
 File: ../plots/simulated_rank_half.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank_half.pdf>
-Package pdftex.def Info: ../plots/simulated_rank_half.pdf used on input line 67
-5.
+Package pdftex.def Info: ../plots/simulated_rank_half.pdf used on input line 68
+2.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
- [17 <../plots/simulated_time.pdf> <../plots/simulated_rank.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 692.
+ [18 <../plots/simulated_time_half.pdf> <../plots/simulated_rank_half.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 699.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 692.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 699.
 
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 [][]$\OT1/pcr/m/n/12 http : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 telegraph\
 OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
 ics / 2016 / 08 / 17 / german -[] twins -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
 ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
 s -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
 \OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
 -[] country -[] says -[] they -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 698--699
+Underfull \hbox (badness 10000) in paragraph at lines 705--706
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
 cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 701.
-[18 <../plots/simulated_time_half.pdf> <../plots/simulated_rank_half.pdf>]
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 701.
-
-(./paper.xwm) (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 701.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 701.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
+[19]
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 708.
+ (./paper.xwm) (./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 708.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 701.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 708.
  ) 
 Here is how much of TeX's memory you used:
- 13471 strings out of 493117
- 220193 string characters out of 6135433
+ 13472 strings out of 493117
+ 220200 string characters out of 6135433
  435087 words of memory out of 5000000
  16690 multiletter control sequences out of 15000+600000
  29470 words of font info for 80 fonts, out of 8000000 for 9000
@@ -805,10 +804,10 @@ texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on paper.pdf (19 pages, 702789 bytes).
+Output written on paper.pdf (20 pages, 703832 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
