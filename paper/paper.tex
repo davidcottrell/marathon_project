@@ -244,7 +244,7 @@ how finishing times from the Rio women's marathon varied as a function
 of athletes' personal best times and as function of their half
 marathon split times.  The points in the plots are colored by
 twin/triplet status, and both plots contain second-order polynomial
-regression lines.  Rug marks in both plot indicate times (either
+regression lines.  The ticks along the x-axis in both plots indicate times (either
 personal best or half marathon split) of runners who earned a DNF
 result.
 
@@ -270,9 +270,9 @@ Considering first the relationship between Olympic finishing and
 personal best times, Figure \ref{fig:45degreeplot}'s solid 45-degree
 line is informative.  Given the paucity of points (only five of them)
 below this line, it follows that the vast majority of Olympic
-marathoners ran slower in Rio compared to prior personal bests.
-Relative to personal best times, the Hahner twins were definitely on
-the slow side, but a number of runners had greater differences between
+marathoners ran slower in Rio compared to their prior personal bests.
+The Hahner twins were definitely on the slow side, well above the 45-degree line,
+but a number of runners had even greater differences between
 their Olympic times and their personal bests than the Hahners.  These
 runners are denoted with squares in Figure \ref{fig:45degreeplot}, and
 there are 13 such symbols, highlighting approximately 10\% of the
@@ -315,19 +315,24 @@ slowed down in the Rio marathon.
 With respect to our second measure of marathon skill, Figure
 \ref{fig:45degreeplot_half} shows that there was nothing abnormal
 about the Hahner twins' overall finishing times, conditional on their
-half marathon split times.  This is consistent with the previous
+half marathon split times. As one might expect, a runner's time halfway through the race is a
+fairly strong predictor of their finishing time at the end of the race.  Here we see that the relationship
+between the twins' halfway time and their finishing time is similar to that
+of the other runners.  The two points representing the Hahners are
+in the middle of the distribution of points and therefore imply that the twins do not seem to have slowed down in any unusual way. 
+ This is consistent with the previous
 Figure \ref{fig:45degreeplot} and inconsistent with accusations made
 against the Hahner twins, at least the part of the accusation that
 focused on their overall pace.
 
-Figure \ref{fig:residuals} is a visualization of how unusual, or not,
+Figure \ref{fig:residuals} gives a visualization of how unusual, or not,
 the Hahner and Kim twins' finishing times were in the Olympic
 marathon, conditional on our two measures of marathon talent.  The
-left and right panels of the figure are based on the polynomial
-regressions in Figure \ref{fig:scatter}'s panels, respectively.  We
-calculate residuals from Figures \ref{fig:45degreeplot} and
-\ref{fig:45degreeplot_half}, we Studentize the residuals, and then we
-plot the ordered residuals in Figure \ref{fig:residuals}.
+left and right panels of the figure display the studentized residuals derived from the polynomial
+regressions in Figure \ref{fig:scatter}'s panels, respectively.  Hence, we
+compute the residuals from Figures \ref{fig:45degreeplot} and
+\ref{fig:45degreeplot_half}, Studentize them, and arrange the result from least to most
+along the x-axis in Figure \ref{fig:residuals} to display their cumulative distribution.
 
 \begin{figure}[!ht]
   \centering
@@ -353,8 +358,10 @@ finishing times as not particularly remarkable.  With personal best
 time as a measure of marathon talent, the two Hahner residuals are in
 the right tail of the residual distribution; however, their locations
 are not extreme.  One residual is located at the 88th percentile and
-the other at the 93rd.  Kim twin residuals are similarly not
-remarkable although they are in the left tail of the residual
+the other at the 93rd.  While they are in the tail end of the distribution, they are not the
+major outliers that would lead us to reject the twins' claim.  
+Moreover, the residuals for the Kim twins are similarly not
+remarkable, although they are in the left tail of the residual
 distribution, indicating that the Kims ran faster than one would have
 expected.  If one uses half marathon split times as a measure of
 marathon talent, similar results obtain.  Neither Hahner twin had a
@@ -371,7 +378,7 @@ their official finishing times were separated by one second.  Is such
 a 115 to one compression typical among pairs of runners?  Moreover,
 are there other pairs of Olympic marathoners who had a difference
 between personal best times of 115 seconds apart and, if so, how close
-where their finishing times?
+were their finishing times?
 
 Of the 133 marathon finishers, there are $\binom{133}{2} = 8,778$
 pairs of runners.  Of these and ignoring the Hahner twins, ten had
@@ -446,7 +453,8 @@ zero seconds.  Beyond these twins, there were eight pairs of Rio
 runners with a 53 second personal best difference, and resulting
 finishing time differences are as follows: 9, 51, 228, 340, 352, 571,
 662, and 751.  As in the Hahner case, the Kim twins compressed their
-finishing times more than any other pair of runners with a similar
+finishing times - meaning that they finished with less time between  
+them than the difference in their personal bests - more than any other pair of runners with a similar
 personal best difference.
 
 Similar conclusions follow from Figure \ref{fig:diffdiffscatterhalf},
