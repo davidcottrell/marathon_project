@@ -66,6 +66,11 @@ df <- df %>%
   select(-(RK_PB:RK_FINAL)) %>%
   mutate_each(funs(replace(., . %in% c("0:0:00", "DNS", "DNF"),  NA)), SB:FINAL) %>%
   mutate_each(funs(period_to_seconds(hms(.))), SB:FINAL)
-  
+
+## merge in birthdate data
+bdays <- read.csv (file = "data/birthday-data.txt", header = TRUE, sep = "\t")
+bdays <- bdays %>% mutate (years2marathon = as.numeric((as.Date("8/14/2016", format = "%m/%d/%Y") - as.Date(paste(birthmonth, "/", birthday, "/", birthyear, sep = ""), format = "%m/%d/%Y")) / 365))
+df <- left_join (df, bdays, by = c("BIB" = "bib"))
+
 write.csv(df, "data/times.csv", row.names = FALSE)
 
