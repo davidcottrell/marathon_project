@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  4 FEB 2017 00:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  22 FEB 2017 18:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,20 +496,7 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 )
 \myfootnotesep=\skip70
 
-(./paper.aux
-
-LaTeX Warning: Label `fig:simulatedfinishtimes' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:simulatedfinishtimes' multiply defined.
-
-
-LaTeX Warning: Label `fig:simulatedranks' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:simulatedranks' multiply defined.
-
-)
+(./paper.aux)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -605,24 +592,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154 W
-       hat happened in the women's Olympic marathon, and how might we [1]
-[2] [3] <../plots/scatter_plot.pdf, id=32, 361.35pt x 361.35pt>
+l.155 W
+       hat happened in the women's Olympic marathon in Rio, and how might we
+[1] [2] [3] <../plots/scatter_plot.pdf, id=32, 361.35pt x 361.35pt>
 File: ../plots/scatter_plot.pdf Graphic file (type pdf)
 
 <use ../plots/scatter_plot.pdf>
-Package pdftex.def Info: ../plots/scatter_plot.pdf used on input line 257.
+Package pdftex.def Info: ../plots/scatter_plot.pdf used on input line 254.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
 
 <../plots/scatter_plot_half.pdf, id=33, 361.35pt x 361.35pt>
 File: ../plots/scatter_plot_half.pdf Graphic file (type pdf)
 
 <use ../plots/scatter_plot_half.pdf>
-Package pdftex.def Info: ../plots/scatter_plot_half.pdf used on input line 263.
+Package pdftex.def Info: ../plots/scatter_plot_half.pdf used on input line 260.
 
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
- [4]
-<../plots/studentized_residuals.pdf, id=49, 361.35pt x 361.35pt>
+ [4 <../plots/scatter_plot.pdf> <../plots/scatter_plot_half.pdf>]
+<../plots/studentized_residuals.pdf, id=62, 361.35pt x 361.35pt>
 File: ../plots/studentized_residuals.pdf Graphic file (type pdf)
 
 <use ../plots/studentized_residuals.pdf>
@@ -630,123 +617,126 @@ Package pdftex.def Info: ../plots/studentized_residuals.pdf used on input line
 343.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
 
-<../plots/studentized_residuals_half.pdf, id=50, 361.35pt x 361.35pt>
+<../plots/studentized_residuals_half.pdf, id=63, 361.35pt x 361.35pt>
 File: ../plots/studentized_residuals_half.pdf Graphic file (type pdf)
 
 <use ../plots/studentized_residuals_half.pdf>
 Package pdftex.def Info: ../plots/studentized_residuals_half.pdf used on input 
 line 349.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
- [5 <../plots/scatter_plot.pdf> <../plots/scatter_plot_half.pdf>] [6 <../plots/
-studentized_residuals.pdf> <../plots/studentized_residuals_half.pdf>]
-<../plots/diff_in_diff_scatter_plot.pdf, id=86, 361.35pt x 361.35pt>
+ [5] [6 <../plots/studentized_residuals.pdf> <../plots/studentized_residuals_ha
+lf.pdf>]
+<../plots/diff_in_diff_scatter_plot.pdf, id=89, 361.35pt x 361.35pt>
 File: ../plots/diff_in_diff_scatter_plot.pdf Graphic file (type pdf)
 
 <use ../plots/diff_in_diff_scatter_plot.pdf>
 Package pdftex.def Info: ../plots/diff_in_diff_scatter_plot.pdf used on input l
-ine 417.
+ine 421.
 (pdftex.def)             Requested size: 230.18253pt x 230.18251pt.
 
-<../plots/diff_in_diff_scatter_plot_half.pdf, id=87, 361.35pt x 361.35pt>
+<../plots/diff_in_diff_scatter_plot_half.pdf, id=90, 361.35pt x 361.35pt>
 File: ../plots/diff_in_diff_scatter_plot_half.pdf Graphic file (type pdf)
 
 <use ../plots/diff_in_diff_scatter_plot_half.pdf>
 Package pdftex.def Info: ../plots/diff_in_diff_scatter_plot_half.pdf used on in
-put line 422.
+put line 426.
 (pdftex.def)             Requested size: 230.18253pt x 230.18251pt.
  [7 <../plots/diff_in_diff_scatter_plot.pdf> <../plots/diff_in_diff_scatter_plo
 t_half.pdf>] [8]
-<../plots/seconds-behind.pdf, id=125, 361.35pt x 361.35pt>
+<../plots/seconds-behind.pdf, id=128, 361.35pt x 361.35pt>
 File: ../plots/seconds-behind.pdf Graphic file (type pdf)
 
 <use ../plots/seconds-behind.pdf>
-Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 483.
+Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 486.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
  [9 <../plots/seconds-behind.pdf>] [10]
-[11] <../plots/simulated_time.pdf, id=157, 361.35pt x 361.35pt>
-File: ../plots/simulated_time.pdf Graphic file (type pdf)
+[11] <../plots/simulated_time_with_age.pdf, id=160, 361.35pt x 361.35pt>
+File: ../plots/simulated_time_with_age.pdf Graphic file (type pdf)
 
-<use ../plots/simulated_time.pdf>
-Package pdftex.def Info: ../plots/simulated_time.pdf used on input line 618.
+<use ../plots/simulated_time_with_age.pdf>
+Package pdftex.def Info: ../plots/simulated_time_with_age.pdf used on input lin
+e 622.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank.pdf, id=158, 361.35pt x 361.35pt>
-File: ../plots/simulated_rank.pdf Graphic file (type pdf)
+<../plots/simulated_rank_with_age.pdf, id=161, 361.35pt x 361.35pt>
+File: ../plots/simulated_rank_with_age.pdf Graphic file (type pdf)
 
-<use ../plots/simulated_rank.pdf>
-Package pdftex.def Info: ../plots/simulated_rank.pdf used on input line 623.
+<use ../plots/simulated_rank_with_age.pdf>
+Package pdftex.def Info: ../plots/simulated_rank_with_age.pdf used on input lin
+e 627.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
- [12 <../plots/simulated_time.pdf> <../plots/simulated_rank.pdf>]
-<../plots/simulated_time_half.pdf, id=178, 361.35pt x 361.35pt>
-File: ../plots/simulated_time_half.pdf Graphic file (type pdf)
+ [12]
+<../plots/simulated_time_half_with_age.pdf, id=170, 361.35pt x 361.35pt>
+File: ../plots/simulated_time_half_with_age.pdf Graphic file (type pdf)
 
-<use ../plots/simulated_time_half.pdf>
-Package pdftex.def Info: ../plots/simulated_time_half.pdf used on input line 65
-6.
+<use ../plots/simulated_time_half_with_age.pdf>
+Package pdftex.def Info: ../plots/simulated_time_half_with_age.pdf used on inpu
+t line 660.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank_half.pdf, id=179, 361.35pt x 361.35pt>
-File: ../plots/simulated_rank_half.pdf Graphic file (type pdf)
+<../plots/simulated_rank_half_with_age.pdf, id=171, 361.35pt x 361.35pt>
+File: ../plots/simulated_rank_half_with_age.pdf Graphic file (type pdf)
 
-<use ../plots/simulated_rank_half.pdf>
-Package pdftex.def Info: ../plots/simulated_rank_half.pdf used on input line 66
-1.
+<use ../plots/simulated_rank_half_with_age.pdf>
+Package pdftex.def Info: ../plots/simulated_rank_half_with_age.pdf used on inpu
+t line 665.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
- [13 <../plots/simulated_time_half.pdf> <../plots/simulated_rank_half.pdf>] [14
-]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 908.
+ [13 <../plots/simulated_time_with_age.pdf> <../plots/simulated_rank_with_age.p
+df>] [14 <../plots/simulated_time_half_with_age.pdf> <../plots/simulated_rank_h
+alf_with_age.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 913.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 908.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 913.
 
-Underfull \hbox (badness 10000) in paragraph at lines 908--909
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
 [][]$\OT1/pcr/m/n/12 http : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 telegraph\
 OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
 ics / 2016 / 08 / 17 / german -[] twins -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 911--912
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
 ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
 s -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 911--912
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 \OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
 -[] country -[] says -[] they -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 914--915
+Underfull \hbox (badness 10000) in paragraph at lines 919--920
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
 cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 917.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 922.
 [15]
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 917.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 922.
  (./paper.xwm) (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 917.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 917.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 922.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 922.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 917.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 922.
  ) 
 Here is how much of TeX's memory you used:
- 13463 strings out of 493117
- 220321 string characters out of 6135433
- 435475 words of memory out of 5000000
- 16694 multiletter control sequences out of 15000+600000
+ 13467 strings out of 493117
+ 220585 string characters out of 6135433
+ 436738 words of memory out of 5000000
+ 16698 multiletter control sequences out of 15000+600000
  27844 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,12n,58p,962b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -761,10 +751,10 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
 dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on paper.pdf (16 pages, 1138665 bytes).
+Output written on paper.pdf (16 pages, 1138751 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
+ 259 PDF objects out of 1000 (max. 8388607)
+ 206 compressed objects within 3 object streams
  35 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

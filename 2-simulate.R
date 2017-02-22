@@ -27,7 +27,7 @@ ggplot(aes(y=FINAL, x=PB), data = df) +
     ylab("Olympic finishing time, in seconds\n") + 
     xlab("\nSeconds") + 
     ##  ggtitle("Distribution of Y | X") +
-    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
     scale_shape_manual(values = c(19, 15), guide = FALSE) +
     theme_bw() +
     theme(legend.position = c(.8,.2))
@@ -48,7 +48,7 @@ ggplot(aes(y = FINAL, x = SPLIT_HALF), data = df2use) +
     ylab("Olympic finishing time, in seconds\n") + 
     xlab("\nSeconds") + 
     ##  ggtitle("Distribution of Y | X") +
-    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
     theme_bw() +
     theme(legend.position = c(0.8, 0.2))
 dev.off()
@@ -65,14 +65,14 @@ pdf("plots/studentized_residuals.pdf", height = 5, width = 5)
 ggplot(dta, aes(STUD_RESID, PERCENTILE)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(dta), aes( col = TWINS)) + 
-  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = -.4, colour = "orange") +
-  geom_text(data = dta[dta$TWINS == "Kim twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .4, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = -.4, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Kim twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .4, colour = "orange") +
   geom_text(data = dta[dta$TWINS == "Luik triplets",], aes(label = print_pct(PERCENTILE)), nudge_x = .4, colour = "blue") +
   scale_x_continuous(breaks = -10:10) +
   ##  ggtitle("Distribution of Studentized Residuals") +
   ylab("Percentile\n") +
   xlab("\nStudentized residual") + 
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
 dev.off()
@@ -86,16 +86,16 @@ pdf("plots/studentized_residuals_half.pdf", height = 5, width = 5)
 ggplot(dta, aes(STUD_RESID, PERCENTILE)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(dta), aes( col = TWINS)) + 
-  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "orange") +
+  geom_text(data = dta[dta$TWINS == "Hahner twins",], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "red") +
   #geom_text(data = dta[dta$TWINS == "Kim twins",], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "red") +
-  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "red") +
-  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "red") +
+  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "orange") +
+  geom_text(data = dta[dta$TWINS == "Kim twins" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "orange") +
   geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][1,], aes(label = print_pct(PERCENTILE)), nudge_x = -.5, colour = "blue") +
   geom_text(data = dta[dta$TWINS == "Luik triplets" & !is.na(dta$TWINS),][2,], aes(label = print_pct(PERCENTILE)), nudge_x = .5, colour = "blue") +
   ##  ggtitle("Distribution of Studentized Residuals") +
   ylab("Percentile\n") +
   xlab("\nStudentized residual") + 
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
 dev.off()
@@ -149,7 +149,7 @@ ggplot(aes(y=abs(result_diff), x=abs(pb_diff)), data = df2b) +
     ylab("Absolute difference in Olympic finishing times, in seconds\n") + 
     xlab("\nAbsolute differences, in seconds") + 
     ## ggtitle("Among all dyadic combinations") +
-    scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+    scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
     theme_bw() +
     theme(legend.position = c(.8,.2))
 dev.off()
@@ -167,7 +167,7 @@ ggplot(aes(y=abs(result_diff), x=abs(hf_diff)), data = df2b) +
   ylab("Absolute difference in Olympic finishing times, in seconds\n") + 
   xlab("\nAbsolute differences, in seconds") + 
   ## ggtitle("Among all dyadic combinations") +
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.8,.2))
 dev.off()
@@ -178,12 +178,12 @@ df2b <- df2b %>% mutate(PERCENTILE = cume_dist(diff_in_diff)*100 )
 ggplot(df2b, aes(PERCENTILE,diff_in_diff)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(df2b), aes( col = twins)) + 
-  geom_text(data = df2b[df2b$twins == "Hahner twins",], aes(label =  paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 100, colour = "orange") +
-  geom_text(data = df2b[df2b$twins == "Kim twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "red") +
+  geom_text(data = df2b[df2b$twins == "Hahner twins",], aes(label =  paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 100, colour = "red") +
+  geom_text(data = df2b[df2b$twins == "Kim twins",], aes(label = paste0(formatC(round(PERCENTILE,1), format = "f", flag = "0", digits = 1 ), "%")), nudge_y = 200, colour = "orange") +
   ggtitle("Distribution of Difference in Differences\n(All Dyads)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPercentile") + 
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  scale_color_manual(values = c("red", "orange", "blue"), name = "") +
   theme_bw() +
   theme(legend.position = c(.85,.15))
 dev.off()
@@ -194,12 +194,12 @@ df2c <- df2b %>% filter(abs(pb_diff) <= abs(h_diff)) %>% mutate(PERCENTILE = cum
 ggplot(df2c, aes(PERCENTILE,diff_in_diff)) + 
   geom_point(size = 1, colour = "gray") + 
   geom_point(data = na.omit(df2c), aes( col = twins)) + 
-  geom_text(data = df2c[df2c$twins == "Hahner twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
-  geom_text(data = df2c[df2c$twins == "Kim twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
+  geom_text(data = df2c[df2c$twins == "Hahner twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "red") +
+  geom_text(data = df2c[df2c$twins == "Kim twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = "orange") +
   ggtitle("Distribution of Difference in Differences\n(Diads where difference in PB < Hahner's)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPercentile") + 
-  scale_color_manual(values = c("orange", "red", "blue", "gray"), name = "") +
+  scale_color_manual(values = c("red", "orange", "blue", "gray"), name = "") +
   theme_bw() +
   theme(legend.position = c(.85,.15))
 dev.off()
@@ -297,6 +297,8 @@ dev.off()
 
 
 source("simhalf.r")
+source("simwithage.r")
+source("simhalfwithage.r")
 
 # Compare Gyong to Song
 #
