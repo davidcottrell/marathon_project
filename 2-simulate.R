@@ -257,133 +257,14 @@ dev.off()
 
 stop()
 
-# Calculate the percent of runners who did not finish.
-# (includes women who did not start)
-dnf_rate <- sum(is.na(df$FINAL))/length(df$FINAL)
 
-# Estimate linear relationship between personal best and marathon result, excluding twins.
-m <- lm(FINAL ~ PB + I(PB^2), data = df[is.na(df$TWINS),])
-
-# Store the total number of runners, N
-N <- length(df$PB)
-
-# Save the vector of personal bests
-x <- df$PB
-
-# Create data frame to capture simulation output
-sim_df <- data_frame(ATHLETE = df$ATHLETE)
-
-# Set seed
-set.seed(14252345)
-
-# Set total number of sims
-total_sims <- 10000
-
-# Begin simulation
-for (i in 1:total_sims){
-  
-  # Determine whether each runner finishes given the dnf rate
-  dnf <- sample(x = c(F,T), size = N, replace = T, prob = c(1-dnf_rate, dnf_rate) )
-  
-  # Draw each runner's result from a multivariate normal distribution with 
-  # mean Beta and sigma equal to the variance-covariance of Beta
-  # Draw an error term from a normal distibution with standard deviation equal 
-  # to the standard deviation of the model residuals.
-  B <- mvrnorm(n = 1, mu = coef(m), Sigma =  vcov(m))
-  e <- rnorm(n = N, mean = 0, sd = summary(m)$sigma)
-  
-  # Remove the results of those that did not finish
-  y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + x^2*B[3] +  e )
-  
-
-  # Collect the results
-  sim_df[[paste0(i)]] <- y_hat
-  
-}
-
-sim_df <- sim_df %>% gather(SIM, YHAT, -ATHLETE, convert = T) %>% group_by(SIM) %>% mutate(RANK = min_rank(YHAT))
+max_x_t <- 2300
+max_y_t <- 500
+max_x_r <- 124
+max_y_r <- 300
 
 
-# Compare Anna to Lisa
-#
-anna <- df %>% filter(ATHLETE == "Anna Hahner")
-anna_sim <- sim_df %>% filter(ATHLETE == "Anna Hahner")
-
-lisa <- df %>% filter(ATHLETE == "Lisa Hahner")
-lisa_sim <- sim_df %>% filter(ATHLETE == "Lisa Hahner")
-
-hahner_dist <- abs(anna_sim$YHAT - lisa_sim$YHAT) <= abs(anna$FINAL - lisa$FINAL)
-hahner_dist <- ifelse(is.na(hahner_dist), FALSE, hahner_dist)
-
-hahner_rank <- abs(anna_sim$RANK - lisa_sim$RANK) <= 1
-hahner_rank <- ifelse(is.na(hahner_rank), FALSE, hahner_rank)
-
-pct_less_than_hahner <- sum(hahner_dist)/length(hahner_dist)
-pct_consecutive_hahner <- sum(hahner_rank)/length(hahner_rank)
-
-hahner_df <- data_frame(time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), rank_diff =  abs(anna_sim$RANK - lisa_sim$RANK))
-
-max_t <- max(hahner_df$time_diff, na.rm = T)
-max_r <- max(hahner_df$rank_diff, na.rm = T)
-
-pdf("plots/simulated_time.pdf", height = 5, width = 5)
-ggplot(hahner_df, aes(time_diff)) + 
-    geom_histogram(binwidth = 30, colour = "black", fill = NA) +
-    xlab("\nTime difference, in seconds") +
-    ylab("Count\n") +
-    xlim(0, max_t) + 
-    ##  ggtitle("\nSimulated final time") +
-    theme_bw()
-dev.off()
-
-pdf("plots/simulated_rank.pdf", height = 5, width = 5)
-ggplot(hahner_df, aes(rank_diff)) + 
-  geom_histogram(binwidth = 1, colour = "black", fill = NA) +
-  xlab("\nRank difference") +
-  ylab("Count\n") +
-  xlim(0, max_r) + 
-#  ggtitle("\nSimulated final rank") +
-  theme_bw()
-dev.off()
-
-
+source("sim.r")
 source("simhalf.r")
 source("simwithage.r")
 source("simhalfwithage.r")
-
-# Compare Gyong to Song
-#
-gyong_sim <- sim_df %>% filter(ATHLETE == "Hye-Gyong Kim")
-gyong <- df %>% filter(ATHLETE == "Hye-Gyong Kim")
-
-song_sim <-  sim_df %>% filter(ATHLETE == "Hye-Song Kim")
-song <-  df %>% filter(ATHLETE == "Hye-Song Kim")
-
-kim_dist <- abs(gyong_sim$YHAT - song_sim$YHAT) <= abs(gyong$FINAL - song$FINAL)
-kim_dist <- ifelse(is.na(kim_dist), FALSE, kim_dist)
-
-kim_rank <- abs(gyong_sim$RANK - song_sim$RANK) <= 1
-kim_rank <- ifelse(is.na(kim_rank), FALSE, kim_rank)
-
-pct_less_than_kim <- sum(kim_rank)/length(kim_rank)
-pct_consecutive_kim <- sum(kim_rank)/length(kim_rank)
-
-pct_consecutive_hahner_and_kim <- sum(hahner_rank & kim_rank)/length(hahner_rank & kim_rank)
-
-# Calculate the percent of the races where the twins placed in consecutive order.
-
-cat("The race was simulated", total_sims, "times.\n", sep = "")
-cat("The Hahner twins place consecutively in ", round(pct_consecutive_hahner*100, 2), "% of the simulations.\n", sep = "")
-cat("The Kim twins place consecutively in ", round(pct_consecutive_kim*100, 2), "% of the simulations.\n", sep = "")
-cat("Both the Hahner and Kim twins place consecutively in ", round(pct_consecutive_hahner_and_kim*100, 2), "% of the simulations.\n", sep = "")
-cat("95% simulated interval for Anna Hahner finishing time in seconds:",round(quantile(x = anna_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")
-cat("95% simulated interval for Lisa Hahner finishing time in seconds:",round(quantile(x = lisa_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")
-
-
-# time <- c("SPLIT_5K", "SPLIT_10K","SPLIT_15K", "SPLIT_20K", "SPLIT_HALF", "SPLIT_25K", "SPLIT_30K", "SPLIT_35K", "SPLIT_40K", "FINAL")
-# dist <- c(5, 10, 15, 20, 42.195/2, 25, 30, 35, 40, 42.195)
-# td <- data.frame(time, dist, stringsAsFactors = F)
-# df2 <- df %>% tbl_df %>% gather(time, value, SB:FINAL) %>% filter(str_detect(time, "SPLIT")) %>% left_join(td, by = "time")
-# df2 <- df2 %>% group_by(time) %>% mutate(std_value = (value - mean(value, na.rm = T))/sd(value, na.rm = T) )
-# ggplot(df2 %>% filter(!is.na(TWINS)), aes(dist, std_value, group = ATHLETE, colour = TWINS)) + geom_point()
-

@@ -241,7 +241,9 @@ Figure \ref{fig:scatter} contains two plots, both of which describe
 how finishing times from the Rio women's marathon varied as a function
 of athletes' personal best times and half marathon split times.  The
 points in the plots are colored by twin/triplet status, and both plots
-contain second-order polynomial regression lines.  The ticks along the
+contain %second-order polynomial regression lines. 
+a dashed line representing the line of best fit.
+The ticks along the
 horizontal axes in both plots indicate times, either personal bests or
 half marathon splits, of runners who earned DNF
 results.\label{scatterplots}
@@ -533,9 +535,9 @@ Lisa and Anna Hahner finished the Rio race simultaneously.
 
 To estimate the conditional distribution of each Rio final result, we
 assume that each runner's marathon time \Yi\ is distributed normally
-with a mean that is a quadratic function of the runner's marathon
+with a mean that is a linear function of the runner's marathon
 skill $X_i$ and her age $Z_i$. Hence:
-$$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i} + \beta_2\,X^2_{i}  + \beta_3\,Z_{i} + e_i, \sigma\right),$$
+$$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i}  + \beta_2\,Z_{i} + e_i, \sigma\right),$$
 %%
 where $N\left(\cdot,\cdot\right)$ denotes a normal
 distribution. Taking each runner's personal best marathon time as a
@@ -555,13 +557,12 @@ simulation are as follows.
 \begin{enumerate}
 \item Ignoring twins and triplets, estimate with least squares a
   linear model that predicts a runner's finishing time $Y_i$ based on
-  her pre-Olympic personal best time $X_i$, her best time squared
-  $X^2_{i}$, and her age $Z_i$.
+  her pre-Olympic personal best time $X_i$ and her age $Z_i$.
 \item Extract the resulting coefficient vector, estimated covariance
   matrix, and estimated regression variance from this model.
 \item For each simulated rate, draw intercept and slope estimates
-  $\tilde{\beta}_0$, $\tilde{\beta}_1$, $\tilde{\beta}_2$, and
-  $\tilde{\beta}_3$, respectively, from a multivariate normal
+  $\tilde{\beta}_0$, $\tilde{\beta}_1$, and
+  $\tilde{\beta}_2$, respectively, from a multivariate normal
   distribution with mean equal to the previously estimated coefficient
   vector and covariance equal to the previously estimated covariance
   matrix.
@@ -570,8 +571,7 @@ simulation are as follows.
   standard deviation of the original regression model's residuals.
 \item Predict each runner's final result by combining the randomly
   generated beta coefficients and individual error terms,
-  $\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1\,X_i +
-  \tilde{\beta}_2\,X_i^2 + \tilde{\beta}_3\,Z_i + \tilde{e}$.
+  $\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1\,X_i +  \tilde{\beta}_2\,Z_i + \tilde{e}$.
 \item Eliminate each runner from the simulated race with a probability
   equal to the observed fraction of marathoners who did not finish the
   marathon.
@@ -583,7 +583,7 @@ simulation are as follows.
 
 As these steps illustrate, our simulation repeatedly draws random
 coefficient vectors, and this captures variability in what we know
-about the relationship between runner talent and age and runer finish
+about the relationship between runner talent and age and runner finish
 times.  In addition, the simulation draws random disturbances for each
 runner, conditional on our original estimate of regression variance;
 these disturbances capture variability in runner finishing times,

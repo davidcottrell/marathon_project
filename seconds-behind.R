@@ -28,8 +28,8 @@ for (col2use in cols2use <- grep("SPLIT|FINAL", colnames(dta))) {
     pch2use[dta2use$BIB == 633  | dta2use$BIB == 634 | dta2use$BIB == 635] <- 1
 
     color2use <- rep("grey50", times = nrow(dta2use))
-    color2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- "red"
-    color2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- "orange"
+    color2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- "black"
+    color2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- "red"
     color2use[dta2use$BIB == 633 | dta2use$BIB == 634 | dta2use$BIB == 635] <- "blue"
 
     points (x = rep(dists[match(col2use, cols2use)], times = nrow(dta2use)), y = dta2use[, col2use] - min(dta2use[, col2use]),
@@ -51,7 +51,7 @@ axis (side = 1, at = dists[c(4,9)] + c(dists[c(5,10)] - dists[c(4,9)])/2 ,
       tick = F)
 
 legend (x = 5, y = 2000,
-        col = c("blue", "red", "orange"),
+        col = c("blue", "black", "red"),
         pch = 1,
         legend = c("Luik triplets", "Hahner twins", "Kim twins"),
         cex = 0.75,

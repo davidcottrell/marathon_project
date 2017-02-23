@@ -1,21 +1,20 @@
+
 # Calculate the percent of runners who did not finish.
 # (includes women who did not start)
-df_half <- df[!is.na(df$SPLIT_HALF),] 
-dnf_rate <- sum(is.na(df_half$FINAL))/length(df_half$FINAL)
+dnf_rate <- sum(is.na(df$FINAL))/length(df$FINAL)
 
 # Estimate linear relationship between personal best and marathon result, excluding twins.
-#m <- lm(FINAL ~ SPLIT_HALF + I(SPLIT_HALF^2) + years2marathon, data = df_half[is.na(df_half$TWINS),])
-m <- lm(FINAL ~ SPLIT_HALF + years2marathon, data = df_half[is.na(df_half$TWINS),])
+#m <- lm(FINAL ~ PB + I(PB^2), data = df[is.na(df$TWINS),])
+m <- lm(FINAL ~ PB, data = df[is.na(df$TWINS),])
 
 # Store the total number of runners, N
-N <- length(df_half$SPLIT_HALF)
+N <- length(df$PB)
 
 # Save the vector of personal bests
-x <- df_half$SPLIT_HALF
-age <- df_half$years2marathon
+x <- df$PB
 
 # Create data frame to capture simulation output
-sim_df <- data_frame(ATHLETE = df_half$ATHLETE)
+sim_df <- data_frame(ATHLETE = df$ATHLETE)
 
 # Set seed
 set.seed(14252345)
@@ -37,8 +36,9 @@ for (i in 1:total_sims){
   e <- rnorm(n = N, mean = 0, sd = summary(m)$sigma)
   
   # Remove the results of those that did not finish
-  #y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + x^2*B[3] + age*B[4] + e )
-  y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + age*B[3] + e )
+  #y_hat <- ifelse(dnf, NA, B[1] + x*B[2] + x^2*B[3] +  e )
+  y_hat <- ifelse(dnf, NA, B[1] + x*B[2] +  e )
+  
   
   # Collect the results
   sim_df[[paste0(i)]] <- y_hat
@@ -46,7 +46,6 @@ for (i in 1:total_sims){
 }
 
 sim_df <- sim_df %>% gather(SIM, YHAT, -ATHLETE, convert = T) %>% group_by(SIM) %>% mutate(RANK = min_rank(YHAT))
-
 
 # Compare Anna to Lisa
 #
@@ -65,8 +64,9 @@ pct_consecutive <- sum((hahner_df$rank_diff) <= 1, na.rm = T ) / length(na.omit(
 if (exists("p")) {rm(p)}
 if (exists("p2")) {rm(p2)}
 
-pdf("plots/simulated_time_half_with_age.pdf", height = 5, width = 5)
-p <- ggplot(filter(hahner_df, !is.na(time_diff)), aes(time_diff, fill = time_diff < 60 )) + 
+
+pdf("plots/simulated_time.pdf", height = 5, width = 5)
+p<-ggplot(filter(hahner_df, !is.na(time_diff)), aes(time_diff, fill = time_diff < 60 )) + 
   geom_histogram(breaks = seq(0,max_x_t, 30), colour = "black") +
   xlab("\nTime difference, in seconds") +
   ylab("Count\n") +
@@ -77,8 +77,8 @@ p <- ggplot(filter(hahner_df, !is.na(time_diff)), aes(time_diff, fill = time_dif
 print(p)
 dev.off()
 
-pdf("plots/simulated_rank_half_with_age.pdf", height = 5, width = 5)
-p2 <- ggplot(filter(hahner_df, !is.na(rank_diff)), aes(rank_diff, fill = rank_diff <= 1 )) + 
+pdf("plots/simulated_rank.pdf", height = 5, width = 5)
+p2<-ggplot(filter(hahner_df, !is.na(rank_diff)), aes(rank_diff, fill = rank_diff <= 1 )) + 
   geom_histogram(binwidth=1, center=0, colour = "black") +
   xlab("\nRank difference") +
   ylab("Count\n") +
