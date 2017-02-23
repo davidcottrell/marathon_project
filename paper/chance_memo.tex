@@ -1,8 +1,11 @@
 \documentclass[12pt]{article}
 \sloppy
 \usepackage{times}
+\usepackage{xr-hyper}
 \usepackage{url}
 \usepackage{arydshln}
+
+\externaldocument{paper}
 
 %% uncomment to use a watermark
 %\usepackage{draftwatermark}
@@ -42,44 +45,92 @@ comments from you and the Editorial Board.
   What happens if those 2 points are removed? Could also simply plot
   differences from personal best as frequency dist'n. Could also plot
   projected from half vs actual.''
-  \begin{itemize}
-  \item
-  \end{itemize}
 
+  The $p$-value for the quadratic term is -1.88, which is not
+  particularly compelling.  We have accordingly dropped the quadratic
+  terms in the scatter plots on p.\ 4 and, implicitly, from the
+  Studentized residual plots on p.\ 6.
+  %% Note: xr labels are
+  %% breaking; looks like some sort of
+  %% label clash with another package.
+  %% Hardcoding here is poor style.
+  
+  % > fit <- lm (FINAL ~ PB + I(PB^2), data = df)
+  % > print (summary(fit))
+  
+  % Call:
+  % lm(formula = FINAL ~ PB + I(PB^2), data = df)
+  
+  % Residuals:
+  % Min      1Q  Median      3Q     Max 
+  % -817.64 -288.70  -92.13  224.05 1319.33 
+  
+  % Coefficients:
+  % Estimate Std. Error t value Pr(>|t|)   
+  % (Intercept) -1.257e+04  6.417e+03  -1.958  0.05233 . 
+  % PB           3.633e+00  1.336e+00   2.719  0.00744 **
+  % I(PB^2)     -1.309e-04  6.946e-05  -1.884  0.06181 . 
+  % ---
+  % Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  
+  % Residual standard error: 417.5 on 130 degrees of freedom
+  % (24 observations deleted due to missingness)
+  % Multiple R-squared:  0.6538,	Adjusted R-squared:  0.6484 
+  % F-statistic: 122.7 on 2 and 130 DF,  p-value: < 2.2e-16
+  
 \item ``Marathon finish may be linearly related to the fastest
   previous marathon with perhaps age in a model. An interesting though
   experiment may be, if they were blindfolded, would they have
   finished together?''
-  \begin{itemize}
-  \item We've changed model to include age for the simulations. 
-  \end{itemize}
+
+  We have added age to our simulation model, and the results are
+  qualitatively equivalent.  In addition, if one adds age to the
+  linear specification depicted in our basic scatter plot (now without
+  a quadratic term, as noted above), age is a significant predictor of
+  marathon finishing time, even controlling for personal best
+  ($p \approx 2.426$).  Older runners are slower, \emph{ceteris
+    paribus}.
+
+% Call:
+% lm(formula = FINAL ~ PB + years2marathon, data = df)
+
+% Residuals:
+%     Min      1Q  Median      3Q     Max 
+% -779.88 -281.31  -94.71  222.21 1319.29 
+
+% Coefficients:
+%                  Estimate Std. Error t value Pr(>|t|)    
+% (Intercept)    -1.366e+03  7.430e+02  -1.838   0.0684 .  
+% PB              1.147e+00  7.222e-02  15.876   <2e-16 ***
+% years2marathon  1.799e+01  7.413e+00   2.426   0.0166 *  
+% ---
+% Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+% Residual standard error: 413.9 on 130 degrees of freedom
+%   (23 observations deleted due to missingness)
+% Multiple R-squared:  0.6597,	Adjusted R-squared:  0.6545 
+% F-statistic:   126 on 2 and 130 DF,  p-value: < 2.2e-16
 
 
 \item ``I printed this out in black and white. Would help see them if
   Hahners were darkest color.''
-   \begin{itemize}
-  \item
-  \end{itemize}
+
+  We have changed the color scheme for the dots in our figures.  The
+  German Hahner twins are now shown in black, the North Korean Kim
+  twins in red, and the Estonian Luik triplets in blue.  Each color is
+  present in its country's respective flag.
 
 \item ``a similar conclusion is reached?''
-  \begin{itemize}
-  \item We changed the language in the paper so it uses this phrasing.
-  \end{itemize}
-  
 
-\item ``pairs are not completely independent as same runner can be in
+  We changed the language in the paper so that it uses this phrasing.
+
+  \item ``pairs are not completely independent as same runner can be in
   different pairs. Not as though runners are drawn with replacement.''
-   \begin{itemize}
-  \item
-  \end{itemize}
-
 
 \item ``due to subsequent DNF's?''
-   \begin{itemize}
-  \item We changed the language in the paper so it uses this phrasing.
-  \end{itemize}
-  
 
+  We changed the language in the paper so that it uses this phrasing.
+  
 \item ``I don't get this part. If Yi is function of Xi, personal best,
   won't estimates be same for each simulation?  What I would try for
   an analysis would be look at distribution of finishing times,
@@ -89,40 +140,42 @@ comments from you and the Editorial Board.
   see what this theoretical dist'n looks like. How often are finishers
   within x seconds of each other? Could also use historical marathon
   data from other races.''
-   \begin{itemize}
-  \item WE DID THIS, RIGHT?
-  \end{itemize}
-  
-\item There are errors in figure labels, ``5a'' and ``5b''
-   \begin{itemize}
-  \item  We apologize for this oversight and have fixed the associated
-  labeling errors.
-  \end{itemize}
 
+  We fully agree with this comment, and indeed the intuition offered
+  by the referee was the motivation behind our simulation.  To make
+  this clear, we added a paragraph after the simulation steps, and
+  this paragraph explains why finishing times (and order) will vary
+  both within and across simulations.  Then, the plots we generated
+  (see Figures 5 and 6) describe how often the Hahner twins finish
+  in close proximity of each other.
+
+  We have thought about historical marathon data but are hesitant to
+  go down that route.  The set of runners who competed in Rio is
+  unique to this race, and marathon finishes are confounded by course
+  and local conditions.
+  
+\item There are errors in figure labels ``5a'' and ``5b''
+  
+  We apologize for this oversight and have fixed the associated
+  labeling errors.
 
 \item ``Would help to expand left side bins, as these are the finishes
   of main interest.''
-   \begin{itemize}
-  \item
-  \end{itemize}
-
 
 \item ``what are interval widths in seconds? Hard to see.''
-   \begin{itemize}
-  \item
-  \end{itemize}
-
 
 \item ``Suddenly Latin?''
-   \begin{itemize}
-   \item We have changed the Latin to, all things equal. 
-   \end{itemize}
-
+  
+  We have changed the Latin text to, all things equal.
+  
 \item ``likely''
-   \begin{itemize}
-  \item
-  \end{itemize}
 
+  We apologize for the confusion here, but we are not sure what the
+  referee is requesting.  In the marked-up PDF document, the word
+  ``likely'' appears over the following sentence: ``Their finish—one
+  second between the two women—was an extremely low probability
+  event.''  We are not sure how to incorporate the referee's request
+  but are happy to do so if given more information.
 
 \end{itemize}
 
