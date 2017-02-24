@@ -81,7 +81,7 @@ p <- ggplot(filter(hahner_df_simwithage, !is.na(time_diff)), aes(time_diff, fill
      ylab("Count\n") +
      ylim(0, max_y_t) + 
      scale_fill_manual(values = c(NA, "red"), guide = F) +
-     annotate("text", y = .8*max_y_t, x = 1500, label = paste0("< 1 min:  ", less_than_min), size = 5, col = "red") +
+     annotate("text", y = .8*max_y_t, x = 1500, label = paste0("< 1 minute:  ", less_than_min), size = 5, col = "red") +
      theme_bw()
 print(p)
 dev.off()

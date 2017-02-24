@@ -1,5 +1,12 @@
 library(dplyr)
 
+## set color for twins/triplets
+color_kim <- "red"
+color_hahner <- "black"
+color_luik <- "blue"
+
+
+
 dta <- read.csv (file = "data/times.csv", header = TRUE)
 
 pdf (file = "plots/seconds-behind.pdf", width = 5, height = 5)
@@ -28,9 +35,9 @@ for (col2use in cols2use <- grep("SPLIT|FINAL", colnames(dta))) {
     pch2use[dta2use$BIB == 633  | dta2use$BIB == 634 | dta2use$BIB == 635] <- 1
 
     color2use <- rep("grey50", times = nrow(dta2use))
-    color2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- "black"
-    color2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- "red"
-    color2use[dta2use$BIB == 633 | dta2use$BIB == 634 | dta2use$BIB == 635] <- "blue"
+    color2use[dta2use$BIB == 748 | dta2use$BIB == 749] <- color_hahner
+    color2use[dta2use$BIB == 1137 | dta2use$BIB == 1138] <- color_kim
+    color2use[dta2use$BIB == 633 | dta2use$BIB == 634 | dta2use$BIB == 635] <- color_luik
 
     points (x = rep(dists[match(col2use, cols2use)], times = nrow(dta2use)), y = dta2use[, col2use] - min(dta2use[, col2use]),
            col = color2use,
@@ -51,9 +58,9 @@ axis (side = 1, at = dists[c(4,9)] + c(dists[c(5,10)] - dists[c(4,9)])/2 ,
       tick = F)
 
 legend (x = 5, y = 2000,
-        col = c("blue", "black", "red"),
+        col = c(color_hahner, color_kim, color_luik),
         pch = 1,
-        legend = c("Luik triplets", "Hahner twins", "Kim twins"),
+        legend = c("Hahner twins", "Kim twins", "Luik triplets"),
         cex = 0.75,
         bty = "n"
         )

@@ -46,10 +46,12 @@ comments from you and the Editorial Board.
   differences from personal best as frequency dist'n. Could also plot
   projected from half vs actual.''
 
-  The $t$-value for the quadratic term is -1.88 and the corresponding $p$-value is .062, which is not
-  particularly compelling.  We have accordingly dropped the quadratic
-  terms in the scatter plots on p.\ 4 and, implicitly, from the
-  Studentized residual plots on p.\ 6.
+  The $t$-value for the quadratic term is -1.88 and the corresponding
+  $p$-value is 0.062, which is not particularly compelling.  We have
+  accordingly dropped the quadratic terms in the scatter plots on p.\
+  4 and, implicitly, from the Studentized residual plots on p.\ 6.  In
+  terms of the latter suggestion about, Figure 1b contains a plot of
+  half marathon split times versus actual finishing times.
   %% Note: xr labels are
   %% breaking; looks like some sort of
   %% label clash with another package.
@@ -88,8 +90,8 @@ comments from you and the Editorial Board.
   linear specification depicted in our basic scatter plot (now without
   a quadratic term, as noted above), age is a significant predictor of
   marathon finishing time, even controlling for personal best
-  ($t \approx 2.426$, $p \approx 0.017$).  Older runners are slower, \emph{ceteris
-    paribus}.
+  ($t \approx 2.426$, $p \approx 0.017$).  Older runners are slower,
+  all things equal.
 
 % Call:
 % lm(formula = FINAL ~ PB + years2marathon, data = df)
@@ -119,13 +121,20 @@ comments from you and the Editorial Board.
   German Hahner twins are now shown in black, the North Korean Kim
   twins in red, and the Estonian Luik triplets in blue.  Each color is
   present in its country's respective flag.
-
+  
 \item ``a similar conclusion is reached?''
-
+  
   We changed the language in the paper so that it uses this phrasing.
-
-  \item ``pairs are not completely independent as same runner can be in
+  
+\item ``pairs are not completely independent as same runner can be in
   different pairs. Not as though runners are drawn with replacement.''
+
+  We agree with the thrust of this comment, and our manuscript now
+  emphasizes the lack of independence.  Insofar as dependence in
+  sampling typically diminishes variance, our lack of independence in
+  the pair plots should make our results conservative. This means that
+  that the observed Hahner and Kim compression in final results,
+  conditional on prior best marathon times, is even more unusual.
 
 \item ``due to subsequent DNF's?''
 
@@ -162,9 +171,11 @@ comments from you and the Editorial Board.
 \item ``Would help to expand left side bins, as these are the finishes
   of main interest.''
   
-  We have highlighted the left side bins in red and annotated the plot 
-  with a description of the size of the those bins. This emphasizes the finishes
-  that are the main interest of the result.
+  We agree with this suggestion.  Accordingly, in the histograms that
+  describe simulation results, we have highlighted left side bins in
+  red and annotated the plots with descriptions of the sizes of key
+  areas.  This emphasizes the finishes that are most important for our
+  results.
 
 \item ``what are interval widths in seconds? Hard to see.''
 
