@@ -361,7 +361,7 @@ remarkable. With personal best time as a measure of marathon talent as
 in Figure \ref{fig:studentizedresiduals}, the two Hahner residuals are
 in the right tail of the residual distribution; however, their
 locations are not extreme.  One residual is located at the 87th
-percentile and the other at the 92rd.  While these two residuals are
+percentile and the other at the 92nd.  While these two residuals are
 in the tail end of the residual distribution, they are not major
 outliers that would lead us to think that the Hahner twin's marathon
 finishing times were extremely slow.  Moreover, the residuals for the
@@ -534,13 +534,12 @@ Lisa and Anna Hahner finished the Rio race simultaneously.
 
 To estimate the conditional distribution of each Rio final result, we
 assume that each runner's marathon time \Yi\ is distributed normally
-with a mean that is a linear function of the runner's marathon
-skill $X_i$ and her age $Z_i$. Hence:
+with a mean that is a function of the runner's marathon
+skill - which we assume can be determined by a linear combination of her personal best marathon time $X_i$ and her age $Z_i$. Hence:
 $$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i}  + \beta_2\,Z_{i} + e_i, \sigma\right),$$
 %%
 where $N\left(\cdot,\cdot\right)$ denotes a normal
-distribution. Taking each runner's personal best marathon time as a
-proxy for her underlying marathon skill, we estimate $\beta_0$,
+distribution. We estimate $\beta_0$,
 $\beta_1$, $\beta_2$, and $\sigma$ using ordinary least squares on
 finishing Rio marathoners.  We exclude the Hahner/Kim twins and Luik
 triplets from the sample so that that our estimates are not affected
@@ -596,7 +595,7 @@ of the variability in marathon finishing times. For example, in 95\%
 of the simulations in which Anna Hahner completed the marathon, her
 finishing time was between 8,369 seconds and 9,999 seconds. This is
 consistent with Anna's observed finishing time in Rio, which was 9,932
-seconds. Nonetheless, her finishing time was on the slower end of this interval,.   
+seconds. Nonetheless, her finishing time was on the slower end of this interval.   
 In fact, our simulations estimate that, given Anna's personal best marathon time
 and her age, she would be expected to finish the Rio marathon in 9,181 seconds, which is slightly more
 than 12 minutes faster than her actual time.  This is similar to her sister's result. Lisa Hahner's
@@ -604,7 +603,8 @@ corresponding 95\% interval is 8,507 to 10,143 with a mean of 9,319.  Her observ
 finishing time of 9,933 seconds.
 
 The bottom line here is that our simulated marathon finishes are
-consistent with the Hahner twins' finishing times. And note that the
+consistent with the Hahner twins' finishing times in that their finishes were inside
+the bounds of traditional 95\% confidence intervals. And note that the
 regression model underlying the simulations was estimated without the
 Hahner twins (and same for the Kim twins and Luik triplets). According
 to our simulation, then, both Hahner twins did not run appreciably

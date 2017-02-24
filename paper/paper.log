@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 FEB 2017 12:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 FEB 2017 16:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -703,7 +703,7 @@ OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
 ics / 2016 / 08 / 17 / german -[] twins -[]
  []
 
-
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 946--947
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
 ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
@@ -716,7 +716,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 946--947
 -[] country -[] says -[] they -[]
  []
 
-[15]
+
 Underfull \hbox (badness 10000) in paragraph at lines 949--950
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
 cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
@@ -751,7 +751,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
 dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on paper.pdf (17 pages, 1140956 bytes).
+Output written on paper.pdf (17 pages, 1140971 bytes).
 PDF statistics:
  269 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
