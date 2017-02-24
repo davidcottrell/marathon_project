@@ -1,4 +1,3 @@
-
 # Calculate the percent of runners who did not finish.
 # (includes women who did not start)
 dnf_rate <- sum(is.na(df$FINAL))/length(df$FINAL)
@@ -58,42 +57,50 @@ anna_sim <- sim_df %>% filter(ATHLETE == "Anna Hahner")
 lisa <- df %>% filter(ATHLETE == "Lisa Hahner")
 lisa_sim <- sim_df %>% filter(ATHLETE == "Lisa Hahner")
 
-hahner_df <- data_frame(time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), rank_diff =  abs(anna_sim$RANK - lisa_sim$RANK))
+hahner_df_simwithage <-  data_frame(anna_final = anna_sim$YHAT,
+                                    lisa_final = lisa_sim$YHAT,
+                                    anna_rank = anna_sim$RANK,
+                                    lisa_rank = lisa_sim$RANK,
+                                    time_diff = abs(anna_sim$YHAT - lisa_sim$YHAT), 
+                                    rank_diff =  abs(anna_sim$RANK - lisa_sim$RANK))
 
-pct_less_than_hahner <- sum((hahner_df$time_diff) <= 1, na.rm = T ) / length(na.omit(hahner_df$time_diff))
-pct_less_than_min <- sum((hahner_df$time_diff) < 60, na.rm = T ) / length(na.omit(hahner_df$time_diff))
-pct_consecutive <- sum((hahner_df$rank_diff) <= 1, na.rm = T ) / length(na.omit(hahner_df$time_diff))
+less_than_hahner <- sum((hahner_df_simwithage$time_diff) <= 1, na.rm = T ) 
+less_than_min <- sum((hahner_df_simwithage$time_diff) < 60, na.rm = T )
+consecutive <- sum((hahner_df_simwithage$rank_diff) <= 1, na.rm = T )
+pct_less_than_hahner <-less_than_hahner / total_sims
+pct_less_than_min <- less_than_min / total_sims
+pct_consecutive <- consecutive / total_sims
 
 if (exists("p")) {rm(p)}
 if (exists("p2")) {rm(p2)}
 
 pdf("plots/simulated_time_with_age.pdf", height = 5, width = 5)
-p <- ggplot(filter(hahner_df, !is.na(time_diff)), aes(time_diff, fill = time_diff < 60 )) + 
+p <- ggplot(filter(hahner_df_simwithage, !is.na(time_diff)), aes(time_diff, fill = time_diff < 60 )) + 
      geom_histogram(breaks = seq(0,max_x_t, 30), colour = "black") +
      xlab("\nTime difference, in seconds") +
      ylab("Count\n") +
      ylim(0, max_y_t) + 
      scale_fill_manual(values = c(NA, "red"), guide = F) +
-     annotate("text", y = 400, x = 1500, label = paste0("< 1 min:  ", round(pct_less_than_min*100, 1), "%"), size = 5, col = "red") +
+     annotate("text", y = .8*max_y_t, x = 1500, label = paste0("< 1 min:  ", less_than_min), size = 5, col = "red") +
      theme_bw()
 print(p)
 dev.off()
 
 pdf("plots/simulated_rank_with_age.pdf", height = 5, width = 5)
-p2 <- ggplot(filter(hahner_df, !is.na(rank_diff)), aes(rank_diff, fill = rank_diff <= 1 )) + 
+p2 <- ggplot(filter(hahner_df_simwithage, !is.na(rank_diff)), aes(rank_diff, fill = rank_diff <= 1 )) + 
   geom_histogram(binwidth=1, center=0, colour = "black") +
   xlab("\nRank difference") +
   ylab("Count\n") +
   ylim(0, max_y_r) + 
   xlim(0, max_x_r) + 
   scale_fill_manual(values = c(NA, "red"), guide = F) +
-  annotate("text", y = 225, x = 80, label = paste0("Consecutive finishes:  ", round(pct_consecutive*100, 1), "%"), size = 5, col = "red") +
+  annotate("text", y = .8*max_y_r, x = 80, label = paste0("Consecutive finishes:  ", consecutive), size = 5, col = "red") +
   theme_bw()
 print(p2)
 dev.off()
 
 cat("The race was simulated ", total_sims," times.\n", sep = "")
-cat("The Hahner twins place consecutively in ", round(pct_consecutive*100, 2), "% of simulated finishes\n", sep = "")
-cat("The average simulated time between them was ", round(mean(hahner_df$time_diff/60, na.rm = T), 2), " minutes\n", sep = "")
+cat("The Hahner twins place consecutively in ", round(pct_consecutive*100, 2), "% of simulations\n", sep = "")
+cat("The average simulated time between them was ", round(mean(hahner_df_simwithage$time_diff/60, na.rm = T), 2), " minutes\n", sep = "")
 cat("95% simulated interval for Anna Hahner finishing time in seconds:",round(quantile(x = anna_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")
 cat("95% simulated interval for Lisa Hahner finishing time in seconds:",round(quantile(x = lisa_sim$YHAT, probs = c(0.025, 0.975), na.rm = TRUE), 0), "\n", sep = " ")

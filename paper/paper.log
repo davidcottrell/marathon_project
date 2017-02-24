@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  23 FEB 2017 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 FEB 2017 01:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -659,7 +659,7 @@ File: ../plots/simulated_time_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_time_with_age.pdf used on input lin
-e 639.
+e 647.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
 <../plots/simulated_rank_with_age.pdf, id=161, 361.35pt x 361.35pt>
@@ -667,7 +667,7 @@ File: ../plots/simulated_rank_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_rank_with_age.pdf used on input lin
-e 644.
+e 652.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
  [12]
 <../plots/simulated_time_half_with_age.pdf, id=170, 361.35pt x 361.35pt>
@@ -675,7 +675,7 @@ File: ../plots/simulated_time_half_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time_half_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_time_half_with_age.pdf used on inpu
-t line 677.
+t line 685.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
 <../plots/simulated_rank_half_with_age.pdf, id=171, 361.35pt x 361.35pt>
@@ -683,55 +683,55 @@ File: ../plots/simulated_rank_half_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank_half_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_rank_half_with_age.pdf used on inpu
-t line 682.
+t line 690.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
  [13 <../plots/simulated_time_with_age.pdf> <../plots/simulated_rank_with_age.p
 df>] [14 <../plots/simulated_time_half_with_age.pdf> <../plots/simulated_rank_h
 alf_with_age.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 930.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 938.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 930.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 938.
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--931
+Underfull \hbox (badness 10000) in paragraph at lines 938--939
 [][]$\OT1/pcr/m/n/12 http : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 telegraph\
 OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
 ics / 2016 / 08 / 17 / german -[] twins -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--934
+Underfull \hbox (badness 10000) in paragraph at lines 941--942
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
 ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
 s -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--934
+Underfull \hbox (badness 10000) in paragraph at lines 941--942
 \OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
 -[] country -[] says -[] they -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 936--937
+Underfull \hbox (badness 10000) in paragraph at lines 944--945
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
 cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
  []
 
 [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 939.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
  [16]
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 939.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 947.
  (./paper.xwm) (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 939.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 939.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 947.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 939.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 947.
  ) 
 Here is how much of TeX's memory you used:
  13470 strings out of 493117
@@ -752,7 +752,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
 dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on paper.pdf (17 pages, 1140479 bytes).
+Output written on paper.pdf (17 pages, 1140490 bytes).
 PDF statistics:
  263 PDF objects out of 1000 (max. 8388607)
  209 compressed objects within 3 object streams

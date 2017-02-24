@@ -595,23 +595,31 @@ vary.
 From our simulations we can generate intervals which describe the
 extent of the variability in marathon finishing times. For example, in
 95\% of the simulations in which Anna Hahner completed the marathon,
-her finishing time was between 9,480 seconds and 10,703 seconds. This
+her finishing time was between 8,369 seconds and 9,999 seconds. This
 is consistent with Anna's observed finishing time in Rio, which was
 9,932 seconds. In fact, our simulations estimate that Anna should have
-finished the Rio marathon in 10,092 seconds, which is slightly more
-than two and one-half minutes slower than her actual time. Lisa
-Hahner's corresponding 95\% interval is 9,427 to 10,619 with an
+finished the Rio marathon in 9,181 seconds, which is slightly more
+than 12 minutes faster than her actual time. Lisa
+Hahner's corresponding 95\% interval is 8,507 to 10,143 with an
 observed finishing time of 9,933 seconds.
 
 The bottom line here is that our simulated marathon finishes are
 consistent with the Hahner twins' finishing times. And note that the
 regression model underlying the simulations was estimated without the
 Hahner twins (and same for the Kim twins and Luik triplets). According
-to our simulations, then, neither Hahner twin ran appreciably slowly,
-conditional on personal best times prior to the Rio Olympics.
+to our simulation, then, both Hahner twins ran appreciably slowly,
+conditional on personal best times prior to the Rio Olympics and age.
 
-% 95% simulated interval for Anna Hahner finishing time in seconds: 9480 10703 
-% 95% simulated interval for Lisa Hahner finishing time in seconds: 9427 10619 
+% 95% simulated interval for Anna Hahner finishing time in seconds: 8369 9999 
+% 95% simulated interval for Lisa Hahner finishing time in seconds: 8507 10143 
+
+% > mean(hahner_df_simwithage$anna_final, na.rm = T)
+% [1] 9181.137
+% > mean(hahner_df_simwithage$lisa_final, na.rm = T)
+% [1] 9319.427
+
+% > (9932 - 9181.137)/60
+% [1] 12.51438
 
 % > df$FINAL[df$ATHLETE == "Anna Hahner"]
 % [1] 9932
@@ -653,7 +661,7 @@ that a simultaneous finish in the Rio marathon would be very rare if
 Anna and Lisa had run independently of each other. For example, in
 fewer than 300 of the 10,000 simulated races did Anna and Lisa Hahner
 finish within 30 seconds of one another. Moreover, they finished in
-consecutive rank in fewer than 175 of the 10,000 simulated races.  The
+consecutive rank in fewer than 200 of the 10,000 simulated races.  The
 close finish that was observed, where Anna and Lisa crossed the finish
 line one after the other, would have been highly unlikely if the two
 German twins had raced independently of each other.
