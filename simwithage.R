@@ -81,7 +81,7 @@ p <- ggplot(filter(hahner_df_simwithage, !is.na(time_diff)), aes(time_diff, fill
      ylab("Count\n") +
      ylim(0, max_y_t) + 
      scale_fill_manual(values = c(NA, "red"), guide = F) +
-     annotate("text", y = .8*max_y_t, x = 1500, label = paste0("< 1 minute:  ", less_than_min), size = 5, col = "red") +
+     annotate("text", y = text_y*max_y_t, x = text_x*max_x_t, label = paste0("< 1 min:  ", less_than_min), size = 5, col = "red") +
      theme_bw()
 print(p)
 dev.off()
@@ -94,7 +94,7 @@ p2 <- ggplot(filter(hahner_df_simwithage, !is.na(rank_diff)), aes(rank_diff, fil
   ylim(0, max_y_r) + 
   xlim(0, max_x_r) + 
   scale_fill_manual(values = c(NA, "red"), guide = F) +
-  annotate("text", y = .8*max_y_r, x = 80, label = paste0("Consecutive finishes:  ", consecutive), size = 5, col = "red") +
+  annotate("text", y = text_y*max_y_r, x = text_x*max_x_r, label = paste0("Consecutive finishes:  ", consecutive), size = 5, col = "red") +
   theme_bw()
 print(p2)
 dev.off()

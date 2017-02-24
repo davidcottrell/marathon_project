@@ -77,9 +77,9 @@ p <- ggplot(filter(hahner_df_simhalf, !is.na(time_diff)), aes(time_diff, fill = 
   geom_histogram(breaks = seq(0,max_x_t, 30), colour = "black") +
   xlab("\nTime difference, in seconds") +
   ylab("Count\n") +
-  ylim(0, max_y_t) + 
+  ylim(0, max_y_t_half) + 
   scale_fill_manual(values = c(NA, "red"), guide = F) +
-  annotate("text", y = .8*max_y_t, x = 1500, label = paste0("< 1 min:  ", less_than_min), size = 5, col = "red") +
+  annotate("text", y = text_y*max_y_t_half, x = text_x*max_x_t, label = paste0("< 1 min:  ", less_than_min), size = 5, col = "red") +
   theme_bw()
 print(p)
 dev.off()
@@ -89,10 +89,10 @@ p2 <- ggplot(filter(hahner_df_simhalf, !is.na(rank_diff)), aes(rank_diff, fill =
   geom_histogram(binwidth=1, center=0, colour = "black") +
   xlab("\nRank difference") +
   ylab("Count\n") +
-  ylim(0, max_y_r) + 
+  ylim(0, max_y_r_half) + 
   xlim(0, max_x_r) + 
   scale_fill_manual(values = c(NA, "red"), guide = F) +
-  annotate("text", y = .8*max_y_r, x = 80, label = paste0("Consecutive finishes:  ", consecutive), size = 5, col = "red") +
+  annotate("text", y = text_y*max_y_r_half, x = text_x*max_x_r, label = paste0("Consecutive finishes:  ", consecutive), size = 5, col = "red") +
   theme_bw()
 print(p2)
 dev.off()

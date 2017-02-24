@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 FEB 2017 01:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 FEB 2017 11:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -600,7 +600,7 @@ File: ../plots/scatter_plot_no_quadratic.pdf Graphic file (type pdf)
 
 <use ../plots/scatter_plot_no_quadratic.pdf>
 Package pdftex.def Info: ../plots/scatter_plot_no_quadratic.pdf used on input l
-ine 257.
+ine 256.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
 
 <../plots/scatter_plot_half_no_quadratic.pdf, id=33, 361.35pt x 361.35pt>
@@ -608,7 +608,7 @@ File: ../plots/scatter_plot_half_no_quadratic.pdf Graphic file (type pdf)
 
 <use ../plots/scatter_plot_half_no_quadratic.pdf>
 Package pdftex.def Info: ../plots/scatter_plot_half_no_quadratic.pdf used on in
-put line 263.
+put line 262.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
  [4 <../plots/scatter_plot_no_quadratic.pdf> <../plots/scatter_plot_half_no_qua
 dratic.pdf>]
@@ -617,7 +617,7 @@ File: ../plots/studentized_residuals_no_quadratic.pdf Graphic file (type pdf)
 
 <use ../plots/studentized_residuals_no_quadratic.pdf>
 Package pdftex.def Info: ../plots/studentized_residuals_no_quadratic.pdf used o
-n input line 347.
+n input line 345.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
 
 <../plots/studentized_residuals_half_no_quadratic.pdf, id=63, 361.35pt x 361.35
@@ -626,7 +626,7 @@ File: ../plots/studentized_residuals_half_no_quadratic.pdf Graphic file (type p
 df)
  <use ../plots/studentized_residuals_half_no_quadratic.pdf>
 Package pdftex.def Info: ../plots/studentized_residuals_half_no_quadratic.pdf u
-sed on input line 353.
+sed on input line 351.
 (pdftex.def)             Requested size: 232.52643pt x 232.52586pt.
  [5] [6 <../plots/studentized_residuals_no_quadratic.pdf> <../plots/studentized
 _residuals_half_no_quadratic.pdf>]
@@ -635,7 +635,7 @@ File: ../plots/diff_in_diff_scatter_plot.pdf Graphic file (type pdf)
 
 <use ../plots/diff_in_diff_scatter_plot.pdf>
 Package pdftex.def Info: ../plots/diff_in_diff_scatter_plot.pdf used on input l
-ine 425.
+ine 423.
 (pdftex.def)             Requested size: 230.18253pt x 230.18251pt.
 
 <../plots/diff_in_diff_scatter_plot_half.pdf, id=90, 361.35pt x 361.35pt>
@@ -643,18 +643,18 @@ File: ../plots/diff_in_diff_scatter_plot_half.pdf Graphic file (type pdf)
 
 <use ../plots/diff_in_diff_scatter_plot_half.pdf>
 Package pdftex.def Info: ../plots/diff_in_diff_scatter_plot_half.pdf used on in
-put line 430.
+put line 428.
 (pdftex.def)             Requested size: 230.18253pt x 230.18251pt.
  [7 <../plots/diff_in_diff_scatter_plot.pdf> <../plots/diff_in_diff_scatter_plo
-t_half.pdf>] [8]
-<../plots/seconds-behind.pdf, id=128, 361.35pt x 361.35pt>
+t_half.pdf>]
+<../plots/seconds-behind.pdf, id=122, 361.35pt x 361.35pt>
 File: ../plots/seconds-behind.pdf Graphic file (type pdf)
 
 <use ../plots/seconds-behind.pdf>
-Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 490.
+Package pdftex.def Info: ../plots/seconds-behind.pdf used on input line 482.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
- [9 <../plots/seconds-behind.pdf>] [10]
-[11] <../plots/simulated_time_with_age.pdf, id=160, 361.35pt x 361.35pt>
+ [8] [9 <../plots/seconds-behind.pdf>]
+[10] [11] <../plots/simulated_time_with_age.pdf, id=160, 361.35pt x 361.35pt>
 File: ../plots/simulated_time_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time_with_age.pdf>
@@ -670,73 +670,73 @@ Package pdftex.def Info: ../plots/simulated_rank_with_age.pdf used on input lin
 e 652.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
  [12]
-<../plots/simulated_time_half_with_age.pdf, id=170, 361.35pt x 361.35pt>
+<../plots/simulated_time_half_with_age.pdf, id=172, 361.35pt x 361.35pt>
 File: ../plots/simulated_time_half_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_time_half_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_time_half_with_age.pdf used on inpu
-t line 685.
+t line 689.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
 
-<../plots/simulated_rank_half_with_age.pdf, id=171, 361.35pt x 361.35pt>
+<../plots/simulated_rank_half_with_age.pdf, id=173, 361.35pt x 361.35pt>
 File: ../plots/simulated_rank_half_with_age.pdf Graphic file (type pdf)
 
 <use ../plots/simulated_rank_half_with_age.pdf>
 Package pdftex.def Info: ../plots/simulated_rank_half_with_age.pdf used on inpu
-t line 690.
+t line 694.
 (pdftex.def)             Requested size: 211.38832pt x 211.38614pt.
  [13 <../plots/simulated_time_with_age.pdf> <../plots/simulated_rank_with_age.p
 df>] [14 <../plots/simulated_time_half_with_age.pdf> <../plots/simulated_rank_h
 alf_with_age.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 938.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 942.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 938.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 942.
 
-Underfull \hbox (badness 10000) in paragraph at lines 938--939
+Underfull \hbox (badness 10000) in paragraph at lines 942--943
 [][]$\OT1/pcr/m/n/12 http : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 telegraph\
 OML/cmm/m/it/12 :\OT1/pcr/m/n/12 co\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 uk / olymp
 ics / 2016 / 08 / 17 / german -[] twins -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 941--942
+Underfull \hbox (badness 10000) in paragraph at lines 945--946
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 nytimes\O
 ML/cmm/m/it/12 :\OT1/pcr/m/n/12 com / 2016 / 08 / 17 / sports / olympics / twin
 s -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 941--942
+Underfull \hbox (badness 10000) in paragraph at lines 945--946
 \OT1/pcr/m/n/12 finish -[] marathon -[] hand -[] in -[] hand -[] but -[] their 
 -[] country -[] says -[] they -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--945
+Underfull \hbox (badness 10000) in paragraph at lines 948--949
 [][]$\OT1/pcr/m/n/12 https : / / www\OML/cmm/m/it/12 :\OT1/pcr/m/n/12 welt\OML/
 cmm/m/it/12 :\OT1/pcr/m/n/12 de / sport / olympia / article157669264 / Das -[]
  []
 
 [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 951.
  [16]
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 947.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 951.
  (./paper.xwm) (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 947.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 951.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 951.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 947.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 951.
  ) 
 Here is how much of TeX's memory you used:
  13470 strings out of 493117
  220829 string characters out of 6135433
- 436854 words of memory out of 5000000
+ 436876 words of memory out of 5000000
  16700 multiletter control sequences out of 15000+600000
  27844 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -752,10 +752,10 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
 dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on paper.pdf (17 pages, 1140490 bytes).
+Output written on paper.pdf (17 pages, 1140673 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
+ 265 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
  36 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
