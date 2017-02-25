@@ -141,12 +141,11 @@ editorialist---and the sports director of the German Athletics
 Federation, Thomas Kurschilgen, stirred up controversy when he
 suggested that the Hahners' photo-finish was no coincidence.
 Kurschilgen averred that the twins slowed down so as to finish
-simultaneously and create a spectacle which would ``generate media
-attention.''  Kurschilgen justified his charge with the fact that the
-twins ran the Rio marathon over 18 minutes slower their personal best
-times prior to the Olympics.  Kurschilgen's accusations were denied by
-the Hahner twins, perhaps not surprisingly, who claimed that their
-joint finish was simply a fortuitous coincidence.
+simultaneously and create a spectacle, and he justified his charge by
+noting that the Hahners ran the Rio marathon over 18 minutes slower their
+personal best times prior to the Olympics.  Kurschilgen's accusations
+were denied by the Hahner twins, perhaps not surprisingly, who claimed
+that their joint finish was simply a fortuitous coincidence.
 
 %% Honigkuchenpferd quote from here:
 %%
@@ -187,8 +186,8 @@ games; age; split times from the Rio marathon course at 5 kilometers,
 directly observe the effort that an individual put into the race, and
 we do not know why some runners have DNF results.  Some runners may
 have injured themselves on the course and accordingly dropped out, and
-others may have dropped out, uninjured, in anticipation of an
-unsatisfactory result. Of the 156 marathon starters, 133 completed the
+others may have stopped running, uninjured, in anticipation of an
+unsatisfactory result. Of 156 marathon starters, 133 completed the
 race and 23 DNFed at various locations throughout the course. The
 overall DNF rate was thus $\frac{23}{156} \approx 0.15$, and the
 relatively small sample size at our disposal yields a relatively wide
@@ -203,9 +202,9 @@ that Kurschilgen offered distinguishes between a slow finish and a
 simultaneous finish.
 
 Our research design is twofold.  First, we present visualizations that
-describe various features of the 2016 women's Olympic marathon, and an
-important element in our visualizations is the difference between
-runners' Rio times and their prior personal best marathon times.  Our
+describe various features of the 2016 women's Olympic marathon, and
+among other things our visualizations feature difference between
+runners' Rio times and their prior personal best marathon times.  The
 visualizations suggest that the Hahner twin's pace in the marathon was
 slow, albeit not excessively so, but that their simultaneous finish
 was quite unusual given the twins' differences in abilities (and
@@ -234,13 +233,12 @@ affect individual runners.  For example, a runner could have woken up
 with a minor cold on the morning of August 14, 2016.  With these
 concerns in mind, we use a runner's half marathon split time from the
 Olympic marathon as a secondary measure of athletic skill in
-marathoning.  Our two measures of marathon talent are featured in the
-visualizations below.
+marathoning.  
 
-Figure \ref{fig:scatter} contains two plots, both of which describe
-how finishing times from the Rio women's marathon varied as a function
-of athletes' personal best times and half marathon split times.  The
-points in the plots are colored by twin/triplet status, and both plots
+Figure \ref{fig:scatter} contains two plots describing how finishing
+times from the Rio women's marathon varied as a function of athletes'
+personal best times and half marathon split times.  The points in the
+plots are colored by twin/triplet status, and both plots
 contain %second-order polynomial regression lines.
 dashed lines representing least squares regression fits.  The ticks
 along the horizontal axes in both plots indicate times, either
@@ -320,10 +318,11 @@ Here we see that the relationship between the Hahner twin's half
 marathon split times and their finishing times is similar to that of
 other Rio runners.  The two points representing the Hahners are in the
 middle of the distribution of points and therefore imply that the
-twins do not seem to have slowed down in any unusual way.  This is
-consistent with the previous Figure \ref{fig:45degreeplot} and
-inconsistent with accusations made against the Hahner twins, at least
-the part of the accusation that focused on their overall pace.
+twins do not seem to have slowed down dramatically after their reached
+the halfway point of the Rio marathon.  This is consistent with the
+aforementioned Figure \ref{fig:45degreeplot} and inconsistent with
+accusations made against the Hahner twins, at least the part of the
+accusation that focused on their overall pace.
 
 Another perspective on the extent to which the Hahners' overall
 marathon finishing times were not unusual can be gleaned from Figure
@@ -381,7 +380,7 @@ speaks to this question.
 
 The personal best times of the Hahner twins were 115 seconds apart and
 their official finishing times were separated by one second.  Is such
-a 115 to one compression typical among pairs of runners?  Moreover,
+a 115 to one compression typical among pairs of runners?  Relatedly,
 are there other pairs of Olympic marathoners who had a difference
 between personal best times of 115 seconds apart and, if so, how close
 were their finishing times?
@@ -435,19 +434,20 @@ We can generalize this result by looking at all pairs of runners in
 the marathon.  For all 8,778 pairs of 133 finishers, Figure
 \ref{fig:diffdiffscatter} plots differences in finishing times against
 differences in personal best times, and pairs of twins/triplets are
-identified by the same color scheme we used earlier.  Consider first
+identified by the same color scheme we used earlier (recall that only
+two of the Luik triplets finished the Rio marathon).  Consider first
 the Hahner twins.  The two German women are effectively located on the
 horizontal axis because their difference in finishing times is one
 second.  However, there are many points above the Hahner's black dot,
 and this shows that, conditional on an approximate 115 second
-difference in personal best times, most marathoners did not have close
-finishing times like the Hahners.  Some pairs of runners with around
-115 second personal best differences had finishing time differences of
-1,000 seconds, i.e., in excess of 15 minutes.  The points in Figure
-\ref{fig:diffdiffscatter} are not independent, but they provide a
-rough sense of the dispersion in finishing time differences between
-runners that one might expect conditional on differences in personal
-best times.
+difference in personal best times, most marathoner pairs did not have
+close finishing times like the Hahners.  Some pairs of runners with
+around 115 second personal best differences had finishing time
+differences of 1,000 seconds, i.e., in excess of 15 minutes.  The
+points in Figure \ref{fig:diffdiffscatter} are not independent, but
+they provide a rough sense of the dispersion in finishing time
+differences between runners that one might expect conditional on
+differences in personal best times.
 
 Thinking about the accusations leveled against the Hahner twins,
 Figure \ref{fig:diffdiffscatter} suggests that Anna and Lisa Hahner
@@ -471,7 +471,7 @@ the vast majority of these pairs did not have close finishing times.
 
 Figure \ref{fig:secondsbehind} describes each Olympic runner's status
 at various split times on the marathon course.  Each dot in the
-figure---color as before---depicts a recorded split and the number of
+figure---colored as before---depicts a recorded split and the number of
 seconds each runner was behind the race leader at the time.  There are
 more dots at earlier splits due to subsequent DNFs. 
 
@@ -491,7 +491,8 @@ in Figure \ref{fig:secondsbehind} , which also shows that Lisa Hahner
 was ahead of her sister through 15 kilometers.  The figure contains
 two red dots representing the North Korean Kim twins, but this is not
 visually apparent because the Kim twins had identical split times
-during the entire marathon.
+during the entire marathon.  This explains why we used the term
+``lockstep'' to refer to the Kim twin's marathon pace.
 
 \section*{Simulating the Marathon}
 
@@ -534,8 +535,9 @@ Lisa and Anna Hahner finished the Rio race simultaneously.
 
 To estimate the conditional distribution of each Rio final result, we
 assume that each runner's marathon time \Yi\ is distributed normally
-with a mean that is a function of the runner's marathon
-skill - which we assume can be determined by a linear combination of her personal best marathon time $X_i$ and her age $Z_i$. Hence:
+with a mean that is a function of the runner's marathon skill, which
+we assume is a linear combination of her personal best marathon time
+$X_i$ and her age $Z_i$:
 $$\Yi \mid X_i \sim N\left(\beta_0 + \beta_1\,X_{i}  + \beta_2\,Z_{i} + e_i, \sigma\right),$$
 %%
 where $N\left(\cdot,\cdot\right)$ denotes a normal
@@ -558,7 +560,7 @@ simulation are as follows.
   her pre-Olympic personal best time $X_i$ and her age $Z_i$.
 \item Extract the resulting coefficient vector, estimated covariance
   matrix, and estimated regression variance from this model.
-\item For each simulated rate, draw intercept and slope estimates
+\item For each simulated race, draw intercept and slope estimates
   $\tilde{\beta}_0$, $\tilde{\beta}_1$, and
   $\tilde{\beta}_2$, respectively, from a multivariate normal
   distribution with mean equal to the previously estimated coefficient
@@ -567,6 +569,8 @@ simulation are as follows.
 \item For each runner, draw an error $\tilde{e}$ from a normal
   distribution with mean zero and a standard deviation equal to the
   standard deviation of the original regression model's residuals.
+  This step requires 156 draws from a normal distribution, one draw
+  per marathoner.
 \item Predict each runner's final result by combining the randomly
   generated beta coefficients and individual error terms,
   $\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1\,X_i +  \tilde{\beta}_2\,Z_i + \tilde{e}$.
@@ -580,36 +584,38 @@ simulation are as follows.
 \end{enumerate}
 
 As these steps illustrate, our simulation repeatedly draws random
-coefficient vectors, and this captures variability in what we know
+coefficient vectors, and this captures uncertainty in what we know
 about the relationship between runner talent and age and runner finish
-times.  In addition, the simulation draws random disturbances for each
-runner, conditional on our original estimate of regression variance;
-these disturbances capture variability in runner finishing times,
-notwithstanding underlying marathon talent as proxied for by prior
-best finishing time.  Importantly, the disturbances that we draw are
-independent across runners.  Consequently, for each simulated race the
-finishing order among runners will vary.
+times.  In addition, for each simulated race our simulation draws
+random disturbances for each runner, conditional on the original
+estimate of regression variance; these disturbances capture
+variability in runner finishing times, notwithstanding age and
+underlying marathon talent.  Importantly, the disturbances that we
+draw are independent across runners.  Consequently, for each simulated
+race the finishing order among runners will vary.
 
 From our simulations we generate intervals which describe the extent
 of the variability in marathon finishing times. For example, in 95\%
 of the simulations in which Anna Hahner completed the marathon, her
 finishing time was between 8,369 seconds and 9,999 seconds. This is
 consistent with Anna's observed finishing time in Rio, which was 9,932
-seconds. Nonetheless, her finishing time was on the slower end of this interval.   
-In fact, our simulations estimate that, given Anna's personal best marathon time
-and her age, she would be expected to finish the Rio marathon in 9,181 seconds, which is slightly more
-than 12 minutes faster than her actual time.  This is similar to her sister's result. Lisa Hahner's
-corresponding 95\% interval is 8,507 to 10,143 with a mean of 9,319.  Her observed
-finishing time of 9,933 seconds.
+seconds. Nonetheless, Anna's finishing time was on the slower end of
+this interval.  In fact, our simulations estimate that, given Anna's
+personal best marathon time and her age, she would be expected to
+finish the Rio marathon in 9,181 seconds, which is slightly more than
+12 minutes faster than her actual time.  This is similar to her
+sister's result. Lisa Hahner's corresponding 95\% interval is 8,507 to
+10,143 with a mean of 9,319.  Her actual finishing time was 9,933
+seconds.
 
 The bottom line here is that our simulated marathon finishes are
-consistent with the Hahner twins' finishing times in that their finishes were inside
-the bounds of traditional 95\% confidence intervals. And note that the
-regression model underlying the simulations was estimated without the
-Hahner twins (and same for the Kim twins and Luik triplets). According
-to our simulation, then, both Hahner twins did not run appreciably
-slowly, conditional on personal best times prior to the Rio Olympics
-and age.
+consistent with the Hahner twins' finishing times in that their
+finishes were inside the bounds of traditional 95\% intervals. And
+note that the regression model underlying the simulations was
+estimated without the Hahner twins (and same for the Kim twins and
+Luik triplets). According to our simulation, then, both Hahner twins
+did not run appreciably slowly, conditional on personal best times
+prior to the Rio Olympics and age.
 
 % 95% simulated interval for Anna Hahner finishing time in seconds: 8369 9999 
 % 95% simulated interval for Lisa Hahner finishing time in seconds: 8507 10143 
@@ -663,7 +669,7 @@ Anna and Lisa had run independently. For example, in fewer than 300 of
 10,000 simulated races did Anna and Lisa Hahner finish within 30
 seconds of one another, and in fewer than 600 did the Hahner twins
 finish within a minute of each other.  The histogram area associated
-with this result is depicted in red in Figure
+with this latter result is depicted in red in Figure
 \ref{fig:simulatedfinishtimes}.  Moreover, the Hahner twins finished
 in consecutive rank in fewer than 200 of 10,000 simulated races; the
 red zone in Figure \ref{fig:simulatedranks} presents this visually.
@@ -730,26 +736,26 @@ visualizations and simple calculations and a second that draws on a
 simulation. Both perspectives have the same implications, and they are
 as follows. In a global sense, the Hahner twins did not slow down
 appreciably during the Rio marathon. Their times were not fast, but
-they were within reason for runners of the Hahners' abilities.
+they were within reason for runners of the Hahners' abilities and age.
 Locally, though, we find that the Hahner's finish was in fact
-contrived. Their finish---one second between the two women---was an
-extremely low probability event. Compared to their differences in
-talent, the Hahner twins difference in finishing times was unusually
-compressed. This is evidence that their finishing had elements of
-intentionality---perhaps at the last minute but intentionality
-nonetheless.
+contrived. Their finish---consecutive, with one second between the two
+women---was a rather low probability event. Compared to their
+differences in talent, that is, the Hahner twins difference in
+finishing times was unusually compressed. This is evidence that their
+finishing had elements of intentionality---perhaps at the last minute
+but intentionality nonetheless.
 
 Our goal is not to speak to the question of whether the Hahner twins
 should or should not have enjoyed a somewhat contrived moment of
 Olympic glory. Neither was in contention for a podium finish in Rio,
 and compared to the doping allegations that presently surround
-endurance sports in general, what the Hahners did seems relatively
-tame. Still, it might have behooved them to be a bit more open about
-their end-of-race tactics, and to this end we have shown here how a
-simple data analysis can shed light on claims about racing results.
-Should the 2020 Summer Olympics feature twins and triplets again, we
-look forward to a comparative analysis using the techniques
-illustrated here.
+endurance sports in general, what the Hahners appear to have done
+seems relatively tame. Still, it might have behooved them to have been
+a bit more open about their end-of-race tactics, and to this end we
+have shown here how a simple data analysis can shed light on claims
+about racing results.  Should the 2020 Summer Olympics again feature
+marathoning twins and triplets, we look forward to a comparative
+analysis using the techniques illustrated here.
 
 % \section*{The probability of an unintentional simultaneous finish}
 
