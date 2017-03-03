@@ -247,7 +247,7 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
   geom_point(data = na.omit(df2c), aes( col = twins)) + 
   geom_text(data = df2c[df2c$twins == "Hahner twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = color_hahner) +
   geom_text(data = df2c[df2c$twins == "Kim twins",], aes(label = paste(round(PERCENTILE,1),"%")), nudge_y = 100, colour = color_kim) +
-  ggtitle("Distribution of Difference in Differences\n(Diads where difference in PB < Hahner's)") +
+  ggtitle("Distribution of Difference in Differences\n(Dyads where difference in PB < Hahner's)") +
   ylab("Difference in Difference (sec)\n") +
   xlab("\nPercentile") + 
   scale_color_manual(values = c(color_hahner, color_kim, color_luik, "gray"), name = "") +
@@ -255,5 +255,5 @@ ggplot(df2c, aes(PERCENTILE,diff_in_diff)) +
   theme(legend.position = c(.85,.15))
 dev.off()
 
-stop()
+
 
